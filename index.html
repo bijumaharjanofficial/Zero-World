@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero - Fantasy World Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Raleway:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="light-mode">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-globe"></i> ZERO</h1>
+                <p class="subtitle">Creation Engine Explorer</p>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#kings" class="nav-link">Rulers</a></li>
+                    <li><a href="#heroes" class="nav-link">Heroes</a></li>
+                    <li><a href="#bosses" class="nav-link">Bosses</a></li>
+                    <li><a href="#additional-villains" class="nav-link">Villains</a></li>
+                    <li><a href="#beasts" class="nav-link">Bestiary</a></li>
+                    <li><a href="#world" class="nav-link">World Lore</a></li>
+                    <li><a href="#continents" class="nav-link">Continents</a></li>
+                </ul>
+
+                <div class="theme-toggle">
+                    <span class="theme-label">Light</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="theme-switch">
+                        <label for="theme-switch" class="toggle-slider">
+                            <span class="toggle-icon sun"><i class="fas fa-sun"></i></span>
+                            <span class="toggle-icon moon"><i class="fas fa-moon"></i></span>
+                        </label>
+                    </div>
+                    <span class="theme-label">Dark</span>
+                </div>
+
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to the World of <span class="highlight">Zero</span></h2>
+                <p>A universe governed by the Creation Engine, where reality is quantified, magic is systematized, and
+                    every being has Levels, Stats, and Skills.</p>
+
+                <div class="hero-controls">
+                    <div class="view-toggle">
+                        <button id="view-continents" class="active"><i class="fas fa-mountain"></i> Continents</button>
+                        <button id="view-beasts"><i class="fas fa-dragon"></i> Bestiary</button>
+                    </div>
+
+                    <div class="hero-info">
+                        <h3 id="hero-title">Eldoria</h3>
+                        <p id="hero-description">The 'tutorial continent' where the System runs predictably with stable
+                            magic and ley lines.</p>
+                        <div class="hero-stats">
+                            <span><i class="fas fa-cog"></i> SA: <span id="hero-sa">2-4</span></span>
+                            <span><i class="fas fa-magic"></i> Theme: <span id="hero-theme">Stable Fantasy</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Carousel -->
+        <div class="hero-carousel">
+            <div class="carousel-slide active" id="slide-1"></div>
+            <div class="carousel-slide" id="slide-2"></div>
+            <div class="carousel-slide" id="slide-3"></div>
+            <div class="carousel-slide" id="slide-4"></div>
+            <div class="carousel-slide" id="slide-5"></div>
+            <div class="carousel-slide" id="slide-6"></div>
+            <div class="carousel-slide" id="slide-7"></div>
+        </div>
+
+        <div class="carousel-controls">
+            <button id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+                <span class="indicator" data-index="3"></span>
+                <span class="indicator" data-index="4"></span>
+                <span class="indicator" data-index="5"></span>
+                <span class="indicator" data-index="6"></span>
+            </div>
+            <button id="carousel-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Rulers Section -->
+    <section id="kings" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> Rulers of Zero</h2>
+                <p>The powerful leaders who govern the continents through Level, unique Skills, and System authority</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Rulers</button>
+                <button class="filter-btn" data-filter="eldoria">Eldoria</button>
+                <button class="filter-btn" data-filter="mechanis">Mechanis</button>
+                <button class="filter-btn" data-filter="spiritus">Spiritus</button>
+            </div>
+
+            <div class="grid-container" id="rulers-grid">
+                <!-- Ruler cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Heroes Section -->
+    <section id="heroes" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-shield-alt"></i> Legendary Heroes</h2>
+                <p>National champions with formidable Levels, Titles, and signature Skills</p>
+            </div>
+
+            <div class="grid-container" id="heroes-grid">
+                <!-- Hero cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!--Additioanl  Heroes Section -->
+    <section id="additional-heroes" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-fist-raised"></i> Additional Heroes</h2>
+                <p>Non-national legendary figures of immense power, often serving a higher cause.</p>
+            </div>
+            <div class="grid-container" id="additional-heroes-grid">
+            </div>
+        </div>
+    </section>
+
+    <!--Additioanl  Villian Section -->
+    <section id="additional-villains" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-mask"></i> Strategic Villains</h2>
+                <p>Independent agents or profound horrors that pose continental or global threats.</p>
+            </div>
+            <div class="grid-container" id="additional-villains-grid">
+            </div>
+        </div>
+    </section>
+
+    <!--Boss Section -->
+    <section id="bosses" class="section-padding section-bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-skull-crossbones"></i> Dungeon Bosses</h2>
+                <p>Formidable entities guarding the depths of Zero's dungeons.</p>
+            </div>
+            <div class="grid-container" id="bosses-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestiary Section -->
+    <section id="beasts" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-paw"></i> Bestiary of Zero</h2>
+                <p>Creatures from SSS-Rank Calamities to F-Rank Pests, classified by threat level</p>
+            </div>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="beasts-swiper">
+                    <!-- Beast cards will be dynamically inserted here -->
+                </div>
+
+                <!-- Navigation buttons -->
+                <!-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> -->
+
+                <!-- Pagination -->
+                <!-- <div class="swiper-pagination"></div> -->
+            </div>
+
+            <div class="rank-filters">
+                <button class="rank-filter active" data-rank="all">All Ranks</button>
+                <button class="rank-filter" data-rank="X">X-Rank</button>
+                <button class="rank-filter" data-rank="SSS">SSS-Rank</button>
+                <button class="rank-filter" data-rank="SS">SS-Rank</button>
+                <button class="rank-filter" data-rank="S">S-Rank</button>
+                <button class="rank-filter" data-rank="A">A-Rank</button>
+                <button class="rank-filter" data-rank="B">B-Rank</button>
+                <button class="rank-filter" data-rank="C">C-Rank</button>
+                <button class="rank-filter" data-rank="D">D-Rank</button>
+                <button class="rank-filter" data-rank="E">E-Rank</button>
+                <button class="rank-filter" data-rank="F">F-Rank</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Councils Section -->
+    <section id="councils" class="section-padding section-bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Divine & Demonic Councils</h2>
+                <p>The ruling bodies of Spiritus - The Solar Choir and The Bloodlord Council</p>
+            </div>
+
+            <div class="councils-container">
+                <div class="council-card" id="solar-choir-card">
+                    <div class="council-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>The Solar Choir</h3>
+                    <p class="council-subtitle">Divine Conclave of the Celestial Bastion</p>
+                    <p class="council-desc">A collective of five Arch-Seraphs ruling in harmonic unity.</p>
+                    <div class="council-stats">
+                        <span><i class="fas fa-star"></i> 5 Members</span>
+                        <span><i class="fas fa-shield-alt"></i> SA 7-8</span>
+                    </div>
+                    <button class="council-btn" onclick="openCouncilModal('solar')">View Members</button>
+                </div>
+
+                <div class="council-card" id="bloodlord-council-card">
+                    <div class="council-icon">
+                        <i class="fas fa-skull"></i>
+                    </div>
+                    <h3>The Bloodlord Council</h3>
+                    <p class="council-subtitle">Demonic Rulers of the Infernal Maw</p>
+                    <p class="council-desc">Seven Archfiends embodying the cardinal sins.</p>
+                    <div class="council-stats">
+                        <span><i class="fas fa-skull-crossbones"></i> 7 Members</span>
+                        <span><i class="fas fa-fire"></i> SA 8-9</span>
+                    </div>
+                    <button class="council-btn" onclick="openCouncilModal('bloodlord')">View Members</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- World Lore Section -->
+    <section id="world" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> The World of Zero</h2>
+                <p>Discover the truth behind the Creation Engine and its purpose</p>
+            </div>
+
+            <div class="world-info">
+                <div class="world-card">
+                    <div class="world-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>The Creation Engine</h3>
+                    <p>Zero is not a natural world but a Creation Engine left by a precursor civilization. Its core
+                        system governs all reality through universal holographic-like interfaces.</p>
+                </div>
+
+                <div class="world-card">
+                    <div class="world-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>System Mechanics</h3>
+                    <p>All biological entities have Levels, Stats, and Skills. Experience is gained through
+                        consequential actions, with diminishing returns for repetition.</p>
+                </div>
+
+                <div class="world-card">
+                    <div class="world-icon">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <h3>Gacha System</h3>
+                    <p>Every 5 levels, entities can draw 5 skills from a gacha system ranging from 1-star Common skills
+                        to 9-star Mythic fragments of divine authority.</p>
+                </div>
+
+                <div class="world-card">
+                    <div class="world-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>The Protagonist - Alex</h3>
+                    <p>Alex possesses the unique 10-star skill "Unlock" and is accompanied by a 0-Level Aid glitch that
+                        can hack the System and cause local instability.</p>
+                </div>
+            </div>
+
+            <div class="system-details">
+                <h3><i class="fas fa-list-alt"></i> Core System Features</h3>
+                <div class="system-grid">
+                    <div class="system-item">
+                        <h4>Absolute Rules</h4>
+                        <ul>
+                            <li>Quantification of all biological entities</li>
+                            <li>Experience through consequential actions</li>
+                            <li>Inviolable menus (Class Evolution, Gacha Draws, etc.)</li>
+                            <li>System self-correction of minor anomalies</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-item">
+                        <h4>Core Stats</h4>
+                        <ul>
+                            <li>Strength, Agility, Constitution</li>
+                            <li>Intelligence, Wisdom, Perception</li>
+                            <li>Derived: Health, Mana, Stamina</li>
+                            <li>Physical & Magical Defense</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-item">
+                        <h4>Skill Rarity</h4>
+                        <ul>
+                            <li>1-3 Stars: Common, Mundane skills</li>
+                            <li>4-6 Stars: Rare, Powerful/Esoteric</li>
+                            <li>7-8 Stars: Legendary, Reality-bending</li>
+                            <li>9 Stars: Mythic, fragments of divine authority</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continents Overview -->
+    <section id="continents" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-map"></i> Continents of Zero</h2>
+                <p>Seven unique continents with varying System Authority levels</p>
+            </div>
+
+            <div class="continents-grid">
+                <!-- Continents will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-gamepad"></i> Interactive Features</h2>
+                <p>Explore the mechanics of the Zero world</p>
+            </div>
+
+            <div class="interactive-features">
+                <div class="feature">
+                    <h3>SA Zone Simulator</h3>
+                    <p>System Authority ranges from 1 (Stable) to 10 (Chaotic/Anomalous)</p>
+                    <div class="sa-slider-container">
+                        <input type="range" min="1" max="10" value="3" class="sa-slider" id="sa-slider">
+                        <div class="sa-labels">
+                            <span>1 (Stable)</span>
+                            <span>5 (Moderate)</span>
+                            <span>10 (Chaotic)</span>
+                        </div>
+                        <div class="sa-result">
+                            <p>Current SA: <span id="sa-value">3</span></p>
+                            <p id="sa-description">Predictable magic, stable ley lines, standard loot multipliers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3>Skill Gacha Simulator</h3>
+                    <p>Draw skills like inhabitants of Zero do every 5 levels</p>
+                    <button id="gacha-draw" class="draw-btn">
+                        <i class="fas fa-dice"></i> Draw 5 Skills
+                    </button>
+                    <div class="gacha-results" id="gacha-results">
+                        <!-- Gacha results will appear here -->
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3>Glitch Effects</h3>
+                    <p>Alex's "Unlock" skill and 0-Level Aid cause unique interactions</p>
+                    <div class="glitch-effects">
+                        <div class="glitch">
+                            <h4>Forced Evolution/Devolution</h4>
+                            <p>Can temporarily boost or downgrade monster ranks</p>
+                        </div>
+                        <div class="glitch">
+                            <h4>Drop Table Manipulation</h4>
+                            <p>Re-rolls loot tables for better rewards</p>
+                        </div>
+                        <div class="glitch">
+                            <h4>Aggro Glitch</h4>
+                            <p>Makes Alex invisible to some monsters, attractive to others</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero - Creation Engine Explorer</h3>
+                    <p>An interactive guide to the world governed by the System, where reality is quantified and magic
+                        is systematized.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-reddit"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#kings">Rulers</a></li>
+                        <li><a href="#heroes">Heroes</a></li>
+                        <li><a href="#beasts">Bestiary</a></li>
+                        <li><a href="#world">World Lore</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Continents</h4>
+                    <ul>
+                        <li><a href="#" data-continent="eldoria">Eldoria</a></li>
+                        <li><a href="#" data-continent="mechanis">Mechanis</a></li>
+                        <li><a href="#" data-continent="spiritus">Spiritus</a></li>
+                        <li><a href="#" data-continent="wildheart">Wildheart</a></li>
+                        <li><a href="#" data-continent="aqualon">Aqualon</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>System Info</h4>
+                    <ul>
+                        <li><a href="#">Core Mechanics</a></li>
+                        <li><a href="#">Gacha System</a></li>
+                        <li><a href="#">Skill Database</a></li>
+                        <li><a href="#">Leveling Guide</a></li>
+                        <li><a href="#">Glitch Effects</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Zero Creation Engine Explorer. All lore and world details based on the provided
+                    data.json.</p>
+                <p>This is a fan-made interactive website for educational and entertainment purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Popup for Details -->
+    <div class="modal" id="details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
