@@ -441,7 +441,7 @@ input:checked+.toggle-slider:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: cover !important;
     background-position: center;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
@@ -453,15 +453,15 @@ input:checked+.toggle-slider:before {
 
 /* Continent backgrounds */
 #slide-1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.pexels.com/photos/15286/pexels-photo.jpg');
 }
 
 #slide-2 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.pexels.com/photos/2977527/pexels-photo-2977527.jpeg');
 }
 
 #slide-3 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1518834103329-8d8c7c4e0dc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://www.hdwallpapers.in/download/doom_eternal_demon_battle_4k_hd_doom_eternal-HD.jpg');
 }
 
 #slide-4 {

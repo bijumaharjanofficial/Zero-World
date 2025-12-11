@@ -2847,6 +2847,8 @@
                     "additional_heroes": [
                         {
                             "name": "Caelum, the Ascendant Storm",
+                            "race": "Demigod",
+                            "level": 802,
                             "title": "The Unbound Sovereign",
                             "description": "Human demi-god with shifting elemental eyes, wild silvery hair, clad in 'Aegis of the Unchained Heavens' armor with seven revolving Magic Circles. Rides Lóng of the Azure Firmament, a celestial Chinese dragon.",
                             "unique_ability": "Commands seven fundamental domains: Wind, Lightning, Water, Fire, Shadow, Light, and Void",
@@ -2855,20 +2857,25 @@
                         },
                         {
                             "name": "Chronastra, the Weave-Queen",
+                            "race": "Witch",
+                            "level": 762,
                             "title": "Mistress of the Unspooled Moment",
                             "description": "High Witch of timeless beauty with iridescent purple hair and eyes showing glimpses of past, present, future. Wears Gown of the Unfolding Eon and wields Scepter of the Split Second to manipulate time.",
+                            "unique_ability": "Can use time magic and all the other known magic to humans with forbidden spells as well.",
                             "image": "spiritus/chronastra.png",
                             "logo": "spiritus/chronastra.png"
                         }
                     ],
-                    "additional_villain": {
+                    "additional_villain": [{
                         "name": "Aurelian, the Gilded Necromancer",
                         "title": "The King of Empty Thrones",
+                        "race": "Human Priest",
+                        "level": 850,
                         "description": "Fallen angel of deceptive beauty in pristine white and gold robes with hidden necromantic sigils. Wields Staff of Hollow Dominion with captive Soul-Sun. Rides Azrael, the Last Breath, a colossal skeleton dragon.",
                         "unique_ability": "Uses perverted holy light to dominate life and undeath, raises disciplined golden-lit skeletal legions",
                         "image": "spiritus/aurelian.png",
                         "logo": "spiritus/aurelian.png"
-                    },
+                    }],
                     "notable_features": [
                         {
                             "name": "The Penitent Falls",
@@ -4760,13 +4767,2419 @@
             "id": 4,
             "name": "Wildheart",
             "theme": "Untamed Nature and Primal Cultivation",
-            "system_authority_range": "SA 4-8"
+            "system_authority_range": "SA 4-8",
+            "core_mechanic": "Spirit Pressure & Beast Tides",
+            "description": "A continent of brutal natural selection where life evolves through crushing spiritual pressure and cataclysmic Beast Tides. The land itself is a conscious entity testing all who dwell within it.",
+            "nations": [
+                {
+                    "name": "The Tidefury Horde",
+                    "sa_level": 4,
+                    "capital": "The Grand Caravan (Mobile)",
+                    "primary_race": "Orcs & Predator-Beastkin",
+                    "secondary_races": [
+                        "Ogres",
+                        "Goblins",
+                        "Hardy Humans"
+                    ],
+                    "ruler": {
+                        "name": "Warlord Karguk Spinebreaker",
+                        "age": 48,
+                        "race": "Orc",
+                        "unique_skill": {
+                            "name": "Tide-Sense",
+                            "stars": 8,
+                            "description": "Innate ability to predict Beast Tide timing, path, and composition with uncanny accuracy",
+                            "effect": "Precise Beast Tide prediction for strategic planning"
+                        },
+                        "description": "Grizzled orc covered in ritual scars and trophies with olive-green hide, broken tusk, milky-white eye. Wears Tide-Tracker's Torque of sea-monster vertebrae.",
+                        "personality": "Brutally pragmatic, fiercely loyal to his people, sees world as endless hunt",
+                        "cultivation_style": "Body Refinement",
+                        "image": "wildheart/karguk_spinebreaker.png",
+                        "logo": "wildheart/karguk_spinebreaker.png"
+                    },
+                    "national_hero": {
+                        "name": "Grimgar the World-Walker",
+                        "level": 825,
+                        "race": "Orc (Grey-Skin variant)",
+                        "title": "The Howling Conqueror",
+                        "famed_deed": "Survived seven days and nights at epicenter of Greater Beast Tide",
+                        "combat_style": "Mobile skirmisher with terrain mastery",
+                        "signature_skill": {
+                            "name": "Tide-Fury Rhythm",
+                            "stars": 8,
+                            "description": "Increases attack speed and damage for every stack of Spirit Pressure resisted",
+                            "effect": "Scaling damage based on environmental pressure"
+                        },
+                        "description": "Towering lean orc with ash-colored eyes, iron-grey beard. Wears Tide-Tracker's Trophy necklace and wields twin axes Dawn-Cutter and Dusk-Render.",
+                        "image": "wildheart/grimgar_worldwalker.png",
+                        "logo": "wildheart/grimgar_worldwalker.png"
+                    },
+                    "notable_features": [
+                        {
+                            "name": "Trophy-Mounds",
+                            "type": "Mobile defense structures",
+                            "description": "Collections of greatest slain beasts that radiate protective Spirit Pressure"
+                        },
+                        {
+                            "name": "The Running Forge",
+                            "type": "Mobile smithy",
+                            "description": "Crafts gear mid-journey using beast cores and bones from recent Tides"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Orcs & Predator-Beastkin",
+                        "trait": "Predator's Tenacity",
+                        "effect": "在受伤或被追踪状态下，对精神压力的抗性提高，移动速度增加"
+                    }
+                },
+                {
+                    "name": "The Verdant Sanctuary (Mystic Forests)",
+                    "sa_level": 4,
+                    "capital": "Root-Home",
+                    "description": "Not a city but a gargantuan ancient tree complex covering hundreds of square miles with psychically linked trees, platforms, hollows, and living bridges",
+                    "primary_race": "Plant-based & Herbivore Beastkin",
+                    "secondary_races": [
+                        "Dryads",
+                        "Centaurs",
+                        "Treants",
+                        "Elves",
+                        "Fungal-folk"
+                    ],
+                    "ruler": {
+                        "type": "Gestalt Consciousness",
+                        "form": "The Heartwood Council (Ancient Treants)",
+                        "speaker": {
+                            "name": "Sylphrena",
+                            "race": "Dryad",
+                            "unique_skill": {
+                                "name": "Root-Net Stabilization",
+                                "stars": 8,
+                                "description": "Linked consciousness of the forest actively dampens Spirit Pressure and repels Beast Tides within their borders by radiating counter-frequency of calm",
+                                "effect": "Stabilizes territory at SA 4-5, requires immense collective focus"
+                            },
+                            "personality": "Calm, ancient-sounding, patient, but capable of immense slow-building wrath. Views Horde as reckless children, wilds as sibling to be understood.",
+                            "image": "wildheart/heartwood_council.png",
+                            "logo": "wildheart/heartwood_council.png"
+                        }
+                    },
+                    "national_hero": {
+                        "name": "Arannis Whisperleaf",
+                        "level": 818,
+                        "race": "Treant-Kin",
+                        "title": "The Green Sentinel",
+                        "famed_deed": "Grew fire-resistant barrier forest overnight to divert Ash-Tide, saving third of Sanctuary",
+                        "combat_style": "Immovable defender with plant command",
+                        "signature_skill": {
+                            "name": "One With the Grove",
+                            "stars": 7,
+                            "description": "Transfers damage received to surrounding plant life",
+                            "effect": "Damage redirection to environment"
+                        },
+                        "description": "Humanoid fused with living wood, moves with slow deliberation, embodies forest's patience.",
+                        "image": "wildheart/arannis_whisperleaf.png",
+                        "logo": "wildheart/arannis_whisperleaf.png"
+                    },
+                    "additional_heroes": [
+                        {
+                            "name": "Sylphrena, The Grove's Voice",
+                            "level": 795,
+                            "race": "Dryad",
+                            "title": "Council Speaker & Spirit Medium",
+                            "famed_deed": "Mediated peace between warring forest factions during Blood-Moon Tide",
+                            "combat_style": "Support caster with environmental manipulation",
+                            "signature_skill": {
+                                "name": "Sylvan Communion",
+                                "stars": 7,
+                                "description": "Direct communication with all plant life, can request assistance or gather intelligence",
+                                "effect": "Plant-based scouting, information gathering, and minor terrain control"
+                            },
+                            "unique_ability": "Can summon the treants to fight for her",
+                            "additional_abilities": [
+                                {
+                                    "name": "Photosynthetic Symphony",
+                                    "stars": 6,
+                                    "effect": "Channel sunlight into healing energy for allies in natural terrain"
+                                },
+                                {
+                                    "name": "Root-Wall Emergence",
+                                    "stars": 6,
+                                    "effect": "Summon temporary barriers of hardened roots"
+                                },
+                                {
+                                    "name": "Spirit Pressure Diffusion",
+                                    "stars": 7,
+                                    "effect": "Reduce Spirit Pressure accumulation for party in forested areas"
+                                }
+                            ],
+                            "description": "Dryad of ethereal beauty with skin resembling silver birch bark, hair of woven vines and autumn leaves, eyes like deep forest pools. Wears living gown of moss and morning glory.",
+                            "lore": "Chosen as Speaker for the Heartwood Council due to her unique ability to translate the ancient, slow thoughts of treants into rapid communication. Her connection to the forest is so profound she can feel every leaf that falls within the Sanctuary's borders.",
+                            "personality": "Patient, holistic thinker, speaks with measured cadence, fiercely protective of ecological balance",
+                            "image": "wildheart/sylphrena_full.png",
+                            "logo": "wildheart/sylphrena_full.png"
+                        }
+                    ],
+                    "notable_features": [
+                        {
+                            "name": "Spirit Pools",
+                            "description": "Clearings where Spirit Pressure is negated and transformed into pure cultivation energy"
+                        },
+                        {
+                            "name": "Whispering Walls",
+                            "description": "Living thorny barriers that psychically warn of approaching threats"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Plant-folk & Herbivore Beastkin",
+                        "trait": "Spirit Grounding",
+                        "effect": "站在自然地形上时，精神压力的积累速度大幅降低，并且从自然元素中获得的治疗效果提升"
+                    }
+                },
+                {
+                    "name": "The Crucible of Flesh",
+                    "sa_level": 7,
+                    "capital": "The Living Spire",
+                    "primary_race": "Lizardfolk & Insectoid Beastkin",
+                    "secondary_races": [
+                        "Trolls",
+                        "Self-Forged",
+                        "Mad Cultists"
+                    ],
+                    "ruler": {
+                        "name": "The Grand Amalgam, Vex the Many-Limbed",
+                        "age": "Unknown (Amalgamated)",
+                        "race": "Lizardfolk/Beast Amalgamation",
+                        "unique_skill": {
+                            "name": "Primordial Assimilation",
+                            "stars": 8,
+                            "description": "Temporarily absorb physical traits of slain beasts into own form",
+                            "effect": "Adaptive physical mutation and ability acquisition"
+                        },
+                        "description": "Horrific shifting mass of scales, claws, wings, and eyes from dozen fused beasts.",
+                        "personality": "Schizophrenic, brilliant, driven to transcend mortality through perfect flesh",
+                        "cultivation_style": "Flesh Crafting / Body Horror Evolution",
+                        "image": "wildheart/vex_amalgam.png",
+                        "logo": "wildheart/vex_amalgam.png"
+                    },
+                    "national_hero": {
+                        "name": "Sil, the Perfect Predator",
+                        "level": 830,
+                        "race": "Self-Forged (Human base)",
+                        "title": "The Unstable Chimera",
+                        "famed_deed": "Successfully assimilated Phase-Panther and Iron-Hide Bison without losing mind",
+                        "combat_style": "Unpredictable shape-shifting predator",
+                        "signature_ability": "Form Flux - shifts between stealth stalker and crushing brute forms",
+                        "description": "Pain-wracked being in constant physical flux, part-human, part-panther, part-bison.",
+                        "alignment": "Neutral (attacks anything threatening her territory or deemed 'imperfect')",
+                        "image": "wildheart/sil_chimera.png",
+                        "logo": "wildheart/sil_chimera.png"
+                    },
+                    "notable_features": [
+                        {
+                            "name": "Growth Vats",
+                            "description": "Horrific alchemical baths where new creatures are birthed from stolen beast parts"
+                        },
+                        {
+                            "name": "Screaming Pits",
+                            "description": "Zones of high SA and spiritual anguish where failed experiments are discarded"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Lizardfolk/Insectoid/Trolls",
+                        "trait": "Primal Adaptation",
+                        "effect": "每次受到一种元素或物理伤害类型后，会获得针对该类型伤害的微量临时抗性（可叠加但会衰减）"
+                    }
+                }
+            ],
+            "regions": [
+                {
+                    "name": "The Shatterbone Mountains",
+                    "location": "Continent's heart",
+                    "sa_range": "7-8",
+                    "description": "Jagged mist-shrouded range where Spirit Pressure is crushing, gravity inconsistent, and crystals scream when broken",
+                    "key_locations": [
+                        {
+                            "name": "The Whispering Chasm",
+                            "sa_level": 7,
+                            "description": "Deep crack where wind sounds like dying titans' thoughts, imposes Mental Load debuff"
+                        },
+                        {
+                            "name": "Gravity Well Basin",
+                            "sa_level": 8,
+                            "description": "Circular valley with 3x gravity, jumping impossible, movement halved"
+                        },
+                        {
+                            "name": "Molting Peak (Dungeon Entrance)",
+                            "sa_level": 8,
+                            "description": "Lair entrance of 'She Who Sheds The World', covered in crystalline scales"
+                        }
+                    ],
+                    "mechanics": [
+                        {
+                            "name": "Pressure Sickness",
+                            "effect": "Gain 'Mountain's Grudge' stack every 10 minutes (max 10), reduces Max HP by 2% and increases physical damage taken by 1% per stack"
+                        },
+                        {
+                            "name": "Adaptive Wildlife",
+                            "effect": "All native monsters have Pressure-Hardened: 30% physical resistance, knockback immunity"
+                        },
+                        {
+                            "name": "Call of the Depths",
+                            "effect": "High WIS/PER check reveals psychic lure; fail leads to becoming Bone-Thrall"
+                        }
+                    ]
+                }
+            ],
+            "dungeons": [
+                {
+                    "name": "Molting Peak Sanctum",
+                    "location": "Shatterbone Mountains summit",
+                    "type": "Primordial Lair",
+                    "theme": "Geological rebirth and continental renewal",
+                    "recommended_level": "70+",
+                    "sa_variation": "Constant SA 8",
+                    "access_requirements": [
+                        "Possess 5+ stacks of Mountain's Grudge",
+                        "Use Unlock on World-Shed Scale at summit"
+                    ],
+                    "boss": {
+                        "name": "She Who Sheds The World",
+                        "classification": "Primordial World-Wyrm / Geological Process",
+                        "stars": 10,
+                        "rank": "SSS-Rank Calamity",
+                        "appearance": "Continental-scale dragon of earth and cosmic cycles, body covered in crystalline scales the size of houses",
+                        "description": "Living geological process that slumbers for eons, gathers continent's pain and strength, then molts in cataclysmic event resetting Beast Tide cycle and reshaping landscape",
+                        "behavior": "Not malevolent but operating on geological timescales, source of Wildheart's brutal renewal",
+                        "combat_encounter": {
+                            "phase_1": "Awakening Tremors - environmental hazards and Scale-Spawn (S-Rank copies)",
+                            "phase_2": "Molting Cataclysm - releases stored Spirit Pressure in waves",
+                            "phase_3": "Core Communion - non-violent interaction possible with Unlock skill"
+                        },
+                        "loot": {
+                            "guaranteed": [
+                                {
+                                    "name": "Scale of the New World",
+                                    "stars": 9,
+                                    "type": "Artifact",
+                                    "description": "Temporarily reshape localized area of land or calm/incite Beast Tide"
+                                }
+                            ]
+                        },
+                        "image": "wildheart/world_shedder.png",
+                        "logo": "wildheart/world_shedder.png"
+                    }
+                }
+            ],
+            "continental_event": {
+                "name": "The Great Beast Tide - 'The Clawmarch'",
+                "frequency": "Every season (3 months)",
+                "duration": "3-7 days",
+                "phases": [
+                    {
+                        "name": "The Rumbling (48 hours pre-Tide)",
+                        "effects": [
+                            "Ground vibrations",
+                            "Spirit Pressure rises globally",
+                            "Predators hide, birds fall silent"
+                        ]
+                    },
+                    {
+                        "name": "The Vanguard (Days 1-2)",
+                        "effects": [
+                            "C to B-Rank monster waves",
+                            "Tide-Frenzy: +20% damage, +30% speed, +15% damage taken"
+                        ]
+                    },
+                    {
+                        "name": "Heart of the Tide (Days 3-5)",
+                        "effects": [
+                            "A and S-Rank monsters common",
+                            "Tide-Callers direct flow",
+                            "SA forced to 7-8 in path"
+                        ]
+                    },
+                    {
+                        "name": "The Ebb (Days 6-7)",
+                        "effects": [
+                            "Beasts scatter exhausted",
+                            "Tidefall resources appear",
+                            "Scavenger Swarms and Tide-Kings emerge"
+                        ]
+                    }
+                ],
+                "nation_responses": {
+                    "Tidefury Horde": "Moves to pre-selected Hunting Grounds, forms warbands",
+                    "Verdant Sanctuary": "Initiates Deep Root protocol, defensive stance",
+                    "Crucible of Flesh": "Frenzied preparation, sends Harvesting Parties"
+                },
+                "alex_glitch_potential": [
+                    "Create Null Pressure bubble",
+                    "Remove or amplify Frenzy on beasts",
+                    "Commune with primal will at epicenter"
+                ]
+            },
+            "bestiary": {
+                "bestiary_introduction": "Wildheart's ecosystem follows the Primal Chain, a brutal hierarchy where only the most adaptable survive. Spirit Pressure and Beast Tides constantly reshape the food chain.",
+                "rating_system": {
+                    "X_Rank": "10 Stars - Transcendent, exists outside the chain",
+                    "SSS_Rank": "9 Stars - Apex Predator, undisputed ruler",
+                    "SS_Rank": "8 Stars - Territorial Overlords, command vast regions",
+                    "S_Rank": "7 Stars - Tide-Callers, lead Beast Tides",
+                    "A_Rank": "6 Stars - Alpha Beasts, rule large packs",
+                    "B_Rank": "5 Stars - Elite Predators/Prey, veteran challenges",
+                    "C_Rank": "4 Stars - Pack Hunters, dangerous in groups",
+                    "D_Rank": "3 Stars - Common Fauna, standard threats",
+                    "E_Rank": "2 Stars - Minor Irritants",
+                    "F_Rank": "1 Stars - Primal Pests"
+                },
+                "monsters": [
+                    {
+                        "name": "Wu Kong, The One Who Laughed at the Cage",
+                        "classification": "Transcendent Primate / System Escapee",
+                        "stars": 10,
+                        "rank": "X-Rank Transcendent",
+                        "threat_level": "Reality-Bending",
+                        "location": "Hidden Fruit Garden (pocket dimension)",
+                        "access_conditions": [
+                            "Use Unlock on World-Strider's Heart (from Gorok)",
+                            "Or Unlock on combined essence of Three Pillars"
+                        ],
+                        "description": "Simple primate who achieved Unbound state through eons of cultivation. Not beast, god, or demon—pure transcendent will.",
+                        "appearance": "Small golden-furred monkey or humanoid with laughing eyes, simple cloth, unadorned staff",
+                        "abilities": [
+                            "Size Manipulation (continent-sized to dust-sized)",
+                            "Unbound Physiology (immune to System restrictions)",
+                            "Reality Play (treats reality like clay)",
+                            "Clone Army (hair clones at S-Rank power)"
+                        ],
+                        "encounter_type": "Trial/Invitation",
+                        "phases": [
+                            "Trial of Senses (perception and creativity tests)",
+                            "The Spar (matches party strength playfully)",
+                            "The Choice (three symbolic fruits offered)"
+                        ],
+                        "loot": {
+                            "student_path": {
+                                "name": "The Unbound Primer",
+                                "stars": 10,
+                                "effect": "Softens leveling curve, allows XP investment into Unlock potency"
+                            },
+                            "fruit_choices": [
+                                {
+                                    "name": "Monarch's Mandate",
+                                    "stars": 8,
+                                    "effect": "Temporarily command any beast on Wildheart"
+                                },
+                                {
+                                    "name": "One-Way Key",
+                                    "stars": 9,
+                                    "effect": "Escape from Zero to random peaceful world"
+                                },
+                                {
+                                    "name": "Unbound Insight",
+                                    "stars": 7,
+                                    "effect": "Resistance to level/system-based suppression"
+                                }
+                            ]
+                        },
+                        "aftermath": {
+                            "student_outcome": "Wu Kong becomes chaotic mentor, Gorok follows Alex as herald",
+                            "failure_outcome": "Permanently barred from Garden, Gorok becomes hostile"
+                        },
+                        "image": "wildheart/wu_kong.png",
+                        "logo": "wildheart/wu_kong.png"
+                    },
+                    {
+                        "name": "Gorok, the World-Strider",
+                        "classification": "Living Mountain / Continent's Will",
+                        "stars": 9,
+                        "rank": "SSS-Rank Apex",
+                        "threat_level": "Continental Cataclysm",
+                        "location": "Root of the Spire, central Wildheart",
+                        "description": "Continent's slow, dreaming will—fusion of dragon, mammoth, and ancient tree",
+                        "appearance": "Living mountain with moss/river-covered sides, glowing chasm eyes",
+                        "unique_trait": "Living Land - immune to terrain alteration and control spells",
+                        "health_phases": [
+                            {
+                                "segment": "Legs",
+                                "effect": "Controls Stride of Eons (canyon creation)"
+                            },
+                            {
+                                "segment": "Head",
+                                "effect": "Controls Breath of Primeval Mire (DoT and root)"
+                            },
+                            {
+                                "segment": "Eyes",
+                                "effect": "Gaze of Finality (10-second cast wipe)"
+                            }
+                        ],
+                        "abilities": [
+                            "Call of Infinite Herd (summons spectral beasts)",
+                            "Worldstrider's Legacy (potential 9-star drop: +25% HP, Stampede ability)"
+                        ],
+                        "image": "wildheart/gorok_worldstrider.png",
+                        "logo": "wildheart/gorok_worldstrider.png"
+                    },
+                    {
+                        "name": "Kragg, the Iron-Hide Monarch",
+                        "classification": "Pillar of Strength",
+                        "stars": 8,
+                        "rank": "SS-Rank Pillar",
+                        "threat_level": "Regional Overlord",
+                        "location": "Shatterbone Mountains",
+                        "description": "Kaiju-sized T-Rex with metallic scales, pure dominance",
+                        "unique_trait": "Indomitable - no stagger/knockback, 50% front damage reduction",
+                        "abilities": [
+                            "Continental Bite (ignores 80% DEF)",
+                            "Tail-Lash of the Mountain (360° AOE)",
+                            "Roar of the Apex (continent-wide Fear check)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Monarch's Aegis",
+                            "stars": 8,
+                            "effect": "Toggle: +DEF, knockback/stun immunity, -50% movement"
+                        },
+                        "image": "wildheart/kragg_ironhide.png",
+                        "logo": "wildheart/kragg_ironhide.png"
+                    },
+                    {
+                        "name": "Sil'Varis, the Ghost-Fang Prowler",
+                        "classification": "Pillar of Cunning",
+                        "stars": 8,
+                        "rank": "SS-Rank Pillar",
+                        "threat_level": "Regional Overlord",
+                        "location": "Venisomire Jungles",
+                        "description": "Bus-sized panther with camouflage fur, cruel hunter",
+                        "unique_trait": "Phantom Step - 5-second ethereal state (30s cooldown)",
+                        "abilities": [
+                            "Venom-Spine Barrage (cone DoT + slow)",
+                            "Prowler's Gaze (paralyzing fear)",
+                            "Eviscerating Pounce (teleport critical)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Phantom Cloak",
+                            "stars": 8,
+                            "effect": "3-second ethereal, avoid physical damage, pass through enemies (60s cooldown)"
+                        },
+                        "image": "wildheart/silvaris_prowler.png",
+                        "logo": "wildheart/silvaris_prowler.png"
+                    },
+                    {
+                        "name": "Mylora, the Song-Stag Matriarch",
+                        "classification": "Pillar of Spirit",
+                        "stars": 8,
+                        "rank": "SS-Rank Pillar",
+                        "threat_level": "Regional Overlord",
+                        "location": "Deepest Spirit Pool, Verdant Sanctuary",
+                        "description": "Multi-horned stag with crystalline antlers, spiritual heart of Sanctuary",
+                        "unique_trait": "Empathic Field - amplifies random emotion in 1km radius",
+                        "abilities": [
+                            "Hymn of Shattered Mind (psychic damage + confusion)",
+                            "Ballad of Mending Growth (mass AOE heal)",
+                            "Dirge of the Lost (damage scales with missing HP)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Empathic Pulse",
+                            "stars": 8,
+                            "effect": "Wave of chosen emotion affecting allies/enemies"
+                        },
+                        "image": "wildheart/mylora_songstag.png",
+                        "logo": "wildheart/mylora_songstag.png"
+                    },
+                    {
+                        "name": "Land-Strider Alpha",
+                        "classification": "Tide-Caller",
+                        "stars": 7,
+                        "rank": "S-Rank",
+                        "threat_level": "Army-Killer",
+                        "location": "Beast Tide frontlines",
+                        "description": "Six-legged sauropod behemoth, living siege engine",
+                        "unique_trait": "Tremor Stride (passive slow/interrupt) + Tide-Bringer Aura (double Spirit Pressure gain)",
+                        "abilities": [
+                            "Mountain-Toppling Stomp (frontal cone knockdown)",
+                            "Primal Beam (line attack)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Earthquake Stomp",
+                            "stars": 7,
+                            "effect": "Large AOE damage and stun"
+                        },
+                        "image": "wildheart/landstrider_alpha.png",
+                        "logo": "wildheart/landstrider_alpha.png"
+                    },
+                    {
+                        "name": "Deep-Tunneler Behemoth",
+                        "classification": "Tide-Caller",
+                        "stars": 7,
+                        "rank": "S-Rank",
+                        "threat_level": "Army-Killer",
+                        "location": "Underground, emerges during Tides",
+                        "description": "Subway-tunnel scale worm, causes quakes and sinkholes",
+                        "unique_trait": "Subterranean Assault - untargetable until emergence",
+                        "abilities": [
+                            "Swallow Whole (execute below 30% HP)",
+                            "Seismic Scream (sonic damage + confusion)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Burrow",
+                            "stars": 7,
+                            "effect": "Short underground travel, untargetable, emerge with surprise attack"
+                        },
+                        "image": "wildheart/deeptunneler.png",
+                        "logo": "wildheart/deeptunneler.png"
+                    },
+                    {
+                        "name": "Thunder-Horn Alpha",
+                        "classification": "Alpha Beast",
+                        "stars": 6,
+                        "rank": "A-Rank",
+                        "threat_level": "Regional Boss",
+                        "location": "Beast Tide herds",
+                        "description": "Colossal woolly rhino with lightning-charged horns",
+                        "unique_trait": "Stormcaller's Roar - summons localized lightning storm",
+                        "abilities": [
+                            "Thunderous Trample (charge path damage)",
+                            "Lightning Horn Gore (single target + chain)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Call Lightning",
+                            "stars": 6,
+                            "effect": "Bolt strike in area, damage + brief stun"
+                        },
+                        "image": "wildheart/thunderhorn_alpha.png",
+                        "logo": "wildheart/thunderhorn_alpha.png"
+                    },
+                    {
+                        "name": "Shadow-Mantle Pack Leader",
+                        "classification": "Alpha Beast",
+                        "stars": 6,
+                        "rank": "A-Rank",
+                        "threat_level": "Regional Boss",
+                        "location": "Dark forests and caverns",
+                        "description": "Ancient intelligent wolf commanding Fenrir-Whelps",
+                        "unique_trait": "Shadow-Walk - 100m shadow teleport",
+                        "abilities": [
+                            "Fearful Howl (AOE fear)",
+                            "Soul-Rend Bite (damage + HP/MP steal)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Shadow Pounce",
+                            "stars": 6,
+                            "effect": "Teleport behind target via nearby shadow for melee attack"
+                        },
+                        "image": "wildheart/shadowmantle_leader.png",
+                        "logo": "wildheart/shadowmantle_leader.png"
+                    },
+                    {
+                        "name": "Rage-Tusker",
+                        "classification": "Elite Predator",
+                        "stars": 5,
+                        "rank": "B-Rank",
+                        "threat_level": "Elite Monster",
+                        "location": "Forests and Shatterbone foothills",
+                        "description": "Van-sized boar with metallic heat-glow tusks",
+                        "unique_trait": "Unstoppable Charge - immune to CC during charge",
+                        "abilities": [
+                            "Earth-Shaking Stomp (small AOE knockdown)",
+                            "Tusk Gouge (heavy bleed)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Unstoppable Charge",
+                            "stars": 5,
+                            "effect": "Charge forward immune to roots/stuns, damage and knock aside enemies"
+                        },
+                        "image": "wildheart/ragetusker.png",
+                        "logo": "wildheart/ragetusker.png"
+                    },
+                    {
+                        "name": "Canyon Condor",
+                        "classification": "Elite Predator",
+                        "stars": 5,
+                        "rank": "B-Rank",
+                        "threat_level": "Elite Monster",
+                        "location": "Shatterbone peaks",
+                        "description": "40-foot wingspan vulture with steel-blade feathers",
+                        "unique_trait": "Feather Dart Volley - 6-8 armor-piercing projectiles",
+                        "abilities": [
+                            "Flight",
+                            "Death Dive (high-elevation one-shot on weakened)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Feather Dart",
+                            "stars": 5,
+                            "effect": "Single armor-piercing projectile, bonus from high elevation"
+                        },
+                        "image": "wildheart/canyon_condor.png",
+                        "logo": "wildheart/canyon_condor.png"
+                    },
+                    {
+                        "name": "Fenrir-Whelp Pack",
+                        "classification": "Pack Hunter",
+                        "stars": 4,
+                        "rank": "C-Rank",
+                        "threat_level": "Dangerous Foe",
+                        "location": "Plains and woodlands",
+                        "description": "Coordinated wolf pack with smoky gray fur, cold intelligence",
+                        "unique_trait": "Pack Tactics - +10% damage per adjacent pack member",
+                        "abilities": [
+                            "Hamstring Bite (slow)",
+                            "Surrounding Pounce (multiple pin)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Call of the Pack",
+                            "stars": 4,
+                            "effect": "Summon 1-2 spectral wolf spirits for 30 seconds"
+                        },
+                        "image": "wildheart/fenrir_whelp.png",
+                        "logo": "wildheart/fenrir_whelp.png"
+                    },
+                    {
+                        "name": "Spine-Tail Raptor Mob",
+                        "classification": "Pack Hunter",
+                        "stars": 4,
+                        "rank": "C-Rank",
+                        "threat_level": "Dangerous Foe",
+                        "location": "Badlands and jungle fringes",
+                        "description": "Human-sized bipedal dinosaurs with bladed tails",
+                        "unique_trait": "Bladed Tail Sweep - 180° melee AOE with bleed",
+                        "abilities": [
+                            "High jump/climb",
+                            "Pouncing Ambush (stealth opener)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Tail Sweep",
+                            "stars": 4,
+                            "effect": "Frontal arc AOE with knockdown chance"
+                        },
+                        "image": "wildheart/spinetail_raptor.png",
+                        "logo": "wildheart/spinetail_raptor.png"
+                    },
+                    {
+                        "name": "Brambleback",
+                        "classification": "Common Fauna",
+                        "stars": 3,
+                        "rank": "D-Rank",
+                        "threat_level": "Common Threat",
+                        "location": "Forests continent-wide",
+                        "description": "Dog-sized boar with woody thorn hide",
+                        "unique_trait": "Thorny Retort - 5% melee damage reflection",
+                        "abilities": [
+                            "Charge (linear dash knockback)",
+                            "Tusk Gore (moderate damage)"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Thorn Skin",
+                            "stars": 3,
+                            "effect": "Passive: reflect small melee damage"
+                        },
+                        "image": "wildheart/brambleback.png",
+                        "logo": "wildheart/brambleback.png"
+                    },
+                    {
+                        "name": "Shriek-Bat Swarm",
+                        "classification": "Common Fauna",
+                        "stars": 3,
+                        "rank": "D-Rank",
+                        "threat_level": "Common Threat",
+                        "location": "Caves, canopies, dusk skies",
+                        "description": "Flock of 20-30 bats with oversized vocal cords",
+                        "unique_trait": "Cacophonous Screech - cone Dazed (50% skill fail chance)",
+                        "abilities": [
+                            "Swarm tactics",
+                            "Flyby attacks"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Piercing Screech",
+                            "stars": 3,
+                            "effect": "Single-target interrupt + 2-second silence"
+                        },
+                        "image": "wildheart/shriekbat_swarm.png",
+                        "logo": "wildheart/shriekbat_swarm.png"
+                    },
+                    {
+                        "name": "Itch-Spore Pod",
+                        "classification": "Minor Irritant",
+                        "stars": 2,
+                        "rank": "E-Rank",
+                        "threat_level": "Minor Nuisance",
+                        "location": "Damp forest floors",
+                        "description": "Stationary purple fungus that bursts when disturbed",
+                        "unique_trait": "Itch Cloud - Severe Itching debuff (-1 PER, random movement interrupts)",
+                        "abilities": [
+                            "Passive detonation"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Itch Powder Toss",
+                            "stars": 2,
+                            "effect": "Single-target -5% accuracy for 15 seconds"
+                        },
+                        "image": "wildheart/itchspore_pod.png",
+                        "logo": "wildheart/itchspore_pod.png"
+                    },
+                    {
+                        "name": "Blood-Gnat Swarm",
+                        "classification": "Minor Irritant",
+                        "stars": 2,
+                        "rank": "E-Rank",
+                        "threat_level": "Minor Nuisance",
+                        "location": "Stagnant water, Tide remains",
+                        "description": "Dense cloud of tiny black insects",
+                        "unique_trait": "Persistent Nuisance - 1 true DPS + Annoyed stacks (+2% cast time per stack)",
+                        "abilities": [
+                            "Swarm movement"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Swarm Sight",
+                            "stars": 2,
+                            "effect": "Scout through insect/animal eyes within 100m"
+                        },
+                        "image": "wildheart/bloodgnat_swarm.png",
+                        "logo": "wildheart/bloodgnat_swarm.png"
+                    },
+                    {
+                        "name": "Glimmer-Squirrel",
+                        "classification": "Primal Pest",
+                        "stars": 1,
+                        "rank": "F-Rank",
+                        "threat_level": "Pest",
+                        "location": "Forest edges, low-pressure areas",
+                        "description": "Small iridescent squirrel with curiosity for shiny objects",
+                        "unique_trait": "Light-Fingered - high chance to steal unattended non-soulbound items",
+                        "abilities": [
+                            "High stealth",
+                            "Fast climbing",
+                            "Distracting chitter"
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Distracting Chatter",
+                            "stars": 1,
+                            "effect": "Minor taunt on low-level enemy for 2 seconds"
+                        },
+                        "image": "wildheart/glimmer_squirrel.png",
+                        "logo": "wildheart/glimmer_squirrel.png"
+                    },
+                    {
+                        "name": "Echo-Mouse",
+                        "classification": "Primal Pest",
+                        "stars": 1,
+                        "rank": "F-Rank",
+                        "threat_level": "Pest",
+                        "location": "Caves and rocky areas",
+                        "description": "Pale large-eared rodent that mimics last loud sound",
+                        "unique_trait": "Sound Mirror - repeats last loud sound within 50m randomly",
+                        "abilities": [
+                            "Flee immediately"
+                        ],
+                        "drops": [
+                            {
+                                "name": "Echo Gland",
+                                "stars": "F-Star",
+                                "type": "Alchemy Ingredient",
+                                "use": "Vocal mimicry potions, sound-based pranks"
+                            }
+                        ],
+                        "image": "wildheart/echo_mouse.png",
+                        "logo": "wildheart/echo_mouse.png"
+                    }
+                ]
+            },
+            "glitch_effects": {
+                "alexs_influence": "Alex's Unlock skill interacts uniquely with Wildheart's primal systems",
+                "effects": [
+                    {
+                        "name": "Spirit Pressure Nullification",
+                        "description": "Can create personal or party-wide bubble of Null Pressure, negating environmental debuffs",
+                        "trigger": "Using Unlock on local spiritual energy",
+                        "result": "Temporary immunity to Spirit Pressure accumulation"
+                    },
+                    {
+                        "name": "Beast Tide Manipulation",
+                        "description": "Can remove or amplify Frenzy on Tide beasts, or commune with primal will at Tide epicenter",
+                        "trigger": "Unlock used during Beast Tide events",
+                        "results": [
+                            "Calm or supercharge individual beasts",
+                            "Potential to alter Tide cycle permanently"
+                        ]
+                    },
+                    {
+                        "name": "Primal Evolution Trigger",
+                        "description": "Unlock can force evolution or devolution in beasts adapted to Spirit Pressure",
+                        "trigger": "Using Unlock on Pressure-adapted monsters",
+                        "result": "Temporary rank change or acquisition of Pressure-based abilities"
+                    }
+                ]
+            },
+            "monster_ecology": {
+                "spirit_pressure_adaptation": "Monsters in high-SA zones develop Pressure-Hardened traits and unique resistances",
+                "beast_tide_behavior": "Monsters exhibit coordinated migration and heightened aggression during Tides",
+                "primal_chain_hierarchy": "Strict predator-prey relationships following the Primal Chain rating system",
+                "territorial_behaviors": [
+                    "Apex predators claim vast territories",
+                    "Pillars command specific regions aligned with their element",
+                    "Tide-Callers only appear during continent-wide events"
+                ]
+            },
+            "hunting_recommendations": {
+                "party_size_by_rank": {
+                    "X_Rank": "Solo trial of wisdom (combat ineffective)",
+                    "SSS_Rank": "Multiple raid groups (40+ with extreme preparation)",
+                    "SS_Rank": "Elite raid group (20-30 specialized members)",
+                    "S_Rank": "Hero-led party or small army (10-20)",
+                    "A_Rank": "Experienced party (6-8)",
+                    "B_Rank": "Veteran party (4-6)",
+                    "C_Rank": "Standard party (3-5)",
+                    "D_Rank": "Small party or skilled solo (2-3)",
+                    "E_Rank": "Solo (annoyance management)",
+                    "F_Rank": "Solo (trivial)"
+                },
+                "loot_tiers": {
+                    "transcendent": "X-Rank (Wu Kong)",
+                    "primordial": "SSS-Rank (Gorok, She Who Sheds The World)",
+                    "apex": "SS-Rank (Three Pillars)",
+                    "tide_caller": "S-Rank (Tide-Callers)",
+                    "alpha": "A-Rank (Alpha Beasts)",
+                    "elite": "B-Rank (Elite Predators)",
+                    "pack": "C-Rank (Pack Hunters)",
+                    "common": "D-Rank (Common Fauna)",
+                    "nuisance": "E-Rank (Minor Irritants)",
+                    "pest": "F-Rank (Primal Pests)"
+                },
+                "special_preparations": [
+                    "Spirit Pressure resistance gear/potions mandatory for high-SA zones",
+                    "Beast Tide timing knowledge crucial for survival",
+                    "Terrain adaptation skills essential in Shatterbone Mountains"
+                ]
+            },
+            "other_races": [
+                {
+                    "name": "Trolls",
+                    "role": "Regenerative laborers/warriors",
+                    "presence": "All nations, thrive in high-SP regions due to biology"
+                },
+                {
+                    "name": "Humans/Elves/Dwarves",
+                    "role": "Extreme outliers",
+                    "presence": "Small warded enclaves, members of Horde, or mad scholars in Crucible"
+                }
+            ]
         },
         {
             "id": 5,
             "name": "Aqualon",
-            "theme": "Underwater Realm",
-            "system_authority_range": "SA 5"
+            "theme": "Submerged Civilizations & Alien Depths",
+            "system_authority_range": "SA 5-9",
+            "core_mechanic": "Depth Pressure & Buoyancy",
+            "description": "An underwater realm where pressure and buoyancy dictate life and combat. The deeper you go, the higher the System Authority and the greater the rewards and dangers. Movement and combat are fully 3D.",
+            "depth_zones": [
+                {
+                    "name": "Sunlit Zone",
+                    "depth_range": "0-200 meters",
+                    "sa_level": 5,
+                    "effects": "Minimal pressure, normal buoyancy, home to most civilizations"
+                },
+                {
+                    "name": "Twilight Zone",
+                    "depth_range": "200-1000 meters",
+                    "sa_level": "6-7",
+                    "effects": "'Crushing Pressure': -10% to all Physical Stats per 100m depth. Negative buoyancy requires constant effort to avoid sinking."
+                },
+                {
+                    "name": "Abyssal Zone",
+                    "depth_range": "1000m+",
+                    "sa_level": "8-9",
+                    "effects": "'Abyssal Weight': -20% to all Stats (Physical & Mental) per 100m. Buoyancy impossible without powerful magic or extreme strength. No natural light."
+                }
+            ],
+            "nations": [
+                {
+                    "name": "The Sunken Spire Commonwealth",
+                    "sa_level": "5-7",
+                    "capital": "Coral-Spire Metropolis",
+                    "primary_race": "Merfolk & Tritons",
+                    "secondary_races": [
+                        "Sea Elves",
+                        "Aquatic Beastkin (dolphin, orca)",
+                        "Surface Continent envoys"
+                    ],
+                    "ruler": {
+                        "name": "Queen Seraphina of the Shifting Tides",
+                        "age": "Appears 30 (true age 250)",
+                        "race": "Merfolk",
+                        "unique_skill": {
+                            "name": "Tide-Caller's Authority",
+                            "stars": 8,
+                            "description": "Manipulates local water pressure and currents on massive scale",
+                            "effect": "Can create calm air pockets or summon crushing whirlpools"
+                        },
+                        "description": "Merfolk with opalescent scales and crown of living coral",
+                        "personality": "Regal, diplomatic, deeply connected to ocean rhythms. Sees Alex's glitch as a 'rogue current' to be guided.",
+                        "image": "aqualon/queen_seraphina.png",
+                        "logo": "aqualon/queen_seraphina.png"
+                    },
+                    "national_hero": {
+                        "name": "Lord Tyros, the Reef-Shaper",
+                        "level": 815,
+                        "race": "Triton",
+                        "title": "The Leviathan's Bane",
+                        "famed_deed": "Entrapped a Trench Leviathan by growing a coral reef around its head at shallower depth",
+                        "combat_style": "Geomancer/Hydrokinetic battlefield shaper",
+                        "signature_skill": {
+                            "name": "Coral Cage",
+                            "stars": 8,
+                            "description": "Creates rapidly-growing prison of super-hard coral around target",
+                            "effect": "Powerful containment with damage-over-time"
+                        },
+                        "description": "Triton warrior with mastery over coral and water manipulation",
+                        "image": "aqualon/lord_tyros.png",
+                        "logo": "aqualon/lord_tyros.png"
+                    },
+                    "notable_features": [
+                        {
+                            "name": "Coral-Spire Metropolis",
+                            "type": "Capital City",
+                            "description": "City built around/inside gargantuan natural coral spire rising from 500m depth to surface"
+                        },
+                        {
+                            "name": "Luminous Gardens",
+                            "sa_level": 5,
+                            "description": "Cultivated fields of bioluminescent plants for food and medicine"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Merfolk & Tritons",
+                        "trait": "Pelagic Grace",
+                        "effect": "在日光/暮光区域的水中移动速度大幅提升，且对水压导致的属性减值有25%的抗性。"
+                    }
+                },
+                {
+                    "name": "The Drowned God's Vault",
+                    "sa_level": "7-8",
+                    "capital": "The Eternal Cathedral",
+                    "primary_race": "Kuo-toa",
+                    "secondary_races": [
+                        "Pressure-Adapted Crabfolk",
+                        "Abyssal Ghasts",
+                        "Deep-sea prophets"
+                    ],
+                    "ruler": {
+                        "name": "The Blind Pontiff, Xylox",
+                        "age": "Ageless (faith-sustained)",
+                        "race": "Kuo-toa",
+                        "unique_skill": {
+                            "name": "Collective Mandate",
+                            "stars": 8,
+                            "description": "Uses congregation's fervent belief to perform reality-warping miracles",
+                            "effect": "Can sanctify areas (remove debuffs) or declare invaders 'Unreal' (psychic damage)"
+                        },
+                        "description": "Kuo-toa with eyes replaced by polished abyssal pearls",
+                        "personality": "Fanatical, serene, convinced of divine purpose to awaken the sunken god",
+                        "image": "aqualon/pontiff_xylox.png",
+                        "logo": "aqualon/pontiff_xylox.png"
+                    },
+                    "national_hero": {
+                        "name": "Anchorite Morgo",
+                        "level": 805,
+                        "race": "Kuo-toa (Heavily mutated)",
+                        "title": "The Weight of Faith",
+                        "famed_deed": "Walked into heart of Astral Trench (SA 9) to retrieve a 'Star-Shard' believed to be a god's scale",
+                        "combat_style": "Immobile tank using pressure as weapon",
+                        "signature_skill": {
+                            "name": "Abyssal Conviction",
+                            "stars": 8,
+                            "description": "Converts ambient depth pressure resistance into damage aura",
+                            "effect": "Damage scales with environmental pressure"
+                        },
+                        "description": "Massive mutated Kuo-toa with Star-Shard embedded in chest, wields giant anchor",
+                        "image": "aqualon/anchorite_morgo.png",
+                        "logo": "aqualon/anchorite_morgo.png"
+                    },
+                    "notable_features": [
+                        {
+                            "name": "The Eternal Cathedral",
+                            "type": "Capital City",
+                            "description": "City built inside colossal skeleton of dead god at edge of Astral Trench (1500m depth)"
+                        },
+                        {
+                            "name": "Faith Chambers",
+                            "sa_level": 7,
+                            "description": "Where collective prayer manifests tangible effects, sometimes creating temporary skill-like phenomena"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Kuo-toa",
+                        "trait": "Reality-Bending Faith",
+                        "effect": "当处于群体之中时，他们通过集体意志获得对精神影响和现实扭曲效果的极高抗性。他们的属性不受深度压力的典型减值影响，而是被其信仰的强度所修改。"
+                    }
+                },
+                {
+                    "name": "The Sahuagin Blood-current Empire",
+                    "sa_level": "6-7",
+                    "capital": "Razortide Maw",
+                    "primary_race": "Sahuagin",
+                    "secondary_races": [
+                        "Enslaved races (merfolk, tritons, humans, beastkin)",
+                        "Tamed Sea Monsters"
+                    ],
+                    "ruler": {
+                        "name": "Empress Selacha the Red-Tide",
+                        "age": 45,
+                        "race": "Sahuagin",
+                        "unique_skill": {
+                            "name": "Predator's Sonar",
+                            "stars": 8,
+                            "description": "Projects psychic pulse mapping entire territory, sensing fear, strength, and location of every living being",
+                            "effect": "Perfect ambush coordination and target prioritization"
+                        },
+                        "description": "Scarred, mighty Sahuagin ruler",
+                        "personality": "Savage, intelligent, pragmatic. Views all others as prey, slaves, or rivals. Sees Alex's glitch as hunting tool.",
+                        "image": "aqualon/empress_selacha.png",
+                        "logo": "aqualon/empress_selacha.png"
+                    },
+                    "national_hero": {
+                        "name": "Gash, the Chain-Breaker",
+                        "level": 820,
+                        "race": "Sahuagin (Black-scaled specimen)",
+                        "title": "The Slave-Driver",
+                        "famed_deed": "Led hunt that captured juvenile Brinedragon, now rides it as mount",
+                        "combat_style": "Mounted shock-cavalry commander",
+                        "signature_skill": {
+                            "name": "Tyrant's Grip",
+                            "stars": 7,
+                            "description": "Harpoon throw that reels target in regardless of size/strength",
+                            "effect": "Powerful displacement and setup for execution"
+                        },
+                        "description": "Monstrously large Sahuagin with scars from leviathan battles, rides Brinedragon",
+                        "image": "aqualon/gash_chainbreaker.png",
+                        "logo": "aqualon/gash_chainbreaker.png"
+                    },
+                    "additional_heroes": [
+                        {
+                            "name": "Razorfin Talon",
+                            "level": 790,
+                            "race": "Sahuagin",
+                            "title": "The Silent Tide",
+                            "role": "Assassin and slave-recruiter",
+                            "description": "Specializes in capturing surface dwellers alive for arenas",
+                            "image": "aqualon/razorfin_talon.png"
+                        }
+                    ],
+                    "additional_villain": [
+                        {
+                            "name": "Vorax the Devourer",
+                            "level": 795,
+                            "race": "Megalodon (Elder variant)",
+                            "title": "The Endless Hunger",
+                            "location": "Patrolling between Sahuagin and Sunken Spire territories",
+                            "description": "Ancient Megalodon that has survived countless hunts, bearing harpoon scars and missing eye. Has learned to track Sahuagin hunting parties to steal their kills.",
+                            "abilities": [
+                                "Enhanced Blood Frenzy",
+                                "Armor-Piercing Bite",
+                                "Sonar Jamming"
+                            ],
+                            "plot_hook": "Hired by rival faction to disrupt supply lines or protect/assassinate"
+                        },
+                        {
+                            "name": "Coral Witch Maris",
+                            "level": 780,
+                            "race": "Merfolk (Corrupted)",
+                            "title": "The Calcified Heart",
+                            "location": "Abandoned coral outposts near Sargasso",
+                            "description": "Merfolk spellcaster who experimented with grafting coral to flesh for power. Now half-coral monstrosity creating twisted coral abominations.",
+                            "abilities": [
+                                "Coral Grafting",
+                                "Calcifying Touch",
+                                "Abomination Summoning"
+                            ],
+                            "plot_hook": "Creating hybrid monsters threatening all nations' borders"
+                        }
+                    ],
+                    "notable_features": [
+                        {
+                            "name": "Razortide Maw",
+                            "type": "Mobile Capital",
+                            "description": "Massive nomadic colony of living coral, rock, and stolen ship hulls, carried by enslaved beasts through Twilight Zone"
+                        },
+                        {
+                            "name": "The Breeding Pits",
+                            "sa_level": 6,
+                            "description": "Where captured monsters are bred and broken for war and labor"
+                        }
+                    ],
+                    "racial_insight": {
+                        "race": "Sahuagin",
+                        "trait": "Blood in the Water",
+                        "effect": "他们对受伤的敌人造成额外伤害，并且当附近有盟友时，攻击速度和伤害会获得可叠加的加成。"
+                    }
+                }
+            ],
+            "regions": [
+                {
+                    "name": "The Thermal Vent Citadels",
+                    "location": "Ring of Fire rift at 3,000m depth (SA 8-9)",
+                    "sa_range": "8-9",
+                    "description": "Fortress-like structures built from hardened mineral deposits around super-heated hydrothermal vents. Oases of life and industry in lightless abyss.",
+                    "inhabitants": {
+                        "race": "Crabfolk Conglomerate",
+                        "ruler": "The Thermal-King",
+                        "society": "Rigid caste-based meritocracy (Warriors, Engineers, Artisans)",
+                        "economy": "Master crafters trading Smoke-Steel, Pressure-Gems, Heat-Core Batteries"
+                    },
+                    "key_locations": [
+                        {
+                            "name": "Forge-Pit of King Ember-Maw",
+                            "sa_level": 8,
+                            "description": "Central citadel where Thermal-King resides. Floor is lattice over molten minerals. Forges items impossible elsewhere."
+                        },
+                        {
+                            "name": "Chimney Gardens",
+                            "sa_level": 8,
+                            "description": "Fields of heat-loving chemosynthetic life around vents. Resources: Thermal Moss (healing), Vent-Crab meat (stamina)."
+                        },
+                        {
+                            "name": "Pressure-Lock Markets",
+                            "sa_level": 7,
+                            "description": "Air-filled chambers for surface trade. Only place in Aqualon where surface races can walk normally."
+                        }
+                    ],
+                    "mechanics": [
+                        "Extreme Environment: Abyssal Weight full effect without Pressure Suits",
+                        "Heat Management: Proximity to vents deals fire damage over time",
+                        "Navigation: 3D maze of tunnels and shafts",
+                        "Political Neutrality: Sells to all factions"
+                    ],
+                    "plot_hook": "Thermal-King's Master-Forge failing due to beast corpse clogging heart-vent. Offers immense reward for clearing."
+                },
+                {
+                    "name": "Astral Trench",
+                    "location": "Deepest fissure in Aqualon",
+                    "sa_level": 9,
+                    "description": "Fissure so deep it's said to pierce bottom of Zero. Home to primordial horrors and Drowned God's corpse. Ultimate end-game zone."
+                },
+                {
+                    "name": "Sargasso of Lost Souls",
+                    "location": "Vast floating graveyard",
+                    "sa_level": 6,
+                    "description": "Graveyard of ships and debris held by magical kelp. Haunted by ghosts and scavengers."
+                },
+                {
+                    "name": "Abyssal Gardens",
+                    "location": "Deep sea plains",
+                    "sa_level": 8,
+                    "description": "Fields of bioluminescent carnivorous flora and intelligent filter-feeders island-sized. Eerie beauty and extreme danger."
+                }
+            ],
+            "dungeons": [
+                {
+                    "name": "The Gutted Leviathan",
+                    "location": "Sargasso of Lost Souls (SA 6)",
+                    "type": "Biological Horror / Undead Wreck",
+                    "theme": "Colossal whale-like being slaughtered by Sahuagin, now haunted nesting ground",
+                    "recommended_level": "70-85",
+                    "sa_inside": 7,
+                    "mechanics": {
+                        "pressure_effect": "Crushing Grief increases pressure, buoyancy almost nonexistent",
+                        "layout": "Multi-level 3D corpse exploration"
+                    },
+                    "notable_areas": [
+                        {
+                            "name": "The Flayed Maw",
+                            "sa_level": 7,
+                            "description": "Entrance with whale teeth like broken pillars, Sahuagin tools embedded",
+                            "hazard": "Whale Song Echo causes Despair (-15% damage) on failed WIS save"
+                        },
+                        {
+                            "name": "The Rib-Vault",
+                            "sa_level": 7,
+                            "description": "Cathedral of bone with bioluminescent fungi",
+                            "puzzle": "Activate Rune-Bones in sequence from leviathan's song fragments"
+                        },
+                        {
+                            "name": "Blood-Ocean Chamber",
+                            "sa_level": 7,
+                            "description": "Former stomach filled with viscous acidic Blood-Brine",
+                            "mechanic": "Memory Nodes provide boss mechanic clues"
+                        },
+                        {
+                            "name": "Heart of Sorrow",
+                            "sa_level": 8,
+                            "description": "Boss chamber with Sorrowstone Core, movement halved"
+                        }
+                    ],
+                    "boss": {
+                        "name": "Thalassagra, Echo of the Last Song",
+                        "appearance": "Semi-transparent leviathan phantom superimposed over crystal heart",
+                        "rank": "A-Rank (7-Star)",
+                        "health_phases": [
+                            {
+                                "range": "100-70%",
+                                "behavior": "Intangible, area attacks, Manifestation Anchors must be destroyed"
+                            },
+                            {
+                                "range": "70-40%",
+                                "behavior": "Semi-corporeal, physical attacks, summons Shades of Hunters"
+                            },
+                            {
+                                "range": "40-0%",
+                                "behavior": "Unravels, merges with chamber, overlapping memory realities. Must 'Correct the Past' to deal damage."
+                            }
+                        ],
+                        "abilities": [
+                            {
+                                "name": "Dirge of the Deep",
+                                "type": "Sonic",
+                                "effect": "Room-wide channeled attack, must take cover"
+                            },
+                            {
+                                "name": "Tail Slam of the Damned",
+                                "type": "Physical",
+                                "effect": "Telegraphed slam with shockwave, dodge vertically"
+                            },
+                            {
+                                "name": "Final Song of Annihilation",
+                                "type": "Ultimate",
+                                "effect": "Near-unavoidable wipe if Phase 3 mechanics failed"
+                            }
+                        ],
+                        "alex_interaction": [
+                            "Unlock on Anchors destroys instantly and stuns",
+                            "Unlock on memory fragments rewrites small parts, creating beneficial effects"
+                        ],
+                        "image": "aqualon/thalassagra.png",
+                        "logo": "aqualon/thalassagra.png"
+                    },
+                    "loot": {
+                        "guaranteed": [
+                            "Leviathan's Tear x5 (Legendary alchemical reagent)"
+                        ],
+                        "common_roll": [
+                            {
+                                "name": "Sonic Pulse",
+                                "stars": 4,
+                                "type": "Skill Card",
+                                "effect": "Small AOE interrupt and minor damage"
+                            },
+                            {
+                                "name": "Harpooner's Grief",
+                                "stars": 5,
+                                "type": "Weapon (Trident)",
+                                "effect": "Extra damage to Bleeding targets"
+                            }
+                        ],
+                        "uncommon_roll": [
+                            {
+                                "name": "Spirit Anchor",
+                                "stars": 6,
+                                "type": "Skill Card",
+                                "effect": "Spectral harpoon for limited flight/rapid movement"
+                            },
+                            {
+                                "name": "Sorrowstone Pendant",
+                                "stars": 7,
+                                "type": "Accessory",
+                                "effect": "Reduces Spirit Pressure/Abyssal Weight by 30%"
+                            }
+                        ],
+                        "rare_roll": [
+                            {
+                                "name": "Thalassagra's Peace",
+                                "stars": 8,
+                                "type": "Crafting Material",
+                                "use": "Weapons with spirit damage/beast pacify, or fear/sonic immunity armor"
+                            },
+                            {
+                                "name": "The Last Song",
+                                "stars": "Lore",
+                                "type": "Quest Item",
+                                "use": "Calms Sargasso ghosts or Astral Trench key"
+                            }
+                        ]
+                    },
+                    "aftermath": {
+                        "pacification_victory": "Sargasso SA reduces to 5.5, Sunken Spire grants 'Soul-Salvers of the Deep' title",
+                        "destruction_victory": "Remains collapse into dangerous debris field, may spawn weaker ghost",
+                        "faction_reactions": {
+                            "sunken_spire": "Grateful, offers navigation aid and healing magic",
+                            "sahuagin": "Furious, marks party as high-priority targets",
+                            "drowned_god_vault": "Intrigued, sends theological emissaries"
+                        }
+                    }
+                }
+            ],
+            "bestiary": {
+                "bestiary_introduction": "Aqualon's creatures are classified by threat rating and adapted to extreme pressure and darkness. Buoyancy mechanics make 3D combat essential.",
+                "rating_system": {
+                    "X_Rank": "10 Stars - Primordial Concepts / System Anomalies",
+                    "SSS_Rank": "9 Stars - Cataclysmic Abyssal Monarchs",
+                    "SS_Rank": "8 Stars - Eternal Adversaries, National Disasters",
+                    "S_Rank": "7 Stars - Lords of the Deep, Army-Killers",
+                    "A_Rank": "6 Stars - Alpha Predators, Regional Bosses",
+                    "B_Rank": "5 Stars - Veteran Threats, Elite Monsters",
+                    "C_Rank": "4 Stars - Pack Hunters, Dangerous Foes",
+                    "D_Rank": "3 Stars - Common Fauna, Trained militia level",
+                    "E_Rank": "2 Stars - Minor Irritants, Slight danger",
+                    "F_Rank": "1 Stars - Pests, Annoyances"
+                },
+                "monsters": [
+                    {
+                        "name": "Kaito, The One Who Chose to Sink",
+                        "classification": "Primordial Concept / The First Drowning",
+                        "stars": 10,
+                        "rank": "X-Rank Calamity",
+                        "threat_level": "Reality-Altering",
+                        "location": "Sea of Tranquil Surrender (pocket dimension)",
+                        "access_conditions": [
+                            "Use Unlock on 'Leviathan's Dominion' skill while sinking in Astral Trench without resistance",
+                            "Possess 'Echo of the Last Song' and 'Siren's Heart-Song'",
+                            "Unlock their combined essence in moment of total surrender"
+                        ],
+                        "description": "Personification of the moment a drowning being stops fighting and becomes part of the water. Achieved 'Perfect Ballast' - equilibrium with all forces.",
+                        "appearance": {
+                            "form": "Small humanoid drowned sailor, water-wrinkled skin, seaweed hair",
+                            "size": "Variable (world scales around him)",
+                            "accessories": "None",
+                            "stance": "Calmly sitting on rock in placid underwater plain"
+                        },
+                        "behavior": {
+                            "intelligence": "Transcendent",
+                            "purpose": "Embodiment of peaceful acceptance of pressure",
+                            "relationships": {
+                                "leviathan": "Feared by Leviathan (struggle vs surrender)",
+                                "kraken": "Hated by Kraken (requires resistance)",
+                                "siren": "Fascinates Siren Queen (achieved willful surrender)"
+                            }
+                        },
+                        "combat_encounter": {
+                            "name": "The Trial of Letting Go",
+                            "arena": "Sea of Tranquil Surrender (featureless blue void)",
+                            "phase_1": {
+                                "name": "Paradox of Buoyancy",
+                                "test": "Make a stone float by letting it sink and accepting its nature",
+                                "solution": "Use Unlock on need to control, accept nature"
+                            },
+                            "phase_2": {
+                                "name": "Conversation of Weight",
+                                "test": "Voluntarily lower stats/unequip gear to avoid psychic damage",
+                                "alex_glitch": "Unlock the concept of burden to possess power without pressure"
+                            },
+                            "phase_3": {
+                                "name": "Choice of Depths",
+                                "options": [
+                                    "Conqueror's Crown (rule Aqualon)",
+                                    "Endless Voyage (escape to normal world)",
+                                    "Silent Anchor (transcend within system)"
+                                ],
+                                "alex_ultimate": "Unlock between spheres for 'Rising Tide' - change Aqualon's nature"
+                            }
+                        },
+                        "loot": {
+                            "rising_tide_victory": {
+                                "title": "The Untethered Current",
+                                "reward": {
+                                    "name": "Principle of Adaptive Pressure",
+                                    "stars": 10,
+                                    "type": "Passive",
+                                    "effect": "Manipulate environmental SA as resource. High-pressure zones give damage buff, low-pressure give speed/healing buff. Once daily reset local pressure to SA 5 for 10 minutes."
+                                },
+                                "aftermath": "Ocean stabilizes slightly, Beast Tides less frequent, Astral Trench horrors stir less"
+                            },
+                            "sphere_choice": [
+                                {
+                                    "choice": "Conqueror's Crown",
+                                    "reward": "Abyssal Edict (8-Star) - command aquatic creatures below S-Rank"
+                                },
+                                {
+                                    "choice": "Endless Voyage",
+                                    "reward": "Pearl of Dry Passage - permanent air bubble and weekly teleport"
+                                },
+                                {
+                                    "choice": "Silent Anchor",
+                                    "reward": "Mind of the Mariana Trench - immune to fear/charm/psychic pressure, indefinite breath"
+                                }
+                            ],
+                            "failure": {
+                                "effect": "Ejected from Aqualon, gear corroded, Mark of the Unforgiving Deep (always sink first, aquatic hostility)"
+                            }
+                        },
+                        "image": "aqualon/kaito.png",
+                        "logo": "aqualon/kaito.png",
+                        "color_scheme": "Pale water-wrinkled skin, seaweed green, simple clothes",
+                        "sound_profile": "Calm, clear telepathic voice",
+                        "weaknesses": [
+                            "Conceptual acceptance",
+                            "Surrender-based solutions"
+                        ],
+                        "resistances": [
+                            "Conventional attacks",
+                            "System manipulation",
+                            "Pressure effects"
+                        ]
+                    },
+                    {
+                        "name": "Leviathan, The World-Serpent",
+                        "classification": "Abyssal Monarch / Living Geography",
+                        "stars": 9,
+                        "rank": "SSS-Rank",
+                        "threat_level": "Continental Cataclysm",
+                        "location": "Astral Trench (SA 9)",
+                        "description": "Creature of impossible scale, a moving geographical feature. Its dreaming movements cause deep-sea earthquakes affecting entire continent.",
+                        "appearance": {
+                            "size": "Mountain range scale",
+                            "body": "Barnacle-covered like castles, fins blanket cities",
+                            "eye": "Single blue star-like eye",
+                            "accessories": "None beyond its own colossal form",
+                            "stance": "Sleeps for centuries in Trench"
+                        },
+                        "unique_trait": "Living Trench - body is part of Astral Trench structure. Fought via Structural Integrity segments (Barnacle Citadels, Fin-Spires, Eye-Coral).",
+                        "abilities": [
+                            {
+                                "name": "Breath of the Abyss",
+                                "type": "Elemental",
+                                "effect": "Stream of super-dense freezing water dealing crushing physical/ice damage"
+                            },
+                            {
+                                "name": "Tail Sweep of Continents",
+                                "type": "Physical",
+                                "effect": "180-degree area attack, instant kill on hit"
+                            },
+                            {
+                                "name": "Call of the Deep",
+                                "type": "Summon",
+                                "effect": "Summons every S-Rank and lower creature within 50 miles"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Leviathan's Dominion",
+                            "stars": 9,
+                            "type": "Passive",
+                            "effect": "Immune to Depth Pressure/Abyssal Weight. Once weekly Tsunami Call flooding land or creating vortex."
+                        },
+                        "image": "aqualon/leviathan.png",
+                        "logo": "aqualon/leviathan.png",
+                        "color_scheme": "Deep ocean blues, barnacle grays",
+                        "sound_profile": "Subsonic rumbles, tectonic movements",
+                        "weaknesses": [
+                            "Structural segment targeting",
+                            "Reality stabilization",
+                            "Extreme heat"
+                        ],
+                        "resistances": [
+                            "Conventional damage",
+                            "Water/ice attacks",
+                            "Pressure effects"
+                        ]
+                    },
+                    {
+                        "name": "Kraken, The Ten-Thousand Grip",
+                        "classification": "Eternal Adversary / Malevolent Colossus",
+                        "stars": 8,
+                        "rank": "SS-Rank",
+                        "threat_level": "National Disaster",
+                        "location": "Midnight Plains (SA 8)",
+                        "description": "Actively malicious cephalopod rivaling Leviathan. Spreads tentacles through aquifers, delights in dragging settlements into dark.",
+                        "appearance": {
+                            "body": "Colossal pulsating muscle sack",
+                            "tentacles": "Ten thousand barbed whip-like tentacles miles long",
+                            "suckers": "Intelligent, grasping suckers",
+                            "accessories": "None",
+                            "stance": "Sprawled across abyssal plain"
+                        },
+                        "unique_trait": "Inescapable Reach - tentacles project through any connected water in Aqualon. Regenerates infinitely; must fight to main body.",
+                        "abilities": [
+                            {
+                                "name": "Crushing Coil",
+                                "type": "Physical",
+                                "effect": "Grapple for massive damage"
+                            },
+                            {
+                                "name": "Ink of Oblivion",
+                                "type": "Darkness",
+                                "effect": "Sphere of perfect darkness/silence that drains mana"
+                            },
+                            {
+                                "name": "Barrage of the Deep",
+                                "type": "Projectile",
+                                "effect": "Volley of harpoon-like tentacle spikes"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Kraken's Grasp",
+                            "stars": 8,
+                            "type": "Active",
+                            "effect": "Summon spectral tentacle to grab distant enemy, pull and stun"
+                        },
+                        "image": "aqualon/kraken.png",
+                        "logo": "aqualon/kraken.png",
+                        "color_scheme": "Deep purple, black, sucker pink",
+                        "sound_profile": "Tentacle slithering, deep rumbles",
+                        "weaknesses": [
+                            "Main body targeting",
+                            "Extreme light",
+                            "Tentacle severing en masse"
+                        ],
+                        "resistances": [
+                            "Physical attacks",
+                            "Darkness magic",
+                            "Grappling"
+                        ]
+                    },
+                    {
+                        "name": "Siren Queen, Melodia of the Endless Lure",
+                        "classification": "Eternal Adversary / Psychic Predator",
+                        "stars": 8,
+                        "rank": "SS-Rank",
+                        "threat_level": "National Disaster",
+                        "location": "Drowned Choir Spires (SA 7-8)",
+                        "description": "Predator of desire and memory. Her song makes victims forget themselves and join her eternal mindless choir.",
+                        "appearance": {
+                            "upper_body": "Flawless Merfolk",
+                            "lower_body": "Swirling vortex of water, light, spirit matter",
+                            "voice": "Visible shimmering hypnotic patterns in water",
+                            "accessories": "None",
+                            "stance": "Hovering among crystalline spires"
+                        },
+                        "unique_trait": "Irresistible Refrain - requires WIS and CHA save. Failure causes obsession to reach her.",
+                        "abilities": [
+                            {
+                                "name": "Aria of Forgotten Joy",
+                                "type": "Charm",
+                                "effect": "Charms all who hear"
+                            },
+                            {
+                                "name": "Dirge of Shattered Hope",
+                                "type": "Psychic",
+                                "effect": "Damage proportional to target's unmet desires"
+                            },
+                            {
+                                "name": "Chorus of the Drowned",
+                                "type": "Summon",
+                                "effect": "Summons charmed/ghostly thralls"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Siren's Heart-Song",
+                            "stars": 8,
+                            "type": "Active",
+                            "effect": "Channel song charming humanoid/beast enemies in cone. Charmed fight briefly for you."
+                        },
+                        "image": "aqualon/siren_queen.png",
+                        "logo": "aqualon/siren_queen.png",
+                        "color_scheme": "Iridescent scales, luminous patterns",
+                        "sound_profile": "Hypnotic singing, psychic vibrations",
+                        "weaknesses": [
+                            "Deafness/silence",
+                            "Strong willpower",
+                            "Memory protection"
+                        ],
+                        "resistances": [
+                            "Sonic attacks",
+                            "Charm effects",
+                            "Psychic damage"
+                        ]
+                    },
+                    {
+                        "name": "Brinedragon",
+                        "classification": "Lord of the Deep / Territorial Dragon",
+                        "stars": 7,
+                        "rank": "S-Rank",
+                        "threat_level": "Army-Killer",
+                        "location": "Astral Trench borders (SA 8)",
+                        "description": "Ancient, intelligent serpentine dragon claiming vast hunting grounds. Juvenile captured by Sahuagin hero Gash.",
+                        "appearance": {
+                            "body": "Serpentine dragon, no wings",
+                            "scales": "Tarnished silver",
+                            "frills": "Seaweed-like",
+                            "maw": "Crackles with saline energy",
+                            "accessories": "None",
+                            "stance": "Eel-like undulations"
+                        },
+                        "unique_trait": "Salt-Corrosion Aura - corrodes metal, weakens magical barriers rapidly.",
+                        "abilities": [
+                            {
+                                "name": "Brine Breath",
+                                "type": "Elemental",
+                                "effect": "Cone of super-salty high-pressure water, dehydrates and damages"
+                            },
+                            {
+                                "name": "Abyssal Current",
+                                "type": "Control",
+                                "effect": "Creates powerful whirlpool controlling movement"
+                            },
+                            {
+                                "name": "Dragon's Grip",
+                                "type": "Physical",
+                                "effect": "Grapples with body"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Brine Jet",
+                            "stars": 7,
+                            "type": "Active",
+                            "effect": "Focused stream of high-pressure salt water, heavy damage and armor reduction"
+                        },
+                        "image": "aqualon/brinedragon.png",
+                        "logo": "aqualon/brinedragon.png",
+                        "color_scheme": "Tarnished silver, seaweed green",
+                        "sound_profile": "Deep draconic roars, water crackling",
+                        "weaknesses": [
+                            "Fresh water",
+                            "Anti-corrosion",
+                            "Electrical attacks"
+                        ],
+                        "resistances": [
+                            "Water attacks",
+                            "Pressure",
+                            "Salt-based effects"
+                        ]
+                    },
+                    {
+                        "name": "Trench Hydra",
+                        "classification": "Lord of the Deep / Regenerative Horror",
+                        "stars": 7,
+                        "rank": "S-Rank",
+                        "threat_level": "Army-Killer",
+                        "location": "Astral Trench side vents (SA 9)",
+                        "description": "Mindless multi-headed worm driven by hunger and regeneration. Drawn to heat and movement.",
+                        "appearance": {
+                            "body": "Pale multi-headed worm",
+                            "heads": "Blind snapping maws of teeth",
+                            "feelers": "Sensitive feelers covering body",
+                            "regeneration": "Two heads regrow per severed head",
+                            "accessories": "None",
+                            "stance": "Burrowing through trench walls"
+                        },
+                        "unique_trait": "Regenerative Aberration - severing head causes two regrowths. Must destroy all neck stumps simultaneously or central heart-body.",
+                        "abilities": [
+                            {
+                                "name": "Multi-headed Strike",
+                                "type": "Physical",
+                                "effect": "Attacks 3-5 random targets simultaneously"
+                            },
+                            {
+                                "name": "Tremor Sense",
+                                "type": "Sensory",
+                                "effect": "Cannot be surprised, detects all water movement"
+                            },
+                            {
+                                "name": "Acidic Blood Spray",
+                                "type": "Chemical",
+                                "effect": "Damages attackers when head severed"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Regenerative Surge",
+                            "stars": 7,
+                            "type": "Active",
+                            "effect": "Heal large HP over 10 seconds, interrupted by damage"
+                        },
+                        "image": "aqualon/trench_hydra.png",
+                        "logo": "aqualon/trench_hydra.png",
+                        "color_scheme": "Pale flesh, blood red",
+                        "sound_profile": "Multiple head hissing, regenerative sizzle",
+                        "weaknesses": [
+                            "Simultaneous damage",
+                            "Fire/acid to all stumps",
+                            "Heart targeting"
+                        ],
+                        "resistances": [
+                            "Single-target damage",
+                            "Physical attacks",
+                            "Regeneration disruption"
+                        ]
+                    },
+                    {
+                        "name": "Megalodon, The Razor-Tide",
+                        "classification": "Alpha Predator / Solitary Hunter",
+                        "stars": 6,
+                        "rank": "A-Rank",
+                        "threat_level": "Regional Boss",
+                        "location": "Twilight/Abyssal zones (SA 6-8)",
+                        "description": "Mythic-sized shark following Beast Tides and migrations. Fears nothing but truly colossal beings.",
+                        "appearance": {
+                            "size": "100+ feet long",
+                            "skin": "Black iron-like",
+                            "eyes": "Dead white orbs",
+                            "jaws": "Cleaves galleons",
+                            "accessories": "None",
+                            "stance": "Constant cruising predation"
+                        },
+                        "unique_trait": "Blood Frenzy - upon injuring target or smelling blood, +50% attack speed/damage for 60 seconds.",
+                        "abilities": [
+                            {
+                                "name": "Devouring Charge",
+                                "type": "Physical",
+                                "effect": "Linear dash biting everything in path"
+                            },
+                            {
+                                "name": "Sense Blood",
+                                "type": "Sensory",
+                                "effect": "Detects injured creatures miles away"
+                            },
+                            {
+                                "name": "Crushing Jaws",
+                                "type": "Execute",
+                                "effect": "Single-target execute on low health"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Frenzied Bite",
+                            "stars": 6,
+                            "type": "Active",
+                            "effect": "Next basic attack deals increased damage and heals portion of damage"
+                        },
+                        "image": "aqualon/megalodon.png",
+                        "logo": "aqualon/megalodon.png",
+                        "color_scheme": "Black iron, white eyes",
+                        "sound_profile": "Powerful swimming, biting crunch",
+                        "weaknesses": [
+                            "Blood denial",
+                            "Extreme cold",
+                            "Sonic attacks"
+                        ],
+                        "resistances": [
+                            "Physical damage",
+                            "Bleeding effects",
+                            "Fear"
+                        ]
+                    },
+                    {
+                        "name": "Royal Jellyfish, The Silent Bloom",
+                        "classification": "Alpha Predator / Passive Deathtrap",
+                        "stars": 6,
+                        "rank": "A-Rank",
+                        "threat_level": "Regional Boss",
+                        "location": "Silent Drift (SA 7)",
+                        "description": "Passive floating filter-feeder with hypnotic light luring prey. Nearly invisible paralyzing tentacles.",
+                        "appearance": {
+                            "bell": "Palace-sized glowing bell",
+                            "tentacles": "Miles long, nearly invisible",
+                            "glow": "Soft hypnotic bioluminescence",
+                            "neurotoxin": "Laced on tentacles",
+                            "accessories": "None",
+                            "stance": "Drifting with current"
+                        },
+                        "unique_trait": "Transparent Peril - tentacles nearly impossible to see without special perception/light. Contact causes paralysis.",
+                        "abilities": [
+                            {
+                                "name": "Paralyzing Lash",
+                                "type": "Status",
+                                "effect": "Tentacle attack that stuns"
+                            },
+                            {
+                                "name": "Lure Light",
+                                "type": "Charm",
+                                "effect": "Charms lower-intelligence creatures"
+                            },
+                            {
+                                "name": "Nettle Bomb",
+                                "type": "AOE",
+                                "effect": "Releases cloud of stinging cells"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Paralyzing Toxin",
+                            "stars": 6,
+                            "type": "Active",
+                            "effect": "Apply toxin to weapon with chance to stun for 2 seconds"
+                        },
+                        "image": "aqualon/royal_jellyfish.png",
+                        "logo": "aqualon/royal_jellyfish.png",
+                        "color_scheme": "Bioluminescent blues/purples, transparent tentacles",
+                        "sound_profile": "Silent drifting, occasional tentacle swish",
+                        "weaknesses": [
+                            "Light sources",
+                            "Perception abilities",
+                            "Area denial"
+                        ],
+                        "resistances": [
+                            "Visual detection",
+                            "Charm effects",
+                            "Paralysis"
+                        ]
+                    },
+                    {
+                        "name": "Depth-Charger Sawfish",
+                        "classification": "Veteran Threat / Ambush Predator",
+                        "stars": 5,
+                        "rank": "B-Rank",
+                        "threat_level": "Elite Monster",
+                        "location": "Rocky seafloors/canyons (SA 5-7)",
+                        "description": "Ambush predator with serrated bone spear snout. Burrows then launches to impale prey.",
+                        "appearance": {
+                            "body": "Ray-like fish",
+                            "spear": "Long serrated bone spear on snout",
+                            "coloration": "Sandy camouflage",
+                            "accessories": "None",
+                            "stance": "Buried in sand/crevices"
+                        },
+                        "unique_trait": "Ambush Predator - first attack from stealth is always critical hit.",
+                        "abilities": [
+                            {
+                                "name": "Impaling Charge",
+                                "type": "Physical",
+                                "effect": "High-speed charge with spear"
+                            },
+                            {
+                                "name": "Sand Cloud",
+                                "type": "Utility",
+                                "effect": "Creates cloud to hide"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Ambush",
+                            "stars": 5,
+                            "type": "Passive",
+                            "effect": "If no action in 10 seconds, next attack deals +50% damage"
+                        },
+                        "image": "aqualon/depth_charger.png",
+                        "logo": "aqualon/depth_charger.png",
+                        "color_scheme": "Sandy browns, bone white spear",
+                        "sound_profile": "Burrowing sounds, swift water displacement",
+                        "weaknesses": [
+                            "Detection before ambush",
+                            "Wide-area attacks",
+                            "Hard surfaces"
+                        ],
+                        "resistances": [
+                            "Ambush tactics",
+                            "Camouflage",
+                            "Initial strikes"
+                        ]
+                    },
+                    {
+                        "name": "Giant Squid Patriarch",
+                        "classification": "Veteran Threat / Pack Leader",
+                        "stars": 5,
+                        "rank": "B-Rank",
+                        "threat_level": "Elite Monster",
+                        "location": "Midnight Plains fringes (SA 7)",
+                        "description": "Massive intelligent squid leading packs. Territorial and uses ink escape.",
+                        "appearance": {
+                            "size": "Large but smaller than Kraken",
+                            "body": "Squid with powerful tentacles",
+                            "beak": "Crushing beak",
+                            "ink_sac": "Prominent",
+                            "accessories": "None",
+                            "stance": "Hovering with tentacles ready"
+                        },
+                        "unique_trait": "Ink Cloud Escape - below 30% health releases massive ink cloud and flees.",
+                        "abilities": [
+                            {
+                                "name": "Tentacle Grab",
+                                "type": "Physical",
+                                "effect": "Grapples target"
+                            },
+                            {
+                                "name": "Beak Crush",
+                                "type": "Physical",
+                                "effect": "Powerful bite attack"
+                            },
+                            {
+                                "name": "Ink Cloud",
+                                "type": "Utility",
+                                "effect": "Obscures vision"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Escape Cloud",
+                            "stars": 5,
+                            "type": "Active",
+                            "effect": "Create obscuring ink cloud dropping aggro and allowing disengage"
+                        },
+                        "image": "aqualon/squid_patriarch.png",
+                        "logo": "aqualon/squid_patriarch.png",
+                        "color_scheme": "Deep reds/purples, dark ink",
+                        "sound_profile": "Tentacle slaps, beak clicks",
+                        "weaknesses": [
+                            "Preventing escape",
+                            "Light after ink",
+                            "Sonic attacks"
+                        ],
+                        "resistances": [
+                            "Grappling",
+                            "Ink blindness",
+                            "Pack tactics"
+                        ]
+                    },
+                    {
+                        "name": "Sahuagin Hunting Pack",
+                        "classification": "Pack Hunters / Coordinated Warriors",
+                        "stars": 4,
+                        "rank": "C-Rank",
+                        "threat_level": "Dangerous Foe",
+                        "location": "Near Sahuagin territory (SA 5-7)",
+                        "description": "Group of 4-6 Sahuagin warriors using nets, harpoons, and pack tactics.",
+                        "appearance": {
+                            "composition": "Sahuagin warriors led by Blademaster",
+                            "equipment": "Nets, harpoons, teeth",
+                            "coloration": "Shark-like patterns",
+                            "accessories": "Trophy necklaces",
+                            "stance": "Coordinated hunting formation"
+                        },
+                        "unique_trait": "Blood Frenzy (Pack) - damage increases for each pack member near target.",
+                        "abilities": [
+                            {
+                                "name": "Net Toss",
+                                "type": "Control",
+                                "effect": "Roots target"
+                            },
+                            {
+                                "name": "Harpoon Volley",
+                                "type": "Ranged",
+                                "effect": "Multiple harpoon attacks"
+                            },
+                            {
+                                "name": "Flanking Strike",
+                                "type": "Tactical",
+                                "effect": "Bonus damage from sides/behind"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Net Toss",
+                            "stars": 4,
+                            "type": "Active",
+                            "effect": "Throw net rooting single target for few seconds"
+                        },
+                        "image": "aqualon/sahuagin_pack.png",
+                        "logo": "aqualon/sahuagin_pack.png",
+                        "color_scheme": "Shark grays/blues, bone trophies",
+                        "sound_profile": "Hunting calls, net throws, harpoon shots",
+                        "weaknesses": [
+                            "Divide and conquer",
+                            "Area attacks",
+                            "Leadership removal"
+                        ],
+                        "resistances": [
+                            "Pack tactics",
+                            "Coordinated attacks",
+                            "Blood frenzy"
+                        ]
+                    },
+                    {
+                        "name": "Barracuda School",
+                        "classification": "Pack Hunters / Swarm Predator",
+                        "stars": 4,
+                        "rank": "C-Rank",
+                        "threat_level": "Dangerous Foe",
+                        "location": "Sunlit/Twilight Zones (SA 5-6)",
+                        "description": "Swirling school of dozens of large silver fish with razor teeth. Strip flesh rapidly.",
+                        "appearance": {
+                            "form": "Swirling silver school",
+                            "individuals": "Large barracuda with razor teeth",
+                            "movement": "Fast, darting",
+                            "accessories": "None",
+                            "stance": "Constant swirling motion"
+                        },
+                        "unique_trait": "Feeding Frenzy - if any member draws blood, entire school's attack speed increases.",
+                        "abilities": [
+                            {
+                                "name": "Swarm Strike",
+                                "type": "Physical",
+                                "effect": "Multiple hits on one target"
+                            },
+                            {
+                                "name": "Darting Speed",
+                                "type": "Mobility",
+                                "effect": "Rapid directional changes"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Swarm Strikes",
+                            "stars": 4,
+                            "type": "Active",
+                            "effect": "Next attack hits 3 times rapidly for reduced damage each"
+                        },
+                        "image": "aqualon/barracuda_school.png",
+                        "logo": "aqualon/barracuda_school.png",
+                        "color_scheme": "Silver flashes, blood red",
+                        "sound_profile": "Swirling water, biting snaps",
+                        "weaknesses": [
+                            "Area denial",
+                            "Swarm dispersion",
+                            "Electrical attacks"
+                        ],
+                        "resistances": [
+                            "Single-target attacks",
+                            "Speed reduction",
+                            "Bleeding effects"
+                        ]
+                    },
+                    {
+                        "name": "Armored Sea-Turtle",
+                        "classification": "Common Fauna / Defensive Beast",
+                        "stars": 3,
+                        "rank": "D-Rank",
+                        "threat_level": "Common Threat",
+                        "location": "Seagrass beds/reefs (SA 5)",
+                        "description": "Docile but tough turtle attacking only if provoked. Thick barnacled shell.",
+                        "appearance": {
+                            "size": "Large",
+                            "shell": "Thick barnacled",
+                            "coloration": "Greens/browns",
+                            "limbs": "Powerful flippers",
+                            "accessories": "Barnacles, algae",
+                            "stance": "Slow swimming or bottom resting"
+                        },
+                        "unique_trait": "Shell Defense - takes 75% less damage from front.",
+                        "abilities": [
+                            {
+                                "name": "Bite",
+                                "type": "Physical",
+                                "effect": "Moderate damage bite"
+                            },
+                            {
+                                "name": "Withdraw into Shell",
+                                "type": "Defensive",
+                                "effect": "Becomes immune to damage but immobile"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Turtle's Defense",
+                            "stars": 3,
+                            "type": "Active",
+                            "effect": "Briefly increase armor significantly but reduce movement speed"
+                        },
+                        "image": "aqualon/armored_turtle.png",
+                        "logo": "aqualon/armored_turtle.png",
+                        "color_scheme": "Green/brown shell, lighter underbelly",
+                        "sound_profile": "Slow swimming, shell scrapes",
+                        "weaknesses": [
+                            "Flanking",
+                            "Psychic attacks",
+                            "Shell penetration"
+                        ],
+                        "resistances": [
+                            "Frontal attacks",
+                            "Physical damage",
+                            "Environmental hazards"
+                        ]
+                    },
+                    {
+                        "name": "Electric Eel",
+                        "classification": "Common Fauna / Shock Attacker",
+                        "stars": 3,
+                        "rank": "D-Rank",
+                        "threat_level": "Common Threat",
+                        "location": "Caves/kelp forests (SA 5-6)",
+                        "description": "Slender eel shocking prey with powerful voltage.",
+                        "appearance": {
+                            "body": "Long, slender eel",
+                            "coloration": "Dark with yellow stripes",
+                            "electric_organs": "Visible along sides",
+                            "accessories": "None",
+                            "stance": "Coiled or darting"
+                        },
+                        "unique_trait": "Stun Charge - attacks have chance to stun.",
+                        "abilities": [
+                            {
+                                "name": "Shock Touch",
+                                "type": "Electrical",
+                                "effect": "Touch-based shock damage"
+                            },
+                            {
+                                "name": "Lightning Burst",
+                                "type": "AOE",
+                                "effect": "Small area electrical burst"
+                            }
+                        ],
+                        "potential_skill_drop": {
+                            "name": "Shocking Touch",
+                            "stars": 3,
+                            "type": "Active",
+                            "effect": "Next melee attack deals bonus lightning damage with small stun chance"
+                        },
+                        "image": "aqualon/electric_eel.png",
+                        "logo": "aqualon/electric_eel.png",
+                        "color_scheme": "Dark body with yellow electrical patterns",
+                        "sound_profile": "Electrical crackling, water movement",
+                        "weaknesses": [
+                            "Rubber/insulation",
+                            "Grounding",
+                            "Fast strikes"
+                        ],
+                        "resistances": [
+                            "Electrical attacks",
+                            "Stun effects",
+                            "Paralysis"
+                        ]
+                    },
+                    {
+                        "name": "Stingray",
+                        "classification": "Minor Irritant / Venomous Fish",
+                        "stars": 2,
+                        "rank": "E-Rank",
+                        "threat_level": "Minor Nuisance",
+                        "location": "Sandy seafloors (SA 5)",
+                        "description": "Timid flat fish with venomous barbed tail causing painful wounds.",
+                        "appearance": {
+                            "body": "Flat diamond shape",
+                            "tail": "Long with barbed spine",
+                            "coloration": "Sandy camouflage",
+                            "accessories": "None",
+                            "stance": "Buried in sand or gliding"
+                        },
+                        "unique_trait": "Venom Barb - attacks apply minor damage-over-time poison.",
+                        "abilities": [
+                            {
+                                "name": "Barb Strike",
+                                "type": "Physical/Venom",
+                                "effect": "Tail strike with venom"
+                            }
+                        ],
+                        "drops": [
+                            {
+                                "name": "Stingray Venom",
+                                "stars": "E-Star",
+                                "type": "Alchemy Ingredient",
+                                "use": "Poison crafting"
+                            }
+                        ],
+                        "image": "aqualon/stingray.png",
+                        "logo": "aqualon/stingray.png",
+                        "color_scheme": "Sandy browns, light underbelly",
+                        "sound_profile": "Sand disturbance, tail swish",
+                        "weaknesses": [
+                            "Detection before attack",
+                            "Quick movements",
+                            "Antivenom"
+                        ],
+                        "resistances": [
+                            "Camouflage",
+                            "Venom immunity",
+                            "Bottom dwelling"
+                        ]
+                    },
+                    {
+                        "name": "Pufferfish",
+                        "classification": "Minor Irritant / Defensive Fish",
+                        "stars": 2,
+                        "rank": "E-Rank",
+                        "threat_level": "Minor Nuisance",
+                        "location": "Coral reefs (SA 5)",
+                        "description": "Small spiky fish inflating when threatened. Spines mildly toxic.",
+                        "appearance": {
+                            "size": "Small",
+                            "body": "Round with spines",
+                            "inflation": "Can puff up",
+                            "coloration": "Varied patterns",
+                            "accessories": "None",
+                            "stance": "Slow swimming"
+                        },
+                        "unique_trait": "Inflate - becomes harder to hit when attacked.",
+                        "abilities": [
+                            {
+                                "name": "Spine Defense",
+                                "type": "Passive",
+                                "effect": "Minor damage to attackers on contact"
+                            }
+                        ],
+                        "drops": [
+                            {
+                                "name": "Puffer Toxin",
+                                "stars": "E-Star",
+                                "type": "Alchemy Ingredient",
+                                "use": "Paralysis potions"
+                            }
+                        ],
+                        "image": "aqualon/pufferfish.png",
+                        "logo": "aqualon/pufferfish.png",
+                        "color_scheme": "Bright warning colors, spine white",
+                        "sound_profile": "Water displacement, inflation puff",
+                        "weaknesses": [
+                            "Ranged attacks",
+                            "Quick predators",
+                            "Deflation"
+                        ],
+                        "resistances": [
+                            "Close contact",
+                            "Small bites",
+                            "Intimidation"
+                        ]
+                    },
+                    {
+                        "name": "Glimmer-Fish Swarm",
+                        "classification": "Pest / Harmless Swarm",
+                        "stars": 1,
+                        "rank": "F-Rank",
+                        "threat_level": "Pest",
+                        "location": "Sunlit Zone everywhere (SA 5)",
+                        "description": "Large school of tiny shimmering fish. Food source for everything else. Obscures vision slightly.",
+                        "appearance": {
+                            "form": "Large shimmering school",
+                            "individuals": "Tiny fish with iridescent scales",
+                            "movement": "Coordinated schooling",
+                            "accessories": "None",
+                            "stance": "Constant flowing motion"
+                        },
+                        "unique_trait": "None.",
+                        "abilities": [
+                            {
+                                "name": "Visual Obscuration",
+                                "type": "Environmental",
+                                "effect": "Slightly obscures vision in swarm"
+                            }
+                        ],
+                        "drops": [
+                            {
+                                "name": "Glimmer-Fish Scale",
+                                "stars": "F-Star",
+                                "type": "Junk Item",
+                                "use": "Slightly shiny, low value"
+                            }
+                        ],
+                        "image": "aqualon/glimmer_fish.png",
+                        "logo": "aqualon/glimmer_fish.png",
+                        "color_scheme": "Iridescent rainbow shimmer",
+                        "sound_profile": "Subtle schooling sounds",
+                        "weaknesses": [
+                            "Predators",
+                            "Nets",
+                            "Area attacks"
+                        ],
+                        "resistances": [
+                            "Single-target attacks",
+                            "Being ignored",
+                            "Environmental changes"
+                        ]
+                    },
+                    {
+                        "name": "Cleaning Shrimp",
+                        "classification": "Pest / Symbiotic Creature",
+                        "stars": 1,
+                        "rank": "F-Rank",
+                        "threat_level": "Pest",
+                        "location": "On larger creatures/reefs (SA 5)",
+                        "description": "Tiny colorful shrimp cleaning parasites off larger animals. Tickles adventurers.",
+                        "appearance": {
+                            "size": "Tiny",
+                            "body": "Colorful shrimp",
+                            "claws": "Small cleaning claws",
+                            "coloration": "Bright colors",
+                            "accessories": "None",
+                            "stance": "Crawling on surfaces"
+                        },
+                        "unique_trait": "None.",
+                        "abilities": [
+                            {
+                                "name": "Cleaning",
+                                "type": "Utility",
+                                "effect": "Removes parasites, tickles"
+                            }
+                        ],
+                        "drops": [],
+                        "image": "aqualon/cleaning_shrimp.png",
+                        "logo": "aqualon/cleaning_shrimp.png",
+                        "color_scheme": "Bright reds/whites, vibrant patterns",
+                        "sound_profile": "Tiny clicking, movement sounds",
+                        "weaknesses": [
+                            "Rough handling",
+                            "Predators",
+                            "Being removed"
+                        ],
+                        "resistances": [
+                            "Being noticed",
+                            "Gentle handling",
+                            "Symbiosis"
+                        ]
+                    }
+                ]
+            },
+            "glitch_effects": {
+                "alexs_influence": "Alex's 'Unlock' skill and 0-Level Aid cause unique interactions with Aqualon's pressure mechanics",
+                "effects": [
+                    {
+                        "name": "Pressure Override",
+                        "description": "Unlock can locally override SA, creating stable bubble or amplifying chaos to destabilize enemies",
+                        "trigger": "Using Unlock in high-SA zone",
+                        "result": "Temporary SA manipulation"
+                    },
+                    {
+                        "name": "Buoyancy Manipulation",
+                        "description": "Can alter buoyancy rules for self or enemies, creating sudden rises/sinks",
+                        "trigger": "Unlock on environmental pressure",
+                        "result": "Controlled vertical movement advantage"
+                    },
+                    {
+                        "name": "Depth Adaptation Bypass",
+                        "description": "Ignores standard depth penalties by glitching pressure calculation",
+                        "trigger": "Passive in deep zones",
+                        "result": "Maintains surface-level stats in abyss"
+                    }
+                ]
+            },
+            "monster_ecology": {
+                "depth_adaptation": "Monsters evolve traits for specific depth zones and pressure resistance",
+                "buoyancy_combat": "Most monsters have 3D combat tactics utilizing vertical space",
+                "predation_patterns": [
+                    "Surface hunters use speed and light",
+                    "Mid-depth use ambush and pressure",
+                    "Abyssal use darkness and crushing force"
+                ],
+                "spawning_conditions": [
+                    "Natural reproduction in specific depth bands",
+                    "Beast Tides periodically flood areas with monsters",
+                    "System-generated for high-SA events",
+                    "Dungeon-specific creations like Gutted Leviathan"
+                ]
+            },
+            "hunting_recommendations": {
+                "party_size_by_rank": {
+                    "X_Rank": "Full raid with depth specialists (20+)",
+                    "SSS_Rank": "Multiple nations' heroes with pressure gear",
+                    "SS_Rank": "Elite hero party with naval support",
+                    "S_Rank": "Experienced deep-diving party (5-7)",
+                    "A_Rank": "Veteran party with 3D coordination (4-6)",
+                    "B_Rank": "Skilled party with buoyancy control (3-5)",
+                    "C_Rank": "Standard party with depth preparation (3-4)",
+                    "D_Rank": "Small party or solo specialist (2-3)",
+                    "E_Rank": "Solo or duo with caution",
+                    "F_Rank": "Solo (more environmental hazard than combat)"
+                },
+                "essential_equipment": [
+                    "Pressure resistance gear",
+                    "Buoyancy control items",
+                    "Underwater breathing",
+                    "3D combat training"
+                ],
+                "loot_tiers": {
+                    "legendary": "X to S-Rank monsters (depth-adapted artifacts)",
+                    "epic": "A to B-Rank monsters (pressure-resistant gear)",
+                    "rare": "C to D-Rank monsters (specialized aquatic items)",
+                    "common": "E to F-Rank monsters (basic materials/trophies)"
+                }
+            },
+            "other_races": [
+                {
+                    "name": "Crabfolk",
+                    "role": "Master engineers and crafters",
+                    "presence": "Thermal Vent Citadels primary, neutral trade hubs across depths",
+                    "unique_trait": "Natural pressure adaptation, heat resistance, engineering prowess"
+                },
+                {
+                    "name": "Sea Elves",
+                    "role": "Traders and explorers",
+                    "presence": "Minor populations in Sunken Spire, independent deep-sea expeditions"
+                },
+                {
+                    "name": "Aquatic Beastkin",
+                    "variants": [
+                        "Dolphin",
+                        "Orca",
+                        "Seal",
+                        "Otter"
+                    ],
+                    "role": "Scouts, messengers, hunters",
+                    "presence": "Sunken Spire and independent pods"
+                },
+                {
+                    "name": "Abyssal Ghasts",
+                    "role": "Undead servitors",
+                    "presence": "Drowned God's Vault, haunted deep areas"
+                },
+                {
+                    "name": "Deep-sea Prophets",
+                    "role": "Mad visionaries",
+                    "presence": "Isolated deep communities, Drowned God's Vault"
+                }
+            ]
         },
         {
             "id": 6,

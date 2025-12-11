@@ -199,15 +199,28 @@ function processWorldData() {
                 }
 
                 // NEW: Add additional villain if it exists
-                if (nation.additional_villain) {
-                    const additionalVillain = {
-                        ...nation.additional_villain,
-                        continent: continent.name,
-                        nation: nation.name,
-                        sa_level: nation.sa_level
-                    };
-                    allAdditionalVillains.push(additionalVillain);
+                if (nation.additional_villain && Array.isArray(nation.additional_villain)) {
+                    nation.additional_villain.forEach(villian => {
+                        const additionalVillain = {
+                            ...villian,
+                            continent: continent.name,
+                            nation: nation.name,
+                            sa_level: nation.sa_level
+                        };
+                        allAdditionalVillains.push(additionalVillain);
+                    });
                 }
+
+
+                // if (nation.additional_villain) {
+                //     const additionalVillain = {
+                //         ...nation.additional_villain,
+                //         continent: continent.name,
+                //         nation: nation.name,
+                //         sa_level: nation.sa_level
+                //     };
+                //     allAdditionalVillains.push(additionalVillain);
+                // }
             });
         }
 
@@ -467,7 +480,7 @@ function initCarousel() {
     // Auto-rotate carousel
     setInterval(() => {
         changeCarouselSlide(currentCarouselIndex + 1);
-    }, 5000);
+    }, 100000);
 }
 
 // Toggle between light and dark themes
@@ -903,7 +916,7 @@ function renderAdditionalHeroes() {
     }
 
     allAdditionalHeroes.forEach(hero => {
-        const skillStars = hero.unique_ability ? 7 : 5; // Default for unique abilities
+        const skillStars = hero.unique_ability ? 7 : 6; // Default for unique abilities
 
         const heroCard = document.createElement('div');
         heroCard.className = 'card';
@@ -956,7 +969,7 @@ function renderAdditionalVillains() {
     }
 
     allAdditionalVillains.forEach(villain => {
-        const skillStars = villain.unique_ability ? 7 : 5; // Default for unique abilities
+        const skillStars = villain.unique_ability ? 7 : 6; // Default for unique abilities
 
         const villainCard = document.createElement('div');
         villainCard.className = 'card';
@@ -1316,6 +1329,21 @@ function openAdditionalHeroModal(hero) {
                 <i class="fas fa-star"></i>
             </div>`
         }
+
+        <div class="modal-stats">
+            <div class="modal-stat">
+                <span class="modal-stat-value">${hero.level || 'Unknown'}</span>
+                <span class="modal-stat-label">Level</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${hero.race || 'Unknown'}</span>
+                <span class="modal-stat-label">Race</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${hero.title || 'Hero'}</span>
+                <span class="modal-stat-label">Title</span>
+            </div>
+        </div>
         
         <div class="modal-section">
             <h3>Description</h3>
@@ -1367,6 +1395,21 @@ function openAdditionalVillainModal(villain) {
                 <i class="fas fa-skull"></i>
             </div>`
         }
+
+        <div class="modal-stats">
+            <div class="modal-stat">
+                <span class="modal-stat-value">${villain.level || 'Unknown'}</span>
+                <span class="modal-stat-label">Level</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${villain.race || 'Unknown'}</span>
+                <span class="modal-stat-label">Race</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${villain.title || 'Villian'}</span>
+                <span class="modal-stat-label">Title</span>
+            </div>
+        </div>
         
         <div class="modal-section">
             <h3>Description</h3>
