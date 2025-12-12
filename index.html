@@ -116,12 +116,12 @@
                 <p>The powerful leaders who govern the continents through Level, unique Skills, and System authority</p>
             </div>
 
-            <div class="filters">
+            <!-- <div class="filters">
                 <button class="filter-btn active" data-filter="all">All Rulers</button>
                 <button class="filter-btn" data-filter="eldoria">Eldoria</button>
                 <button class="filter-btn" data-filter="mechanis">Mechanis</button>
                 <button class="filter-btn" data-filter="spiritus">Spiritus</button>
-            </div>
+            </div> -->
 
             <div class="grid-container" id="rulers-grid">
                 <!-- Ruler cards will be dynamically inserted here -->
@@ -180,6 +180,7 @@
     </section>
 
     <!-- Bestiary Section -->
+    <!-- Bestiary Section -->
     <section id="beasts" class="section-padding">
         <div class="container">
             <div class="section-header">
@@ -187,17 +188,9 @@
                 <p>Creatures from SSS-Rank Calamities to F-Rank Pests, classified by threat level</p>
             </div>
 
-            <div class="swiper-container">
-                <div class="swiper-wrapper" id="beasts-swiper">
-                    <!-- Beast cards will be dynamically inserted here -->
-                </div>
-
-                <!-- Navigation buttons -->
-                <!-- <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div> -->
-
-                <!-- Pagination -->
-                <!-- <div class="swiper-pagination"></div> -->
+            <div class="filters-header">
+                <h3>Filter by Rank:</h3>
+                <h3>Filter by Continent:</h3>
             </div>
 
             <div class="rank-filters">
@@ -212,6 +205,20 @@
                 <button class="rank-filter" data-rank="D">D-Rank</button>
                 <button class="rank-filter" data-rank="E">E-Rank</button>
                 <button class="rank-filter" data-rank="F">F-Rank</button>
+            </div>
+
+            <div class="continent-filters">
+                <button class="continent-filter active" data-continent="all">All Continents</button>
+                <button class="continent-filter" data-continent="eldoria">Eldoria</button>
+                <button class="continent-filter" data-continent="mechanis">Mechanis</button>
+                <button class="continent-filter" data-continent="spiritus">Spiritus</button>
+                <button class="continent-filter" data-continent="wildheart">Wildheart</button>
+            </div>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="beasts-swiper">
+                    <!-- Beast cards will be dynamically inserted here -->
+                </div>
             </div>
         </div>
     </section>

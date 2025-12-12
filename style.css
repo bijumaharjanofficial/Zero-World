@@ -891,7 +891,8 @@ input:checked+.toggle-slider:before {
 /* Filters */
 .filters,
 .rank-filters {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
@@ -929,13 +930,15 @@ input:checked+.toggle-slider:before {
 }
 
 .light-mode .filter-btn.active,
-.light-mode .rank-filter.active {
+.light-mode .rank-filter.active,
+.light-mode .continent-filter.active {
     background-color: var(--light-accent);
     color: white;
 }
 
 .dark-mode .filter-btn.active,
-.dark-mode .rank-filter.active {
+.dark-mode .rank-filter.active,
+.dark-mode .continent-filter.active {
     background-color: var(--dark-primary);
     color: #0a0a0a;
 }
@@ -1049,6 +1052,7 @@ input:checked+.toggle-slider:before {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid;
+    height: 100px;
 }
 
 .light-mode .card-stats {
@@ -1688,6 +1692,11 @@ footer {
         padding: 10px 0;
     }
 
+    .filters,
+    .rank-filters {
+        display: flex;
+    }
+
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -2007,4 +2016,54 @@ footer {
 /* Make sure modal content doesn't overlap with back button */
 .modal-body {
     padding-top: 10px;
+}
+
+/* Continent Filters */
+.continent-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.continent-filter {
+    padding: 8px 16px;
+    border: 2px solid var(--accent-color);
+    background: transparent;
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.continent-filter:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.continent-filter.active {
+    background-color: var(--light-card);
+    color: var(--light-text);
+    box-shadow: 0 4px 8px var(--light-shadow);
+}
+
+/* Combined filters header */
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filters-header h3 {
+    margin: 0;
+    color: var(--accent-color);
 }

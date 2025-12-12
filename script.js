@@ -41,6 +41,7 @@ let currentHeroView = 'continents';
 let currentCarouselIndex = 0;
 let currentRulerFilter = 'all';
 let currentBeastRankFilter = 'all';
+let currentBeastContinentFilter = 'all';
 let beastSwiper = null;
 let allRulers = [];
 let allHeroes = [];
@@ -69,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize carousel
     initCarousel();
+
+    // Initialize beast continent filters
+    initBeastContinentFilters();
 });
 
 // Load world data from data.json file
@@ -316,6 +320,38 @@ function loadFallbackData() {
     renderRulers();
     renderHeroes();
     renderBeasts();
+}
+
+// Initialize continent filters for beasts
+function initBeastContinentFilters() {
+    // Get all continent filter buttons
+    const continentFilters = document.querySelectorAll('.continent-filter');
+    
+    if (continentFilters.length === 0) {
+        console.error("Continent filter buttons not found!");
+        return;
+    }
+    
+    // Add click event to each filter button
+    continentFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            // Remove active class from all continent filter buttons
+            document.querySelectorAll('.continent-filter').forEach(f => {
+                f.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            filter.classList.add('active');
+            
+            // Set current continent filter
+            currentBeastContinentFilter = filter.getAttribute('data-continent');
+            
+            // Render filtered beasts
+            renderBeasts();
+        });
+    });
+    
+    console.log("Continent filters initialized");
 }
 
 // Initialize event listeners
@@ -780,24 +816,31 @@ function renderHeroes() {
     }
 }
 
-// Render beasts
+// Render beasts with both rank and continent filters
 function renderBeasts() {
     const container = beastsSwiperContainer;
     if (!container) return;
 
     container.innerHTML = '';
 
-    // Filter beasts based on current rank filter
+    // Filter beasts based on current rank AND continent filters
     let filteredBeasts = allBeasts;
+    
+    // Apply rank filter if not "all"
     if (currentBeastRankFilter !== 'all') {
-        filteredBeasts = allBeasts.filter(beast => {
+        filteredBeasts = filteredBeasts.filter(beast => {
             if (!beast.rank) return false;
-
-            // Extract just the rank prefix (e.g., "SSS" from "SSS-Rank Calamity")
             const rankPrefix = beast.rank.split('-')[0];
-
-            // Exact match to prevent "SSS" matching when looking for "SS"
             return rankPrefix === currentBeastRankFilter;
+        });
+    }
+    
+    // Apply continent filter if not "all"
+    if (currentBeastContinentFilter !== 'all') {
+        filteredBeasts = filteredBeasts.filter(beast => {
+            if (!beast.continent) return false;
+            // Compare continent names case-insensitively
+            return beast.continent.toLowerCase().includes(currentBeastContinentFilter.toLowerCase());
         });
     }
 
@@ -808,7 +851,11 @@ function renderBeasts() {
                 <div class="card">
                     <div class="card-content">
                         <h3>No Beasts Found</h3>
-                        <p>No beasts match the selected rank filter.</p>
+                        <p>No beasts match the selected filters.</p>
+                        <p>Current filters: 
+                            ${currentBeastRankFilter !== 'all' ? `Rank: ${currentBeastRankFilter}` : ''}
+                            ${currentBeastContinentFilter !== 'all' ? `Continent: ${currentBeastContinentFilter}` : ''}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -843,6 +890,7 @@ function renderBeasts() {
                     <p><strong>Stars:</strong> ${beast.stars || 'N/A'}★</p>
                     <div class="card-content-details">
                         <p><strong>Threat:</strong> ${beast.threat_level || 'Unknown'}</p>
+                        <p><strong>Continent:</strong> ${beast.continent || 'Unknown'}</p>
                         <p>${beast.classification || 'Unknown'}</p>
                     </div>
                     <div class="card-stats">
