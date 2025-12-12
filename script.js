@@ -790,9 +790,15 @@ function renderBeasts() {
     // Filter beasts based on current rank filter
     let filteredBeasts = allBeasts;
     if (currentBeastRankFilter !== 'all') {
-        filteredBeasts = allBeasts.filter(beast =>
-            beast.rank && beast.rank.startsWith(currentBeastRankFilter)
-        );
+        filteredBeasts = allBeasts.filter(beast => {
+            if (!beast.rank) return false;
+
+            // Extract just the rank prefix (e.g., "SSS" from "SSS-Rank Calamity")
+            const rankPrefix = beast.rank.split('-')[0];
+
+            // Exact match to prevent "SSS" matching when looking for "SS"
+            return rankPrefix === currentBeastRankFilter;
+        });
     }
 
     // If no beasts found, show message

@@ -2866,16 +2866,18 @@
                             "logo": "spiritus/chronastra.png"
                         }
                     ],
-                    "additional_villain": [{
-                        "name": "Aurelian, the Gilded Necromancer",
-                        "title": "The King of Empty Thrones",
-                        "race": "Human Priest",
-                        "level": 850,
-                        "description": "Fallen angel of deceptive beauty in pristine white and gold robes with hidden necromantic sigils. Wields Staff of Hollow Dominion with captive Soul-Sun. Rides Azrael, the Last Breath, a colossal skeleton dragon.",
-                        "unique_ability": "Uses perverted holy light to dominate life and undeath, raises disciplined golden-lit skeletal legions",
-                        "image": "spiritus/aurelian.png",
-                        "logo": "spiritus/aurelian.png"
-                    }],
+                    "additional_villain": [
+                        {
+                            "name": "Aurelian, the Gilded Necromancer",
+                            "title": "The King of Empty Thrones",
+                            "race": "Human Priest",
+                            "level": 850,
+                            "description": "Fallen angel of deceptive beauty in pristine white and gold robes with hidden necromantic sigils. Wields Staff of Hollow Dominion with captive Soul-Sun. Rides Azrael, the Last Breath, a colossal skeleton dragon.",
+                            "unique_ability": "Uses perverted holy light to dominate life and undeath, raises disciplined golden-lit skeletal legions",
+                            "image": "spiritus/aurelian.png",
+                            "logo": "spiritus/aurelian.png"
+                        }
+                    ],
                     "notable_features": [
                         {
                             "name": "The Penitent Falls",
@@ -4846,7 +4848,9 @@
                         "Fungal-folk"
                     ],
                     "ruler": {
-                        "type": "Gestalt Consciousness",
+                        "name": "Heartwood Council",
+                        "age": 48,
+                        "race": "Gestalt Consciousness",
                         "form": "The Heartwood Council (Ancient Treants)",
                         "speaker": {
                             "name": "Sylphrena",
@@ -4857,10 +4861,10 @@
                                 "description": "Linked consciousness of the forest actively dampens Spirit Pressure and repels Beast Tides within their borders by radiating counter-frequency of calm",
                                 "effect": "Stabilizes territory at SA 4-5, requires immense collective focus"
                             },
-                            "personality": "Calm, ancient-sounding, patient, but capable of immense slow-building wrath. Views Horde as reckless children, wilds as sibling to be understood.",
-                            "image": "wildheart/heartwood_council.png",
-                            "logo": "wildheart/heartwood_council.png"
-                        }
+                            "personality": "Calm, ancient-sounding, patient, but capable of immense slow-building wrath. Views Horde as reckless children, wilds as sibling to be understood."
+                        },
+                        "image": "wildheart/heartwood_council.png",
+                        "logo": "wildheart/heartwood_council.png"
                     },
                     "national_hero": {
                         "name": "Arannis Whisperleaf",
