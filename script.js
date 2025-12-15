@@ -326,12 +326,12 @@ function loadFallbackData() {
 function initBeastContinentFilters() {
     // Get all continent filter buttons
     const continentFilters = document.querySelectorAll('.continent-filter');
-    
+
     if (continentFilters.length === 0) {
         console.error("Continent filter buttons not found!");
         return;
     }
-    
+
     // Add click event to each filter button
     continentFilters.forEach(filter => {
         filter.addEventListener('click', () => {
@@ -339,18 +339,18 @@ function initBeastContinentFilters() {
             document.querySelectorAll('.continent-filter').forEach(f => {
                 f.classList.remove('active');
             });
-            
+
             // Add active class to clicked button
             filter.classList.add('active');
-            
+
             // Set current continent filter
             currentBeastContinentFilter = filter.getAttribute('data-continent');
-            
+
             // Render filtered beasts
             renderBeasts();
         });
     });
-    
+
     console.log("Continent filters initialized");
 }
 
@@ -825,7 +825,7 @@ function renderBeasts() {
 
     // Filter beasts based on current rank AND continent filters
     let filteredBeasts = allBeasts;
-    
+
     // Apply rank filter if not "all"
     if (currentBeastRankFilter !== 'all') {
         filteredBeasts = filteredBeasts.filter(beast => {
@@ -834,7 +834,7 @@ function renderBeasts() {
             return rankPrefix === currentBeastRankFilter;
         });
     }
-    
+
     // Apply continent filter if not "all"
     if (currentBeastContinentFilter !== 'all') {
         filteredBeasts = filteredBeasts.filter(beast => {
@@ -1080,12 +1080,15 @@ function getRankColor(stars) {
 
 // Open ruler modal with details
 function openRulerModal(ruler) {
-    modalTitle.textContent = ruler.name;
+    modalTitle.textContent = safeGet(ruler, 'name', 'Unknown Ruler');
+
+    const imageUrl = safeGet(ruler, 'image');
+    const skill = safeGet(ruler, 'unique_skill') || safeGet(ruler, 'unique_ability', {});
 
     let modalHTML = `
-        ${ruler.image ?
+        ${imageUrl ?
             `<div class="modal-image">
-                <img src="${getImageUrl(ruler.image)}" alt="${ruler.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(ruler, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
             </div>` :
             `<div class="modal-image placeholder-img-large">
                 <i class="fas fa-crown"></i>
@@ -1094,44 +1097,46 @@ function openRulerModal(ruler) {
         
         <div class="modal-stats">
             <div class="modal-stat">
-                <span class="modal-stat-value">${ruler.race || ruler.type || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(ruler, 'race', safeGet(ruler, 'type', 'Unknown'))}</span>
                 <span class="modal-stat-label">Race/Type</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${ruler.age || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(ruler, 'age', 'Unknown')}</span>
                 <span class="modal-stat-label">Age</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${ruler.sa_level || 'N/A'}</span>
+                <span class="modal-stat-value">${safeGet(ruler, 'sa_level', 'N/A')}</span>
                 <span class="modal-stat-label">SA Level</span>
             </div>
         </div>
         
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${ruler.description || 'No description available.'}</p>
+            <p>${safeGet(ruler, 'description', 'No description available.')}</p>
         </div>
     `;
 
-    if (ruler.personality) {
+    // Add personality if it exists
+    const personality = safeGet(ruler, 'personality');
+    if (personality && personality !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Personality</h3>
-                <p>${ruler.personality}</p>
+                <p>${formatData(personality)}</p>
             </div>
         `;
     }
 
-    if (ruler.unique_skill || ruler.unique_ability) {
-        const skill = ruler.unique_skill || ruler.unique_ability;
+    // Add unique skill/ability if it exists
+    if (skill && Object.keys(skill).length > 0 && skill.name !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Unique ${ruler.unique_skill ? 'Skill' : 'Ability'}</h3>
                 <div class="skill-info">
-                    <h4>${skill.name || 'Unknown'}</h4>
-                    <p><strong>Stars:</strong> ${skill.stars || 'N/A'}★</p>
-                    <p><strong>Description:</strong> ${skill.description || 'No description available.'}</p>
-                    <p><strong>Effect:</strong> ${skill.effect || 'No effect information available.'}</p>
+                    <h4>${safeGet(skill, 'name', 'Unknown')}</h4>
+                    <p><strong>Stars:</strong> ${safeGet(skill, 'stars', 'N/A')}★</p>
+                    <p><strong>Description:</strong> ${safeGet(skill, 'description', 'No description available.')}</p>
+                    <p><strong>Effect:</strong> ${safeGet(skill, 'effect', 'No effect information available.')}</p>
                 </div>
             </div>
         `;
@@ -1140,8 +1145,8 @@ function openRulerModal(ruler) {
     modalHTML += `
         <div class="modal-section">
             <h3>Location</h3>
-            <p><strong>Continent:</strong> ${ruler.continent || 'Unknown'}</p>
-            <p><strong>Nation:</strong> ${ruler.nation || 'Unknown'}</p>
+            <p><strong>Continent:</strong> ${safeGet(ruler, 'continent', 'Unknown')}</p>
+            <p><strong>Nation:</strong> ${safeGet(ruler, 'nation', 'Unknown')}</p>
         </div>
     `;
 
@@ -1152,12 +1157,15 @@ function openRulerModal(ruler) {
 
 // Open hero modal with details
 function openHeroModal(hero) {
-    modalTitle.textContent = hero.name;
+    modalTitle.textContent = safeGet(hero, 'name', 'Unknown Hero');
+
+    const imageUrl = safeGet(hero, 'image');
+    const signatureSkill = safeGet(hero, 'signature_skill', {});
 
     let modalHTML = `
-        ${hero.image ?
+        ${imageUrl ?
             `<div class="modal-image">
-                <img src="${getImageUrl(hero.image)}" alt="${hero.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(hero, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
             </div>` :
             `<div class="modal-image placeholder-img-large">
                 <i class="fas fa-shield-alt"></i>
@@ -1166,53 +1174,88 @@ function openHeroModal(hero) {
         
         <div class="modal-stats">
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.level || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'level', 'Unknown')}</span>
                 <span class="modal-stat-label">Level</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.race || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'race', 'Unknown')}</span>
                 <span class="modal-stat-label">Race</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.title || 'Hero'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'title', 'Hero')}</span>
                 <span class="modal-stat-label">Title</span>
             </div>
         </div>
         
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${hero.description || 'No description available.'}</p>
+            <p>${safeGet(hero, 'description', 'No description available.')}</p>
         </div>
     `;
 
-    if (hero.famed_deed) {
+    // Add famed deed if it exists
+    const famedDeed = safeGet(hero, 'famed_deed');
+    if (famedDeed && famedDeed !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Famed Deed</h3>
-                <p>${hero.famed_deed}</p>
+                <p>${formatData(famedDeed)}</p>
             </div>
         `;
     }
 
-    if (hero.combat_style) {
+    // Add combat style if it exists
+    const combatStyle = safeGet(hero, 'combat_style');
+    if (combatStyle && combatStyle !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Combat Style</h3>
-                <p>${hero.combat_style}</p>
+                <p>${formatData(combatStyle)}</p>
             </div>
         `;
     }
 
-    if (hero.signature_skill) {
+    // Add signature skill if it exists
+    if (signatureSkill && Object.keys(signatureSkill).length > 0 && signatureSkill.name !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Signature Skill</h3>
                 <div class="skill-info">
-                    <h4>${hero.signature_skill.name}</h4>
-                    <p><strong>Stars:</strong> ${hero.signature_skill.stars}★</p>
-                    <p><strong>Description:</strong> ${hero.signature_skill.description}</p>
-                    <p><strong>Effect:</strong> ${hero.signature_skill.effect}</p>
+                    <h4>${safeGet(signatureSkill, 'name', 'Unknown')}</h4>
+                    <p><strong>Stars:</strong> ${safeGet(signatureSkill, 'stars', 'N/A')}★</p>
+                    <p><strong>Description:</strong> ${safeGet(signatureSkill, 'description', 'No description available.')}</p>
+                    <p><strong>Effect:</strong> ${safeGet(signatureSkill, 'effect', 'No effect information available.')}</p>
                 </div>
+            </div>
+        `;
+    }
+
+    // Add abilities array if it exists
+    const abilities = safeGet(hero, 'abilities', []);
+    if (Array.isArray(abilities) && abilities.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Abilities</h3>
+                <ul class="ability-list">
+                    ${abilities.map(ability => `
+                        <li class="ability-item">
+                            <strong>${safeGet(ability, 'name', 'Unknown Ability')}:</strong> 
+                            ${safeGet(ability, 'effect', safeGet(ability, 'description', 'No details'))}
+                            ${ability.type ? ` (${ability.type})` : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add combat encounter if it exists (for bosses that are also heroes)
+    const combatEncounter = safeGet(hero, 'combat_encounter', {});
+    if (combatEncounter && Object.keys(combatEncounter).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Combat Encounter</h3>
+                ${formatData(combatEncounter)}
             </div>
         `;
     }
@@ -1220,8 +1263,8 @@ function openHeroModal(hero) {
     modalHTML += `
         <div class="modal-section">
             <h3>Location</h3>
-            <p><strong>Continent:</strong> ${hero.continent || 'Unknown'}</p>
-            <p><strong>Nation:</strong> ${hero.nation || 'Unknown'}</p>
+            <p><strong>Continent:</strong> ${safeGet(hero, 'continent', 'Unknown')}</p>
+            <p><strong>Nation:</strong> ${safeGet(hero, 'nation', 'Unknown')}</p>
         </div>
     `;
 
@@ -1232,12 +1275,14 @@ function openHeroModal(hero) {
 
 // Open beast modal with details
 function openBeastModal(beast) {
-    modalTitle.textContent = beast.name;
+    modalTitle.textContent = safeGet(beast, 'name', 'Unknown Beast');
+
+    const imageUrl = safeGet(beast, 'image');
 
     let modalHTML = `
-        ${beast.image ?
+        ${imageUrl ?
             `<div class="modal-image">
-                <img src="${getImageUrl(beast.image)}" alt="${beast.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(beast, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
             </div>` :
             `<div class="modal-image placeholder-img-large">
                 <i class="fas fa-dragon"></i>
@@ -1246,77 +1291,107 @@ function openBeastModal(beast) {
         
         <div class="modal-stats">
             <div class="modal-stat">
-                <span class="modal-stat-value">${beast.rank || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(beast, 'rank', 'Unknown')}</span>
                 <span class="modal-stat-label">Rank</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${beast.stars || 'N/A'}★</span>
+                <span class="modal-stat-value">${safeGet(beast, 'stars', 'N/A')}★</span>
                 <span class="modal-stat-label">Stars</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${beast.threat_level || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(beast, 'threat_level', 'Unknown')}</span>
                 <span class="modal-stat-label">Threat Level</span>
             </div>
         </div>
         
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${beast.description || 'No description available.'}</p>
+            <p>${safeGet(beast, 'description', 'No description available.')}</p>
         </div>
         
         <div class="modal-section">
             <h3>Classification</h3>
-            <p>${beast.classification || 'Unknown'}</p>
+            <p>${safeGet(beast, 'classification', 'Unknown')}</p>
         </div>
     `;
 
-    if (beast.location) {
+    // Handle location (could be string or array)
+    const location = safeGet(beast, 'location');
+    if (location && location !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Location</h3>
-                <p>${Array.isArray(beast.location) ? beast.location.join(', ') : beast.location}</p>
+                <p>${formatData(location)}</p>
             </div>
         `;
     }
 
-    if (beast.appearance) {
+    // Handle appearance (could be object with various properties)
+    const appearance = safeGet(beast, 'appearance', {});
+    if (appearance && Object.keys(appearance).length > 0) {
         modalHTML += `
             <div class="modal-section">
                 <h3>Appearance</h3>
-                <ul>
-                    ${beast.appearance.lower_half ? `<li><strong>Lower Half:</strong> ${beast.appearance.lower_half}</li>` : ''}
-                    ${beast.appearance.upper_half ? `<li><strong>Upper Half:</strong> ${beast.appearance.upper_half}</li>` : ''}
-                    ${beast.appearance.wings ? `<li><strong>Wings:</strong> ${beast.appearance.wings}</li>` : ''}
-                    ${beast.appearance.body ? `<li><strong>Body:</strong> ${beast.appearance.body}</li>` : ''}
-                    ${beast.appearance.head ? `<li><strong>Head:</strong> ${beast.appearance.head}</li>` : ''}
-                    ${beast.appearance.size ? `<li><strong>Size:</strong> ${beast.appearance.size}</li>` : ''}
-                </ul>
+                ${formatData(appearance)}
             </div>
         `;
     }
 
-    if (beast.abilities && Array.isArray(beast.abilities)) {
+    // Handle abilities (array of objects)
+    const abilities = safeGet(beast, 'abilities', []);
+    if (Array.isArray(abilities) && abilities.length > 0) {
         modalHTML += `
             <div class="modal-section">
                 <h3>Abilities</h3>
-                <ul>
-                    ${beast.abilities.map(ability =>
-            `<li><strong>${ability.name}:</strong> ${ability.effect || ability.description || 'No details'}</li>`
-        ).join('')}
+                <ul class="ability-list">
+                    ${abilities.map(ability => `
+                        <li class="ability-item">
+                            <strong>${safeGet(ability, 'name', 'Unknown Ability')}:</strong> 
+                            ${safeGet(ability, 'effect', safeGet(ability, 'description', 'No details'))}
+                            ${ability.type ? ` (${ability.type})` : ''}
+                        </li>
+                    `).join('')}
                 </ul>
             </div>
         `;
     }
 
-    if (beast.behavior) {
+    // Handle behavior (could be object or string)
+    const behavior = safeGet(beast, 'behavior');
+    if (behavior && behavior !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Behavior</h3>
-                <p>${typeof beast.behavior === 'object' ?
-                Object.entries(beast.behavior).map(([key, value]) =>
-                    `<strong>${key}:</strong> ${value}`
-                ).join('<br>') :
-                beast.behavior}</p>
+                <p>${formatData(behavior)}</p>
+            </div>
+        `;
+    }
+
+    // Handle loot (could be object with various properties)
+    const loot = safeGet(beast, 'loot', {});
+    if (loot && Object.keys(loot).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Loot</h3>
+                ${formatData(loot)}
+            </div>
+        `;
+    }
+
+    // Handle weaknesses and resistances (arrays)
+    const weaknesses = safeGet(beast, 'weaknesses', []);
+    const resistances = safeGet(beast, 'resistances', []);
+
+    if (weaknesses.length > 0 || resistances.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Combat Info</h3>
+                ${weaknesses.length > 0 ? `
+                    <p><strong>Weaknesses:</strong> ${formatData(weaknesses)}</p>
+                ` : ''}
+                ${resistances.length > 0 ? `
+                    <p><strong>Resistances:</strong> ${formatData(resistances)}</p>
+                ` : ''}
             </div>
         `;
     }
@@ -1324,7 +1399,7 @@ function openBeastModal(beast) {
     modalHTML += `
         <div class="modal-section">
             <h3>Continent</h3>
-            <p>${beast.continent || 'Unknown'}</p>
+            <p>${safeGet(beast, 'continent', 'Unknown')}</p>
         </div>
     `;
 
@@ -1335,36 +1410,119 @@ function openBeastModal(beast) {
 
 // Open boss modal with details
 function openBossModal(boss) {
-    modalTitle.textContent = boss.name;
+    modalTitle.textContent = safeGet(boss, 'name', 'Unknown Boss');
+
+    const imageUrl = safeGet(boss, 'image') || safeGet(boss, 'logo');
+
     let modalHTML = `
-        ${boss.image ? `<div class="modal-image"> <img src="${getImageUrl(boss.image || boss.logo)}" alt="${boss.name}"> </div>` : ''}
+        ${imageUrl ?
+            `<div class="modal-image">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(boss, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+            </div>` :
+            `<div class="modal-image placeholder-img-large">
+                <i class="fas fa-skull-crossbones"></i>
+            </div>`
+        }
+        
+        <div class="modal-stats">
+            <div class="modal-stat">
+                <span class="modal-stat-value">${safeGet(boss, 'rank', 'Unknown')}</span>
+                <span class="modal-stat-label">Rank</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${safeGet(boss, 'recommended_level', '??')}</span>
+                <span class="modal-stat-label">Min Level</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${safeGet(boss, 'stars', safeGet(boss, 'rank', '').includes('A-Rank') ? 6 : 5)}★</span>
+                <span class="modal-stat-label">Power</span>
+            </div>
+        </div>
+        
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${boss.description || 'No description available.'}</p>
-            <p><strong>Rank:</strong> ${boss.rank}</p>
-            <p><strong>Recommended Level:</strong> ${boss.recommended_level}</p>
+            <p>${safeGet(boss, 'description', 'No description available.')}</p>
         </div>
+        
         <div class="modal-section">
             <h3>Location</h3>
-            <p><strong>Continent:</strong> ${boss.continent || 'Unknown'}</p>
-            <p><strong>Dungeon:</strong> ${boss.dungeon || 'Unknown'}</p>
-            <p><strong>Location:</strong> ${boss.location || 'Unknown'}</p>
+            <p><strong>Continent:</strong> ${safeGet(boss, 'continent', 'Unknown')}</p>
+            <p><strong>Dungeon:</strong> ${safeGet(boss, 'dungeon', 'Unknown')}</p>
+            <p><strong>Location:</strong> ${safeGet(boss, 'location', 'Unknown')}</p>
         </div>
-        <div class="modal-section">
-            <h3>Abilities</h3>
-            <ul>
-                ${(boss.abilities || []).map(ability => `<li><strong>${ability.name}:</strong> ${ability.effect} (${ability.type})</li>`).join('')}
-            </ul>
-        </div>
-        ${boss.loot && Object.keys(boss.loot).length > 0 ? `
+    `;
+
+    // Handle health phases if they exist
+    const healthPhases = safeGet(boss, 'health_phases', []);
+    if (Array.isArray(healthPhases) && healthPhases.length > 0) {
+        modalHTML += `
             <div class="modal-section">
-                <h3>Loot</h3>
-                <ul>
-                    ${Object.entries(boss.loot).map(([key, value]) => `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</li>`).join('')}
+                <h3>Health Phases</h3>
+                <ul class="phase-list">
+                    ${healthPhases.map(phase => `
+                        <li class="phase-item">
+                            <strong>HP Range:</strong> ${safeGet(phase, 'range', 'Unknown')}
+                            <br><strong>Behavior:</strong> ${safeGet(phase, 'behavior', safeGet(phase, 'name', 'No behavior info'))}
+                        </li>
+                    `).join('')}
                 </ul>
             </div>
-        ` : ''}
-    `;
+        `;
+    }
+
+    // Handle abilities if they exist
+    const abilities = safeGet(boss, 'abilities', []);
+    if (Array.isArray(abilities) && abilities.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Abilities</h3>
+                <ul class="ability-list">
+                    ${abilities.map(ability => `
+                        <li class="ability-item">
+                            <strong>${safeGet(ability, 'name', 'Unknown Ability')}:</strong> 
+                            ${safeGet(ability, 'effect', 'No effect info')}
+                            ${ability.type ? ` (${ability.type})` : ''}
+                            ${ability.condition ? ` [${ability.condition}]` : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Handle loot if it exists
+    const loot = safeGet(boss, 'loot', {});
+    if (loot && Object.keys(loot).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Loot</h3>
+                ${formatData(loot)}
+            </div>
+        `;
+    }
+
+    // Handle aftermath if it exists
+    const aftermath = safeGet(boss, 'aftermath', {});
+    if (aftermath && Object.keys(aftermath).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Aftermath</h3>
+                ${formatData(aftermath)}
+            </div>
+        `;
+    }
+
+    // Handle glitch interactions if they exist
+    const glitchInteraction = safeGet(boss, 'alex_glitch_interaction', {});
+    if (glitchInteraction && Object.keys(glitchInteraction).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Glitch Interactions</h3>
+                ${formatData(glitchInteraction)}
+            </div>
+        `;
+    }
+
     modalBody.innerHTML = modalHTML;
     detailsModal.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -1372,12 +1530,14 @@ function openBossModal(boss) {
 
 // Open additional hero modal
 function openAdditionalHeroModal(hero) {
-    modalTitle.textContent = hero.name;
+    modalTitle.textContent = safeGet(hero, 'name', 'Unknown Hero');
+
+    const imageUrl = safeGet(hero, 'image');
 
     let modalHTML = `
-        ${hero.image ?
+        ${imageUrl ?
             `<div class="modal-image">
-                <img src="${getImageUrl(hero.image)}" alt="${hero.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(hero, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
             </div>` :
             `<div class="modal-image placeholder-img-large">
                 <i class="fas fa-star"></i>
@@ -1386,39 +1546,95 @@ function openAdditionalHeroModal(hero) {
 
         <div class="modal-stats">
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.level || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'level', 'Unknown')}</span>
                 <span class="modal-stat-label">Level</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.race || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'race', 'Unknown')}</span>
                 <span class="modal-stat-label">Race</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${hero.title || 'Hero'}</span>
+                <span class="modal-stat-value">${safeGet(hero, 'title', 'Additional Hero')}</span>
                 <span class="modal-stat-label">Title</span>
             </div>
         </div>
         
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${hero.description || 'No description available.'}</p>
+            <p>${safeGet(hero, 'description', 'No description available.')}</p>
         </div>
     `;
 
-    if (hero.title) {
+    // Add title details if they exist
+    const title = safeGet(hero, 'title');
+    if (title && title !== 'Additional Hero') {
         modalHTML += `
             <div class="modal-section">
-                <h3>Title</h3>
-                <p>${hero.title}</p>
+                <h3>Title Details</h3>
+                <p>${formatData(title)}</p>
             </div>
         `;
     }
 
-    if (hero.unique_ability) {
+    // Add unique ability if it exists
+    const uniqueAbility = safeGet(hero, 'unique_ability');
+    if (uniqueAbility && uniqueAbility !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Unique Ability</h3>
-                <p>${hero.unique_ability}</p>
+                <p>${formatData(uniqueAbility)}</p>
+            </div>
+        `;
+    }
+
+    // Handle appearance (could be object with various properties)
+    const appearance = safeGet(hero, 'appearance', {});
+    if (appearance && Object.keys(appearance).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Appearance</h3>
+                ${formatData(appearance)}
+            </div>
+        `;
+    }
+
+    // Add skills/abilities array if it exists
+    const skills = safeGet(hero, 'unique_skills', safeGet(hero, 'skills', []));
+    if (Array.isArray(skills) && skills.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Unique Skills</h3>
+                <ul class="ability-list">
+                    ${skills.map(skill => `
+                        <li class="ability-item">
+                            <strong>${safeGet(skill, 'name', 'Unknown Skill')}:</strong> 
+                            ${safeGet(skill, 'effect', safeGet(skill, 'description', 'No details'))}
+                            ${skill.stars ? ` (${skill.stars}★)` : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add lore if it exists
+    const lore = safeGet(hero, 'lore');
+    if (lore && lore !== 'Unknown') {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Lore</h3>
+                <p>${formatData(lore)}</p>
+            </div>
+        `;
+    }
+
+    // Add personality if it exists
+    const personality = safeGet(hero, 'personality');
+    if (personality && personality !== 'Unknown') {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Personality</h3>
+                <p>${formatData(personality)}</p>
             </div>
         `;
     }
@@ -1426,8 +1642,8 @@ function openAdditionalHeroModal(hero) {
     modalHTML += `
         <div class="modal-section">
             <h3>Location</h3>
-            <p><strong>Continent:</strong> ${hero.continent || 'Unknown'}</p>
-            <p><strong>Nation:</strong> ${hero.nation || 'Unknown'}</p>
+            <p><strong>Continent:</strong> ${safeGet(hero, 'continent', 'Unknown')}</p>
+            <p><strong>Nation:</strong> ${safeGet(hero, 'nation', 'Unknown')}</p>
         </div>
     `;
 
@@ -1438,12 +1654,14 @@ function openAdditionalHeroModal(hero) {
 
 // Open additional villain modal
 function openAdditionalVillainModal(villain) {
-    modalTitle.textContent = villain.name;
+    modalTitle.textContent = safeGet(villain, 'name', 'Unknown Villain');
+
+    const imageUrl = safeGet(villain, 'image');
 
     let modalHTML = `
-        ${villain.image ?
+        ${imageUrl ?
             `<div class="modal-image">
-                <img src="${getImageUrl(villain.image)}" alt="${villain.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
+                <img src="${getImageUrl(imageUrl)}" alt="${safeGet(villain, 'name')}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">
             </div>` :
             `<div class="modal-image placeholder-img-large">
                 <i class="fas fa-skull"></i>
@@ -1452,39 +1670,124 @@ function openAdditionalVillainModal(villain) {
 
         <div class="modal-stats">
             <div class="modal-stat">
-                <span class="modal-stat-value">${villain.level || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(villain, 'level', 'Unknown')}</span>
                 <span class="modal-stat-label">Level</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${villain.race || 'Unknown'}</span>
+                <span class="modal-stat-value">${safeGet(villain, 'race', 'Unknown')}</span>
                 <span class="modal-stat-label">Race</span>
             </div>
             <div class="modal-stat">
-                <span class="modal-stat-value">${villain.title || 'Villian'}</span>
+                <span class="modal-stat-value">${safeGet(villain, 'title', 'Villain')}</span>
                 <span class="modal-stat-label">Title</span>
             </div>
         </div>
         
         <div class="modal-section">
             <h3>Description</h3>
-            <p>${villain.description || 'No description available.'}</p>
+            <p>${safeGet(villain, 'description', 'No description available.')}</p>
         </div>
     `;
 
-    if (villain.title) {
+    // Add title details if they exist
+    const title = safeGet(villain, 'title');
+    if (title && title !== 'Villain') {
         modalHTML += `
             <div class="modal-section">
-                <h3>Title</h3>
-                <p>${villain.title}</p>
+                <h3>Title Details</h3>
+                <p>${formatData(title)}</p>
             </div>
         `;
     }
 
-    if (villain.unique_ability) {
+    // Add unique ability if it exists
+    const uniqueAbility = safeGet(villain, 'unique_ability');
+    if (uniqueAbility && uniqueAbility !== 'Unknown') {
         modalHTML += `
             <div class="modal-section">
                 <h3>Unique Ability</h3>
-                <p>${villain.unique_ability}</p>
+                <p>${formatData(uniqueAbility)}</p>
+            </div>
+        `;
+    }
+
+    // Handle appearance (could be object with various properties)
+    const appearance = safeGet(villain, 'appearance', {});
+    if (appearance && Object.keys(appearance).length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Appearance</h3>
+                ${formatData(appearance)}
+            </div>
+        `;
+    }
+
+    // Add skills/abilities array if it exists
+    const skills = safeGet(villain, 'unique_skills', safeGet(villain, 'skills', []));
+    if (Array.isArray(skills) && skills.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Unique Skills</h3>
+                <ul class="ability-list">
+                    ${skills.map(skill => `
+                        <li class="ability-item">
+                            <strong>${safeGet(skill, 'name', 'Unknown Skill')}:</strong> 
+                            ${safeGet(skill, 'effect', safeGet(skill, 'description', 'No details'))}
+                            ${skill.stars ? ` (${skill.stars}★)` : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add lore if it exists
+    const lore = safeGet(villain, 'lore');
+    if (lore && lore !== 'Unknown') {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Lore</h3>
+                <p>${formatData(lore)}</p>
+            </div>
+        `;
+    }
+
+    // Add personality if it exists
+    const personality = safeGet(villain, 'personality');
+    if (personality && personality !== 'Unknown') {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Personality</h3>
+                <p>${formatData(personality)}</p>
+            </div>
+        `;
+    }
+
+    // Add sin information if it exists (for Bloodlord Council members)
+    const sin = safeGet(villain, 'sin');
+    if (sin && sin !== 'Unknown') {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Sin</h3>
+                <p>${formatData(sin)}</p>
+            </div>
+        `;
+    }
+
+    // Add weaknesses/resistances if they exist
+    const weaknesses = safeGet(villain, 'weaknesses', []);
+    const resistances = safeGet(villain, 'resistances', []);
+
+    if (weaknesses.length > 0 || resistances.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3>Combat Info</h3>
+                ${weaknesses.length > 0 ? `
+                    <p><strong>Weaknesses:</strong> ${formatData(weaknesses)}</p>
+                ` : ''}
+                ${resistances.length > 0 ? `
+                    <p><strong>Resistances:</strong> ${formatData(resistances)}</p>
+                ` : ''}
             </div>
         `;
     }
@@ -1492,8 +1795,8 @@ function openAdditionalVillainModal(villain) {
     modalHTML += `
         <div class="modal-section">
             <h3>Location</h3>
-            <p><strong>Continent:</strong> ${villain.continent || 'Unknown'}</p>
-            <p><strong>Nation:</strong> ${villain.nation || 'Unknown'}</p>
+            <p><strong>Continent:</strong> ${safeGet(villain, 'continent', 'Unknown')}</p>
+            <p><strong>Nation:</strong> ${safeGet(villain, 'nation', 'Unknown')}</p>
         </div>
     `;
 
@@ -1952,4 +2255,35 @@ function safeGet(obj, path, defaultValue = 'Unknown') {
 function getImageUrl(imagePath) {
     if (!imagePath) return null;
     return `${IMAGE_BASE_PATH}${imagePath}`;
+}
+
+// Helper function to safely get nested properties with better array handling
+function safeGet(obj, path, defaultValue = 'Unknown') {
+    return path.split('.').reduce((acc, part) => {
+        if (acc === null || acc === undefined || acc[part] === undefined) {
+            return defaultValue;
+        }
+        return acc[part];
+    }, obj) || defaultValue;
+}
+
+// Helper function to format and display arrays/objects
+function formatData(value) {
+    if (Array.isArray(value)) {
+        return value.map(item => {
+            if (typeof item === 'object') {
+                // If array contains objects, format them nicely
+                return Object.entries(item)
+                    .map(([key, val]) => `${key}: ${formatData(val)}`)
+                    .join(', ');
+            }
+            return item;
+        }).join(', ') || 'None';
+    } else if (typeof value === 'object' && value !== null) {
+        // Handle nested objects
+        return Object.entries(value)
+            .map(([key, val]) => `<strong>${key}:</strong> ${formatData(val)}`)
+            .join('<br>');
+    }
+    return value || 'None';
 }
