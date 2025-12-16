@@ -582,7 +582,7 @@
                                     "description": "Profound lore significance hinting at true origin of World Tree"
                                 }
                             ],
-                            "potential_gacha_roll": {
+                            "potential_gacha_roll": [{
                                 "name": "Forced 1 Draw at 10-Star Pool Odds",
                                 "possible_skills": [
                                     {
@@ -602,7 +602,7 @@
                                         "description": "Localized reality manipulation"
                                     }
                                 ]
-                            }
+                            }]
                         },
                         "aftermath": {
                             "system_alert": "Debugging failed alert reaches highest System layers",

@@ -516,7 +516,7 @@ function initCarousel() {
     // Auto-rotate carousel
     setInterval(() => {
         changeCarouselSlide(currentCarouselIndex + 1);
-    }, 100000);
+    }, 5000);
 }
 
 // Toggle between light and dark themes

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero - Divine Pantheons</title>
+    <link rel="stylesheet" href="gods.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=MedievalSharp&family=Raleway:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="light-mode">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-temple"></i> ZERO GODS</h1>
+                <p class="subtitle">Divine Pantheons Explorer</p>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">World Explorer</a></li>
+                    <li><a href="#supreme" class="nav-link active">Supreme Gods</a></li>
+                    <li><a href="#pantheons" class="nav-link">Pantheons</a></li>
+                    <li><a href="#hierarchy" class="nav-link">Divine Hierarchy</a></li>
+                    <li><a href="#temples" class="nav-link">Temples</a></li>
+                </ul>
+
+                <div class="theme-toggle">
+                    <span class="theme-label">Light</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="theme-switch">
+                        <label for="theme-switch" class="toggle-slider">
+                            <span class="toggle-icon sun"><i class="fas fa-sun"></i></span>
+                            <span class="toggle-icon moon"><i class="fas fa-moon"></i></span>
+                        </label>
+                    </div>
+                    <span class="theme-label">Dark</span>
+                </div>
+
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>The <span class="highlight">Divine Pantheons</span> of Zero</h2>
+                <p>Seven continents, seven pantheons. Each with a Supreme God, High Gods, Low Gods, and countless
+                    Demi-Gods watching over their domains.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">7</span>
+                        <span class="stat-label">Supreme Gods</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">35</span>
+                        <span class="stat-label">High Gods</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">70</span>
+                        <span class="stat-label">Low Gods</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">∞</span>
+                        <span class="stat-label">Demi-Gods</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-pattern"></div>
+    </section>
+
+    <!-- Supreme Gods Section -->
+    <section id="supreme" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> Supreme Gods of Zero</h2>
+                <p>The ultimate divine beings who watch over each continent</p>
+            </div>
+
+            <div class="supreme-gods-grid" id="supreme-gods-grid">
+                <!-- Supreme gods will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pantheons Overview -->
+    <section id="pantheons" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Seven Divine Pantheons</h2>
+                <p>Each continent follows a different divine tradition</p>
+            </div>
+
+            <div class="pantheon-cards" id="pantheon-cards">
+                <!-- Pantheon cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Divine Hierarchy -->
+    <section id="hierarchy" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-sitemap"></i> Divine Hierarchy</h2>
+                <p>The structure of divinity in each pantheon</p>
+            </div>
+
+            <div class="hierarchy-container">
+                <div class="hierarchy-level supreme">
+                    <div class="level-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Supreme God</h3>
+                    <p>One per continent, embodies the core principles of their pantheon</p>
+                    <div class="level-stats">
+                        <span>Stars: 9-10★</span>
+                        <span>Domains: 3-5</span>
+                        <span>Direct Worship: Continent-wide</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="hierarchy-level high">
+                    <div class="level-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>High Gods</h3>
+                    <p>5 per pantheon, major deities with significant domains</p>
+                    <div class="level-stats">
+                        <span>Stars: 8-9★</span>
+                        <span>Domains: 2-3</span>
+                        <span>Direct Worship: Nation-wide</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="hierarchy-level low">
+                    <div class="level-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Low Gods</h3>
+                    <p>10 per pantheon, specialized deities and helpers</p>
+                    <div class="level-stats">
+                        <span>Stars: 6-8★</span>
+                        <span>Domains: 1-2</span>
+                        <span>Direct Worship: Regional</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-arrow">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="hierarchy-level demi">
+                    <div class="level-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Demi-Gods</h3>
+                    <p>Countless minor deities, spirits, and ascended mortals</p>
+                    <div class="level-stats">
+                        <span>Stars: 1-6★</span>
+                        <span>Domains: Specific</span>
+                        <span>Direct Worship: Local</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Temples Section -->
+    <section id="temples" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-place-of-worship"></i> Major Temples & Shrines</h2>
+                <p>Places of worship across the continents</p>
+            </div>
+
+            <div class="temples-grid" id="temples-grid">
+                <!-- Temples will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pantheon Details (Accordion) -->
+    <section id="details" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> Pantheon Details</h2>
+                <p>Explore each pantheon's complete hierarchy</p>
+            </div>
+
+            <div class="pantheon-accordion" id="pantheon-accordion">
+                <!-- Accordion will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Divine Pantheons</h3>
+                    <p>An exploration of the gods who watch over the world of Zero, from Supreme Gods to local spirits.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#supreme">Supreme Gods</a></li>
+                        <li><a href="#pantheons">Pantheons</a></li>
+                        <li><a href="#hierarchy">Hierarchy</a></li>
+                        <li><a href="#temples">Temples</a></li>
+                        <li><a href="#details">Details</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Pantheons</h4>
+                    <ul>
+                        <li><a href="#" data-pantheon="eldoria">Dharnic (Eldoria)</a></li>
+                        <li><a href="#" data-pantheon="mechanis">Kami-Teku (Mechanis)</a></li>
+                        <li><a href="#" data-pantheon="spiritus">Netjer-Aten (Spiritus)</a></li>
+                        <li><a href="#" data-pantheon="wildheart">Vanir-Alfar (Wildheart)</a></li>
+                        <li><a href="#" data-pantheon="aqualon">Olympian-Abyssal (Aqualon)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Explore More</h4>
+                    <ul>
+                        <li><a href="index.html">World Explorer</a></li>
+                        <li><a href="#">Heroes & Rulers</a></li>
+                        <li><a href="#">Bestiary</a></li>
+                        <li><a href="#">System Mechanics</a></li>
+                        <li><a href="#">Lore Database</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Zero Divine Pantheons Explorer. All divine lore based on the provided gods.json.</p>
+                <p>This is a fan-made interactive website for educational and entertainment purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Popup for God Details -->
+    <div class="modal" id="god-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">God Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="gods.js"></script>
+</body>
+
+</html>
