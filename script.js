@@ -1,3 +1,12 @@
+(function () {
+    // Ensure at least one theme class is set
+    const body = document.body;
+    if (!body.classList.contains('light-mode') &&
+        !body.classList.contains('dark-mode')) {
+        body.classList.add('light-mode');
+    }
+})();
+
 // Main data object to store all world data
 let worldData = null;
 
@@ -71,9 +80,60 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize carousel
     initCarousel();
 
+     // Initialize dropdown
+    initMobileDropdowns();
+
     // Initialize beast continent filters
     initBeastContinentFilters();
+
+    // Set initial state for both toggle switches
+    const body = document.body;
+    const isDarkMode = body.classList.contains('dark-mode');
+    const originalSwitch = document.getElementById('theme-switch');
+    // Initialize theme toggle state
+    const fixedSwitch = document.getElementById('theme-switch-fixed');
+    if (fixedSwitch) {
+        fixedSwitch.checked = document.body.classList.contains('dark-mode');
+    }
 });
+
+// Dropdown Functions
+function initMobileDropdowns() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1023) { // Mobile view only
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const parent = this.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                    if (dropdown !== parent) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                parent.classList.toggle('active');
+            }
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 1023) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        }
+    });
+}
 
 // Load world data from data.json file
 async function loadWorldData() {
@@ -357,14 +417,24 @@ function initBeastContinentFilters() {
 // Initialize event listeners
 function initEventListeners() {
     // Theme toggle
-    themeSwitch.addEventListener('change', toggleTheme);
+    const fixedThemeSwitch = document.getElementById('theme-switch-fixed');
+    if (fixedThemeSwitch) {
+        fixedThemeSwitch.addEventListener('change', toggleTheme);
+    }
 
     // Mobile menu toggle
     hamburger.addEventListener('click', toggleMobileMenu);
 
     // Close mobile menu when clicking a link
     navLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
+        link.addEventListener('click', function (e) {
+            // Don't close menu if it's a dropdown toggle
+            if (this.classList.contains('dropdown-toggle')) {
+                e.preventDefault();
+                return; // Don't close mobile menu
+            }
+            closeMobileMenu();
+        });
     });
 
     // Hero view toggle
@@ -522,12 +592,26 @@ function initCarousel() {
 // Toggle between light and dark themes
 function toggleTheme() {
     const body = document.body;
-    if (themeSwitch.checked) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-    } else {
+    const isDarkMode = body.classList.contains('dark-mode');
+
+    // Toggle classes
+    if (isDarkMode) {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
+    } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+    }
+
+    // Sync both toggle switches if they exist
+    const originalSwitch = document.getElementById('theme-switch');
+    const fixedSwitch = document.getElementById('theme-switch-fixed');
+
+    if (originalSwitch) {
+        originalSwitch.checked = !isDarkMode;
+    }
+    if (fixedSwitch) {
+        fixedSwitch.checked = !isDarkMode;
     }
 }
 
