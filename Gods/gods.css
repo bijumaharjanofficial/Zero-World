@@ -1731,3 +1731,166 @@ footer {
         transform: translateY(0);
     }
 }
+
+/* Modal Tags Styles */
+.domain-tags, .relationship-tags, .favored-tags, .followers-tags,
+.symbol-tags, .animal-tags, .embodiment-domains, .example-domains {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.domain-tag, .relationship-tag, .favored-tag, .follower-tag,
+.symbol-tag, .animal-tag, .embodiment-domain, .example-domain {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.domain-tag, .embodiment-domain, .example-domain {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.dark-mode .domain-tag, .dark-mode .embodiment-domain, .dark-mode .example-domain {
+    background: rgba(187, 134, 252, 0.1);
+    color: var(--dark-primary);
+}
+
+.relationship-tag.ally {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+
+.relationship-tag.rival {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.relationship-tag.neutral {
+    background: rgba(155, 89, 182, 0.1);
+    color: #9b59b6;
+}
+
+.favored-tag, .follower-tag {
+    background: rgba(241, 196, 15, 0.1);
+    color: #f1c40f;
+}
+
+.symbol-tag {
+    background: rgba(155, 89, 182, 0.1);
+    color: #9b59b6;
+}
+
+.animal-tag {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+
+/* Relationships Grid */
+.relationships-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.relationship-category {
+    margin-bottom: 15px;
+}
+
+.relationship-category h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--light-text);
+}
+
+.dark-mode .relationship-category h4 {
+    color: var(--dark-text);
+}
+
+/* Lists */
+.duties-list, .sacred-items-list, .weaknesses-list, .temples-list {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.duties-list li, .sacred-items-list li, .weaknesses-list li, .temples-list li {
+    margin-bottom: 8px;
+    padding-left: 5px;
+}
+
+/* Divine Servant Styles */
+.hierarchy-rank, .embodiment-item, .element-type, .department-item,
+.example-item, .type-item {
+    background: rgba(0, 0, 0, 0.03);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--light-accent);
+}
+
+.dark-mode .hierarchy-rank, .dark-mode .embodiment-item, .dark-mode .element-type,
+.dark-mode .department-item, .dark-mode .example-item, .dark-mode .type-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--dark-primary);
+}
+
+.hierarchy-rank h4, .embodiment-item h4, .element-type h4, .department-item h4 {
+    color: var(--light-accent);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.dark-mode .hierarchy-rank h4, .dark-mode .embodiment-item h4,
+.dark-mode .element-type h4, .dark-mode .department-item h4 {
+    color: var(--dark-primary);
+}
+
+.role-description, .example-appearance, .type-appearance, .unique-power,
+.element-duties, .department-duties, .example-duties, .type-abilities {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.ability-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 5px;
+}
+
+.ability-tag {
+    padding: 3px 8px;
+    background: rgba(52, 152, 219, 0.15);
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.dark-mode .ability-tag {
+    background: rgba(187, 134, 252, 0.15);
+}
+
+.examples-section, .types-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .examples-section, .dark-mode .types-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.examples-section h5, .types-section h5 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--light-text);
+    opacity: 0.8;
+}
+
+.dark-mode .examples-section h5, .dark-mode .types-section h5 {
+    color: var(--dark-text);
+}

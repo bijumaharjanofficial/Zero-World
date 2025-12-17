@@ -32,6 +32,9 @@ function getPlaceholderImage(godType) {
 
 // Initialize the website
 document.addEventListener('DOMContentLoaded', function () {
+    // Load saved theme
+    loadTheme();
+
     // Load the gods data from gods.json
     loadGodsData();
 
@@ -115,7 +118,7 @@ function preloadGodImages() {
             if (god.image) imagesToPreload.push(`${IMAGE_BASE_PATH}${god.image}`);
         });
 
-        // Preload demi-gods images (if new structure)
+        // Preload demi-gods images
         if (pantheon.demi_gods && pantheon.demi_gods[0] && pantheon.demi_gods[0].title) {
             pantheon.demi_gods.forEach(god => {
                 if (god.image) imagesToPreload.push(`${IMAGE_BASE_PATH}${god.image}`);
@@ -240,11 +243,11 @@ function loadTheme() {
     if (savedTheme === 'dark') {
         document.body.classList.remove('light-mode');
         document.body.classList.add('dark-mode');
-        themeSwitch.checked = true;
+        if (themeSwitch) themeSwitch.checked = true;
     } else {
         document.body.classList.remove('dark-mode');
         document.body.classList.add('light-mode');
-        themeSwitch.checked = false;
+        if (themeSwitch) themeSwitch.checked = false;
     }
 }
 
@@ -309,7 +312,8 @@ function renderSupremeGods() {
         `;
 
         godCard.addEventListener('click', () => {
-            openGodModal(supremeGod, continent, 'supreme');
+            const pantheon = godsData.gods_data.pantheons[continent];
+            renderCompleteGodModal(supremeGod, continent, pantheon, 'supreme');
         });
 
         supremeGodsGrid.appendChild(godCard);
@@ -677,33 +681,31 @@ function openGodModalByType(godName, godType, continent, pantheon) {
     switch (godType) {
         case 'supreme':
             godData = pantheon.supreme_god;
+            renderCompleteGodModal(godData, continent, pantheon, 'supreme');
             break;
         case 'high':
             godData = pantheon.high_gods.find(g => g.name === godName);
+            renderCompleteGodModal(godData, continent, pantheon, 'high');
             break;
         case 'low':
             godData = pantheon.low_gods.find(g => g.name === godName);
+            renderCompleteGodModal(godData, continent, pantheon, 'low');
             break;
         case 'demi':
             godData = pantheon.demi_gods.find(g => g.name === godName);
+            // ADD THIS LINE to set modal title for demi-gods
+            modalTitle.textContent = `${godData.name} - Demi-God`;
+            renderDemiGodModal(godData, continent, pantheon);
             break;
         case 'demi_old':
             godData = pantheon.demi_gods.find(g => g.name === godName);
+            // ADD THIS LINE to set modal title for old demi-gods
+            modalTitle.textContent = `${godData.name} - Demi-God Group`;
+            renderOldDemiGodModal(godData, continent, pantheon);
             break;
         default:
             console.error('Unknown god type:', godType);
             return;
-    }
-
-    if (godData) {
-        // FIXED: Pass all required parameters
-        if (godType === 'demi') {
-            renderDemiGodModal(godData, continent, pantheon);
-        } else if (godType === 'demi_old') {
-            renderOldDemiGodModal(godData, continent, pantheon);
-        } else {
-            renderStandardGodModal(godData, continent, pantheon, godType);
-        }
     }
 }
 
@@ -713,16 +715,12 @@ function openDivineServantModal(category, continent, pantheon) {
 
     const servantData = pantheon.divine_servants[category];
 
-    modalTitle.textContent = `${category} - Divine Servants`;
+    modalTitle.textContent = `${servantData.category_name || category} - Divine Servants`;
 
     let modalHTML = `
         <div class="modal-section">
-            <h3><i class="fas fa-users"></i> ${category}</h3>
+            <h3><i class="fas fa-users"></i> ${servantData.category_name || category}</h3>
             <div class="modal-stats">
-                <div class="modal-stat">
-                    <span class="modal-stat-value">${servantData.count || 'Many'}</span>
-                    <span class="modal-stat-label">Count</span>
-                </div>
                 <div class="modal-stat">
                     <span class="modal-stat-value">${continent}</span>
                     <span class="modal-stat-label">Continent</span>
@@ -731,14 +729,42 @@ function openDivineServantModal(category, continent, pantheon) {
                     <span class="modal-stat-value">${pantheon.pantheon_name}</span>
                     <span class="modal-stat-label">Pantheon</span>
                 </div>
+                <div class="modal-stat">
+                    <span class="modal-stat-value">${servantData.count || 'Varies'}</span>
+                    <span class="modal-stat-label">Count</span>
+                </div>
             </div>
         </div>
         
         <div class="modal-section">
             <h3><i class="fas fa-info-circle"></i> Description</h3>
-            <p>${servantData.description || servantData.god_of || 'Divine servants that serve the pantheon.'}</p>
+            <p>${servantData.description || 'Divine servants that serve the pantheon.'}</p>
         </div>
     `;
+
+    // Add all data fields dynamically
+    const dataFields = {
+        'recruitment': { icon: 'fas fa-user-plus', label: 'Recruitment' },
+        'mortality': { icon: 'fas fa-heartbeat', label: 'Mortality' },
+        'worship': { icon: 'fas fa-hands-praying', label: 'Worship' },
+        'birth_process': { icon: 'fas fa-birthday-cake', label: 'Birth Process' },
+        'power_source': { icon: 'fas fa-bolt', label: 'Power Source' },
+        'vulnerability': { icon: 'fas fa-shield-alt', label: 'Vulnerability' },
+        'ascension_process': { icon: 'fas fa-arrow-up', label: 'Ascension Process' },
+        'limitations': { icon: 'fas fa-ban', label: 'Limitations' },
+        'shrines': { icon: 'fas fa-temple', label: 'Shrines' }
+    };
+
+    Object.entries(dataFields).forEach(([field, info]) => {
+        if (servantData[field]) {
+            modalHTML += `
+                <div class="modal-section">
+                    <h3><i class="${info.icon}"></i> ${info.label}</h3>
+                    <p>${servantData[field]}</p>
+                </div>
+            `;
+        }
+    });
 
     // Add hierarchy if exists
     if (servantData.hierarchy) {
@@ -746,15 +772,58 @@ function openDivineServantModal(category, continent, pantheon) {
             <div class="modal-section">
                 <h3><i class="fas fa-sitemap"></i> Hierarchy</h3>
                 ${servantData.hierarchy.map(rank => `
-                    <div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                        <h4 style="margin: 0 0 5px 0;">${rank.rank}</h4>
-                        <p style="margin: 0; opacity: 0.8;">${rank.role}</p>
+                    <div class="hierarchy-rank">
+                        <h4>${rank.rank}</h4>
+                        <p class="role-description">${rank.role}</p>
+                        
                         ${rank.examples ? `
-                            <div style="margin-top: 10px;">
-                                <strong>Examples:</strong>
-                                <ul style="margin: 5px 0 0 20px;">
-                                    ${rank.examples.map(example => `<li>${typeof example === 'object' ? example.name : example}</li>`).join('')}
-                                </ul>
+                            <div class="examples-section">
+                                <h5>Examples:</h5>
+                                ${Array.isArray(rank.examples) ? rank.examples.map(example => `
+                                    <div class="example-item">
+                                        ${typeof example === 'object' ? `
+                                            <strong>${example.name}</strong>
+                                            ${example.title ? `<br><em>${example.title}</em>` : ''}
+                                            ${example.domain ? `
+                                                <div class="example-domains">
+                                                    ${example.domain.map(d => `<span class="example-domain">${d}</span>`).join('')}
+                                                </div>
+                                            ` : ''}
+                                            ${example.appearance ? `<p class="example-appearance">${example.appearance}</p>` : ''}
+                                            ${example.duties ? `
+                                                <div class="example-duties">
+                                                    <strong>Duties:</strong>
+                                                    <ul>
+                                                        ${example.duties.map(duty => `<li>${duty}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            ` : ''}
+                                            ${example.unique_power ? `<p class="unique-power"><strong>Unique Power:</strong> ${example.unique_power}</p>` : ''}
+                                        ` : `<span>${example}</span>`}
+                                    </div>
+                                `).join('') : `<p>${rank.examples}</p>`}
+                            </div>
+                        ` : ''}
+                        
+                        ${rank.types ? `
+                            <div class="types-section">
+                                <h5>Types:</h5>
+                                ${rank.types.map(type => `
+                                    <div class="type-item">
+                                        <strong>${type.type}</strong>
+                                        ${type.appearance ? `<p class="type-appearance">${type.appearance}</p>` : ''}
+                                        ${type.abilities ? `
+                                            <div class="type-abilities">
+                                                <strong>Abilities:</strong>
+                                                <div class="ability-tags">
+                                                    ${type.abilities.map(ability => `<span class="ability-tag">${ability}</span>`).join('')}
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        ${type.typical_domain ? `<p><strong>Domain:</strong> ${type.typical_domain}</p>` : ''}
+                                        ${type.organization ? `<p><strong>Organization:</strong> ${type.organization}</p>` : ''}
+                                    </div>
+                                `).join('')}
                             </div>
                         ` : ''}
                     </div>
@@ -763,32 +832,77 @@ function openDivineServantModal(category, continent, pantheon) {
         `;
     }
 
-    // Add examples if exists (for old structure)
-    if (servantData.examples && Array.isArray(servantData.examples)) {
+    // Add notable embodiments if exists (for concept_embodiments)
+    if (servantData.notable_embodiments) {
         modalHTML += `
             <div class="modal-section">
-                <h3><i class="fas fa-list"></i> Examples</h3>
-                <ul style="margin-left: 20px;">
-                    ${servantData.examples.map(example => `<li>${example}</li>`).join('')}
-                </ul>
+                <h3><i class="fas fa-star"></i> Notable Embodiments</h3>
+                ${servantData.notable_embodiments.map(embodiment => `
+                    <div class="embodiment-item">
+                        <h4>${embodiment.concept} - ${embodiment.name}</h4>
+                        <p><strong>Appearance:</strong> ${embodiment.appearance}</p>
+                        ${embodiment.domain ? `
+                            <div class="embodiment-domains">
+                                <strong>Domains:</strong>
+                                ${embodiment.domain.map(d => `<span class="embodiment-domain">${d}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                        ${embodiment.manifestation_conditions ? `<p><strong>Manifests When:</strong> ${embodiment.manifestation_conditions}</p>` : ''}
+                        ${embodiment.power ? `<p><strong>Power:</strong> ${embodiment.power}</p>` : ''}
+                        ${embodiment.limitation ? `<p><strong>Limitation:</strong> ${embodiment.limitation}</p>` : ''}
+                    </div>
+                `).join('')}
             </div>
         `;
     }
 
-    // Add types if exists
+    // Add types if exists (for elemental_avatars)
     if (servantData.types) {
         modalHTML += `
             <div class="modal-section">
                 <h3><i class="fas fa-shapes"></i> Types</h3>
                 ${servantData.types.map(type => `
-                    <div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 8px;">
-                        <h4 style="margin: 0 0 5px 0;">${type.type}</h4>
-                        <p style="margin: 0; opacity: 0.8;">Role: ${type.role}</p>
-                        ${type.abilities ? `
-                            <div style="margin-top: 5px;">
-                                <strong>Abilities:</strong> ${type.abilities.join(', ')}
+                    <div class="element-type">
+                        <h4>${type.element} - ${type.example}</h4>
+                        <p><strong>Appearance:</strong> ${type.appearance}</p>
+                        <p><strong>Intelligence:</strong> ${type.intelligence}</p>
+                        ${type.duties ? `
+                            <div class="element-duties">
+                                <strong>Duties:</strong>
+                                <ul>
+                                    ${type.duties.map(duty => `<li>${duty}</li>`).join('')}
+                                </ul>
                             </div>
                         ` : ''}
+                        ${type.communication ? `<p><strong>Communication:</strong> ${type.communication}</p>` : ''}
+                        ${type.creation ? `<p><strong>Creation:</strong> ${type.creation}</p>` : ''}
+                        ${type.lifespan ? `<p><strong>Lifespan:</strong> ${type.lifespan}</p>` : ''}
+                        ${type.worship ? `<p><strong>Worship:</strong> ${type.worship}</p>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // Add departments if exists (for celestial_functionaries)
+    if (servantData.departments) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-building"></i> Departments</h3>
+                ${servantData.departments.map(dept => `
+                    <div class="department-item">
+                        <h4>${dept.department}</h4>
+                        <p><strong>Head:</strong> ${dept.head}</p>
+                        ${dept.staff ? `<p><strong>Staff:</strong> ${dept.staff}</p>` : ''}
+                        ${dept.duties ? `
+                            <div class="department-duties">
+                                <strong>Duties:</strong>
+                                <ul>
+                                    ${dept.duties.map(duty => `<li>${duty}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        ${dept.office_location ? `<p><strong>Office:</strong> ${dept.office_location}</p>` : ''}
                     </div>
                 `).join('')}
             </div>
@@ -800,9 +914,305 @@ function openDivineServantModal(category, continent, pantheon) {
     document.body.style.overflow = 'hidden';
 }
 
-// In your existing openGodModal function, replace the switch statement:
+// Main function to render complete god modal for supreme, high, and low gods
+function renderCompleteGodModal(godData, continent, pantheon, godType) {
+    const typeLabels = {
+        'supreme': 'Supreme God',
+        'high': 'High God',
+        'low': 'Low God'
+    };
+
+    modalTitle.textContent = `${godData.name} - ${typeLabels[godType] || 'Divine Being'}`;
+
+    let modalHTML = `
+        <div class="modal-section">
+            ${godData.image ?
+            `<img src="${IMAGE_BASE_PATH}${godData.image}" alt="${godData.name}" class="modal-image" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">` :
+            `<div class="modal-image placeholder-img-large">
+                    <i class="${godType === 'supreme' ? 'fas fa-crown' : godType === 'high' ? 'fas fa-star' : 'fas fa-gem'}"></i>
+                </div>`
+        }
+        </div>
+        
+        <div class="modal-stats">
+            <div class="modal-stat">
+                <span class="modal-stat-value">${continent}</span>
+                <span class="modal-stat-label">Continent</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${pantheon.pantheon_name}</span>
+                <span class="modal-stat-label">Pantheon</span>
+            </div>
+            <div class="modal-stat">
+                <span class="modal-stat-value">${godData.stars || '10'}★</span>
+                <span class="modal-stat-label">Divine Power</span>
+            </div>
+        </div>
+        
+        <div class="modal-section">
+            <h3><i class="fas fa-info-circle"></i> Description</h3>
+            <p>${godData.description || godData.god_of || 'No description available.'}</p>
+        </div>
+    `;
+
+    // Add god_of if it exists and is different from description
+    if (godData.god_of && godData.god_of !== godData.description) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-crown"></i> God Title</h3>
+                <p>${godData.god_of}</p>
+            </div>
+        `;
+    }
+
+    // Add lore if exists
+    if (godData.lore) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-scroll"></i> Lore</h3>
+                <p>${godData.lore}</p>
+            </div>
+        `;
+    }
+
+    // Add appearance for ALL god types
+    if (godData.appearance) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-eye"></i> Appearance</h3>
+                <p>${godData.appearance}</p>
+            </div>
+        `;
+    }
+
+    // Add ascension story if exists
+    if (godData.ascension_story) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-star"></i> Ascension Story</h3>
+                <p>${godData.ascension_story}</p>
+            </div>
+        `;
+    }
+
+    // Add domains section
+    if (godData.domain && godData.domain.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-crosshairs"></i> Domains</h3>
+                <div class="domain-tags">
+                    ${godData.domain.map(domain => `
+                        <span class="domain-tag">${domain}</span>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Add unique abilities (handles both array and single ability)
+    if (godData.unique_abilities && Array.isArray(godData.unique_abilities) && godData.unique_abilities.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-bolt"></i> Unique Abilities</h3>
+                ${godData.unique_abilities.map(ability => `
+                    <div class="ability-item">
+                        <h4>${ability.name} ${ability.stars ? `(${ability.stars}★)` : ''}</h4>
+                        <p><strong>Effect:</strong> ${ability.effect}</p>
+                        ${ability.cooldown ? `<p><strong>Cooldown:</strong> ${ability.cooldown}</p>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    } else if (godData.unique_ability) {
+        // Fallback for old structure (single ability)
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-bolt"></i> Unique Ability</h3>
+                <div class="ability-item">
+                    <h4>${godData.unique_ability}</h4>
+                </div>
+            </div>
+        `;
+    }
+
+    // Add current role if exists
+    if (godData.current_role) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-tasks"></i> Current Role</h3>
+                <p>${godData.current_role}</p>
+            </div>
+        `;
+    }
+
+    // Add duties if exists
+    if (godData.duties && Array.isArray(godData.duties) && godData.duties.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-clipboard-list"></i> Duties</h3>
+                <ul class="duties-list">
+                    ${godData.duties.map(duty => `<li>${duty}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add sacred items if exists
+    if (godData.sacred_items && Array.isArray(godData.sacred_items) && godData.sacred_items.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-gem"></i> Sacred Items</h3>
+                <ul class="sacred-items-list">
+                    ${godData.sacred_items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add relationships if exists
+    if (godData.relationships) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-handshake"></i> Relationships</h3>
+                <div class="relationships-grid">
+        `;
+
+        if (godData.relationships.allies && Array.isArray(godData.relationships.allies)) {
+            modalHTML += `
+                <div class="relationship-category">
+                    <h4>Allies</h4>
+                    <div class="relationship-tags">
+                        ${godData.relationships.allies.map(ally => `<span class="relationship-tag ally">${ally}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        if (godData.relationships.rivals && Array.isArray(godData.relationships.rivals)) {
+            modalHTML += `
+                <div class="relationship-category">
+                    <h4>Rivals</h4>
+                    <div class="relationship-tags">
+                        ${godData.relationships.rivals.map(rival => `<span class="relationship-tag rival">${rival}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add other relationship types if they exist
+        const otherRelations = ['students', 'creations', 'protected', 'messengers', 'herd', 'inspired', 'tests', 'judges'];
+        otherRelations.forEach(relType => {
+            if (godData.relationships[relType] && Array.isArray(godData.relationships[relType])) {
+                modalHTML += `
+                    <div class="relationship-category">
+                        <h4>${relType.charAt(0).toUpperCase() + relType.slice(1)}</h4>
+                        <div class="relationship-tags">
+                            ${godData.relationships[relType].map(item => `<span class="relationship-tag neutral">${item}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        modalHTML += `
+                </div>
+            </div>
+        `;
+    }
+
+    // Add weaknesses if exists
+    if (godData.weaknesses && Array.isArray(godData.weaknesses) && godData.weaknesses.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> Weaknesses</h3>
+                <ul class="weaknesses-list">
+                    ${godData.weaknesses.map(weakness => `<li>${weakness}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    // Add favored_by if exists
+    if (godData.favored_by && Array.isArray(godData.favored_by) && godData.favored_by.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-users"></i> Favored By</h3>
+                <div class="favored-tags">
+                    ${godData.favored_by.map(favored => `<span class="favored-tag">${favored}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Add followers if exists
+    if (godData.followers && Array.isArray(godData.followers) && godData.followers.length > 0) {
+        modalHTML += `
+            <div class="modal-section">
+                <h3><i class="fas fa-hands-praying"></i> Followers</h3>
+                <div class="followers-tags">
+                    ${godData.followers.map(follower => `<span class="follower-tag">${follower}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // SUPREME GOD SPECIFIC SECTIONS
+    if (godType === 'supreme') {
+        // Add realm if exists
+        if (godData.realm) {
+            modalHTML += `
+                <div class="modal-section">
+                    <h3><i class="fas fa-universe"></i> Divine Realm</h3>
+                    <p>${godData.realm}</p>
+                </div>
+            `;
+        }
+
+        // Add symbols if exists
+        if (godData.symbols && Array.isArray(godData.symbols) && godData.symbols.length > 0) {
+            modalHTML += `
+                <div class="modal-section">
+                    <h3><i class="fas fa-symbols"></i> Sacred Symbols</h3>
+                    <div class="symbol-tags">
+                        ${godData.symbols.map(symbol => `<span class="symbol-tag">${symbol}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add sacred animals if exists
+        if (godData.sacred_animals && Array.isArray(godData.sacred_animals) && godData.sacred_animals.length > 0) {
+            modalHTML += `
+                <div class="modal-section">
+                    <h3><i class="fas fa-paw"></i> Sacred Animals</h3>
+                    <div class="animal-tags">
+                        ${godData.sacred_animals.map(animal => `<span class="animal-tag">${animal}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add temples for supreme gods
+        if (godData.temples && Array.isArray(godData.temples) && godData.temples.length > 0) {
+            modalHTML += `
+                <div class="modal-section">
+                    <h3><i class="fas fa-place-of-worship"></i> Major Temples</h3>
+                    <ul class="temples-list">
+                        ${godData.temples.map(temple => `<li>${temple}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+    }
+
+    modalBody.innerHTML = modalHTML;
+    godModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Old openGodModal function (kept for compatibility)
 function openGodModal(godData, continent, godType) {
-    const pantheon = godsData.gods_data.pantheons[continent];
+    const pantheon = godsData.gods_data.pantheons[continent]; // <-- ADD THIS LINE
     const typeLabels = {
         'supreme': 'Supreme God',
         'high': 'High God',
@@ -815,18 +1225,18 @@ function openGodModal(godData, continent, godType) {
 
     // Check if it's a demi-god (new structure)
     if (godType === 'demi') {
-        renderDemiGodModal(godData, continent, pantheon);
+        renderDemiGodModal(godData, continent, pantheon); // <-- Now has pantheon
         return;
     }
 
     // Check if it's an old demi-god group
     if (godType === 'demi_old') {
-        renderOldDemiGodModal(godData, continent, pantheon);
+        renderOldDemiGodModal(godData, continent, pantheon); // <-- Now has pantheon
         return;
     }
 
-    // FIXED: Call renderStandardGodModal with all 4 parameters
-    renderStandardGodModal(godData, continent, pantheon, godType);
+    // For supreme, high, low gods - use the complete modal
+    renderCompleteGodModal(godData, continent, pantheon, godType); // <-- Now has pantheon
 }
 
 // New function to render demi-god modals
@@ -887,11 +1297,9 @@ function renderDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
             <div class="modal-section">
                 <h3><i class="fas fa-crosshairs"></i> Domains</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                <div class="domain-tags">
                     ${godData.domain.map(domain => `
-                        <span style="padding: 5px 12px; background: rgba(52, 152, 219, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                            ${domain}
-                        </span>
+                        <span class="domain-tag">${domain}</span>
                     `).join('')}
                 </div>
             </div>
@@ -928,8 +1336,8 @@ function renderDemiGodModal(godData, continent, pantheon) {
     if (godData.duties && Array.isArray(godData.duties)) {
         modalHTML += `
         <div class="modal-section">
-            <h3><i class="fas fa-tasks"></i> Duties</h3>
-            <ul style="margin-left: 20px;">
+            <h3><i class="fas fa-clipboard-list"></i> Duties</h3>
+            <ul class="duties-list">
                 ${godData.duties.map(duty => `<li>${duty}</li>`).join('')}
             </ul>
         </div>
@@ -941,7 +1349,7 @@ function renderDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
         <div class="modal-section">
             <h3><i class="fas fa-gem"></i> Sacred Items</h3>
-            <ul style="margin-left: 20px;">
+            <ul class="sacred-items-list">
                 ${godData.sacred_items.map(item => `<li>${item}</li>`).join('')}
             </ul>
         </div>
@@ -953,7 +1361,7 @@ function renderDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
         <div class="modal-section">
             <h3><i class="fas fa-temple"></i> Temples</h3>
-            <ul style="margin-left: 20px;">
+            <ul class="temples-list">
                 ${godData.temples.map(temple => `<li>${temple}</li>`).join('')}
             </ul>
         </div>
@@ -969,13 +1377,27 @@ function renderDemiGodModal(godData, continent, pantheon) {
 
         if (godData.relationships.allies) {
             modalHTML += `
-            <p><strong>Allies:</strong> ${Array.isArray(godData.relationships.allies) ? godData.relationships.allies.join(', ') : godData.relationships.allies}</p>
+            <div class="relationship-category">
+                <h4>Allies</h4>
+                <div class="relationship-tags">
+                    ${Array.isArray(godData.relationships.allies) ?
+                    godData.relationships.allies.map(ally => `<span class="relationship-tag ally">${ally}</span>`).join('') :
+                    `<span class="relationship-tag ally">${godData.relationships.allies}</span>`}
+                </div>
+            </div>
         `;
         }
 
         if (godData.relationships.rivals) {
             modalHTML += `
-            <p><strong>Rivals:</strong> ${Array.isArray(godData.relationships.rivals) ? godData.relationships.rivals.join(', ') : godData.relationships.rivals}</p>
+            <div class="relationship-category">
+                <h4>Rivals</h4>
+                <div class="relationship-tags">
+                    ${Array.isArray(godData.relationships.rivals) ?
+                    godData.relationships.rivals.map(rival => `<span class="relationship-tag rival">${rival}</span>`).join('') :
+                    `<span class="relationship-tag rival">${godData.relationships.rivals}</span>`}
+                </div>
+            </div>
         `;
         }
 
@@ -987,7 +1409,7 @@ function renderDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
         <div class="modal-section">
             <h3><i class="fas fa-exclamation-triangle"></i> Weaknesses</h3>
-            <ul style="margin-left: 20px;">
+            <ul class="weaknesses-list">
                 ${godData.weaknesses.map(weakness => `<li>${weakness}</li>`).join('')}
             </ul>
         </div>
@@ -999,11 +1421,9 @@ function renderDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
             <div class="modal-section">
                 <h3><i class="fas fa-users"></i> Followers</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                <div class="followers-tags">
                     ${godData.followers.map(follower => `
-                        <span style="padding: 5px 12px; background: rgba(231, 76, 60, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                            ${follower}
-                        </span>
+                        <span class="follower-tag">${follower}</span>
                     `).join('')}
                 </div>
             </div>
@@ -1043,207 +1463,11 @@ function renderOldDemiGodModal(godData, continent, pantheon) {
         modalHTML += `
             <div class="modal-section">
                 <h3><i class="fas fa-list"></i> Examples</h3>
-                <ul style="margin-left: 20px;">
+                <ul class="duties-list">
                     ${godData.examples.map(example => `<li>${example}</li>`).join('')}
                 </ul>
             </div>
         `;
-    }
-
-    modalBody.innerHTML = modalHTML;
-    godModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-// Open god modal with details
-function renderStandardGodModal(godData, continent, pantheon, godType) {
-    const typeLabels = {
-        'supreme': 'Supreme God',
-        'high': 'High God',
-        'low': 'Low God'
-    };
-
-    modalTitle.textContent = `${godData.name} - ${typeLabels[godType] || 'Divine Being'}`;
-
-    let modalHTML = `
-        <div class="modal-section">
-            ${godData.image ?
-            `<img src="${IMAGE_BASE_PATH}${godData.image}" alt="${godData.name}" class="modal-image" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder-large.png';">` :
-            `<div class="modal-image placeholder-img-large">
-                <i class="${godType === 'supreme' ? 'fas fa-crown' : godType === 'high' ? 'fas fa-star' : 'fas fa-gem'}"></i>
-            </div>`
-        }
-        </div>
-        
-        <div class="modal-stats">
-            <div class="modal-stat">
-                <span class="modal-stat-value">${continent}</span>
-                <span class="modal-stat-label">Continent</span>
-            </div>
-            <div class="modal-stat">
-                <span class="modal-stat-value">${pantheon.pantheon_name}</span>
-                <span class="modal-stat-label">Pantheon</span>
-            </div>
-            <div class="modal-stat">
-                <span class="modal-stat-value">${godData.stars || '10'}★</span>
-                <span class="modal-stat-label">Divine Power</span>
-            </div>
-        </div>
-        
-        <div class="modal-section">
-            <h3><i class="fas fa-info-circle"></i> Description</h3>
-            <p>${godData.description || godData.god_of || 'No description available.'}</p>
-        </div>
-    `;
-
-    // Add god_of separately if it exists
-    if (godData.god_of && godData.god_of !== godData.description) {
-        modalHTML += `
-            <div class="modal-section">
-                <h3><i class="fas fa-crown"></i> God Title</h3>
-                <p>${godData.god_of}</p>
-            </div>
-        `;
-    }
-
-    // Add domains section
-    if (godData.domain && godData.domain.length > 0) {
-        modalHTML += `
-            <div class="modal-section">
-                <h3><i class="fas fa-crosshairs"></i> Domains</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                    ${godData.domain.map(domain => `
-                        <span style="padding: 5px 12px; background: rgba(52, 152, 219, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                            ${domain}
-                        </span>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    // Add lore if exists
-    if (godData.lore) {
-        modalHTML += `
-            <div class="modal-section">
-                <h3><i class="fas fa-scroll"></i> Lore</h3>
-                <p>${godData.lore}</p>
-            </div>
-        `;
-    }
-
-    // SUPREME GOD SPECIFIC SECTIONS
-    if (godType === 'supreme') {
-        // Add appearance for supreme gods
-        if (godData.appearance) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-eye"></i> Appearance</h3>
-                    <p>${godData.appearance}</p>
-                </div>
-            `;
-        }
-
-        // Add unique abilities for supreme gods
-        if (godData.unique_abilities && Array.isArray(godData.unique_abilities) && godData.unique_abilities.length > 0) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-bolt"></i> Unique Abilities</h3>
-                    ${godData.unique_abilities.map(ability => `
-                        <div class="ability-item">
-                            <h4>${ability.name} ${ability.stars ? `(${ability.stars}★)` : ''}</h4>
-                            <p><strong>Effect:</strong> ${ability.effect}</p>
-                            ${ability.cooldown ? `<p><strong>Cooldown:</strong> ${ability.cooldown}</p>` : ''}
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        // Add realm if exists
-        if (godData.realm) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-universe"></i> Divine Realm</h3>
-                    <p>${godData.realm}</p>
-                </div>
-            `;
-        }
-
-        // Add symbols if exists
-        if (godData.symbols && Array.isArray(godData.symbols) && godData.symbols.length > 0) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-symbols"></i> Sacred Symbols</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                        ${godData.symbols.map(symbol => `
-                            <span style="padding: 5px 12px; background: rgba(155, 89, 182, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                                ${symbol}
-                            </span>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Add sacred animals if exists
-        if (godData.sacred_animals && Array.isArray(godData.sacred_animals) && godData.sacred_animals.length > 0) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-paw"></i> Sacred Animals</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                        ${godData.sacred_animals.map(animal => `
-                            <span style="padding: 5px 12px; background: rgba(46, 204, 113, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                                ${animal}
-                            </span>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Add temples for supreme gods
-        if (godData.temples && Array.isArray(godData.temples) && godData.temples.length > 0) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-place-of-worship"></i> Major Temples</h3>
-                    <ul style="margin-left: 20px;">
-                        ${godData.temples.map(temple => `<li>${temple}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
-        }
-    }
-
-    // HIGH GOD SPECIFIC SECTIONS
-    if (godType === 'high') {
-        // Add unique ability for high gods (single ability)
-        if (godData.unique_ability) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-bolt"></i> Unique Ability</h3>
-                    <div class="ability-item">
-                        <h4>${godData.unique_ability}</h4>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Add favored by
-        if (godData.favored_by && Array.isArray(godData.favored_by) && godData.favored_by.length > 0) {
-            modalHTML += `
-                <div class="modal-section">
-                    <h3><i class="fas fa-users"></i> Favored By</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                        ${godData.favored_by.map(favored => `
-                            <span style="padding: 5px 12px; background: rgba(231, 76, 60, 0.1); border-radius: 20px; font-size: 0.9rem;">
-                                ${favored}
-                            </span>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
     }
 
     modalBody.innerHTML = modalHTML;
@@ -1323,62 +1547,6 @@ function loadFallbackData() {
     renderPantheonAccordion();
 }
 
-// Add this function to animate hero stats
-function animateHeroStats() {
-    const stats = [
-        { element: document.querySelector('.stat-value:nth-child(1)'), target: 7 },
-        { element: document.querySelector('.stat-value:nth-child(2)'), target: 35 },
-        { element: document.querySelector('.stat-value:nth-child(3)'), target: 70 },
-        { element: document.querySelector('.stat-value:nth-child(4)'), target: 0, infinity: true } // Infinity symbol
-    ];
-
-    stats.forEach((stat, index) => {
-        if (!stat.element) return;
-
-        if (stat.infinity) {
-            // For infinity symbol
-            setTimeout(() => {
-                stat.element.textContent = '∞';
-                stat.element.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    stat.element.style.transform = 'scale(1)';
-                }, 300);
-            }, index * 500 + 1000);
-        } else {
-            // Animate number counting
-            const duration = 2000;
-            const startTime = Date.now();
-            const startValue = 0;
-
-            const animate = () => {
-                const currentTime = Date.now();
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-
-                // Easing function for smooth animation
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                const currentValue = Math.floor(easeOutQuart * stat.target);
-
-                stat.element.textContent = currentValue;
-
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    // Add subtle bounce effect at the end
-                    stat.element.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        stat.element.style.transform = 'scale(1)';
-                    }, 200);
-                }
-            };
-
-            setTimeout(() => {
-                requestAnimationFrame(animate);
-            }, index * 300); // Stagger the animations
-        }
-    });
-}
-
 // Improved animation function
 function animateCounter(element, start, end, duration) {
     const startTime = performance.now();
@@ -1443,8 +1611,3 @@ function initHeroAnimation() {
         }
     }, 500); // Wait 0.5 second before starting animation
 }
-
-// Load saved theme when page loads
-window.addEventListener('DOMContentLoaded', () => {
-    loadTheme();
-});
