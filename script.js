@@ -485,7 +485,7 @@ function initEventListeners() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetElement.offsetTop - 40,
                     behavior: 'smooth'
                 });
             }

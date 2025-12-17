@@ -1430,12 +1430,19 @@ footer {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
+        height: 100vh;
+        /* Full viewport height */
         background-color: var(--light-card);
         padding: 20px;
+        /* Add padding for header */
         z-index: 1000;
+        overflow-y: auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        transform: none;
+        align-items: center;
     }
 
     .dark-mode .nav-menu.active {
@@ -1449,29 +1456,45 @@ footer {
     .hierarchy-level {
         padding: 20px;
     }
-    
+
     .god-mini-card {
         padding: 6px;
         gap: 10px;
     }
-    
+
     .god-mini-img {
         width: 40px;
         height: 40px;
     }
-    
+
     .placeholder-img-mini {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
-    
+
     .god-mini-info strong {
         font-size: 0.85rem;
     }
-    
+
     .god-mini-title {
         font-size: 0.75rem;
+    }
+
+    /* Adjust header for mobile menu */
+    .nav-menu.active~.hamburger {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+    }
+
+    .nav-menu.active~.hamburger i {
+        color: var(--light-text);
+    }
+
+    .dark-mode .nav-menu.active~.hamburger i {
+        color: var(--dark-text);
     }
 }
 
@@ -1620,30 +1643,31 @@ footer {
         transform: none;
         z-index: 1000;
     }
-    
+
     .theme-toggle-vertical {
         flex-direction: row;
         padding: 10px 15px;
         border-radius: 25px;
         gap: 10px;
     }
-    
+
     .theme-toggle-vertical .theme-label {
         writing-mode: horizontal-tb;
         transform: none;
     }
-    
+
     /* .theme-toggle-vertical .toggle-switch {
         transform: none;
     } */
-    
+
     .fixed-theme-toggle::before {
         display: none;
     }
-    
+
     /* Show theme toggle in header for mobile only if needed */
     .theme-toggle {
-        display: none; /* Keep hidden on mobile too if using fixed toggle */
+        display: none;
+        /* Keep hidden on mobile too if using fixed toggle */
     }
 }
 
@@ -1653,12 +1677,57 @@ footer {
         bottom: 10px;
         right: 10px;
     }
-    
+
     .theme-toggle-vertical {
         padding: 8px 12px;
     }
-    
+
     .theme-toggle-vertical .theme-label {
         font-size: 0.7rem;
+    }
+}
+
+/* Animation styles */
+.count-animate {
+    transition: transform 0.3s ease;
+}
+
+.count-animate.pulse {
+    animation: pulse 0.5s ease;
+}
+
+.infinity-animate {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Hero animation trigger */
+.hero.stats-animated .stat-value {
+    animation: numberReveal 0.5s ease-out forwards;
+}
+
+@keyframes numberReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

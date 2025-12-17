@@ -40,6 +40,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize smooth scrolling for navigation links
     initSmoothScrolling();
+
+    // Initialize hero animation
+    initHeroAnimation();
+
+    // Add class to trigger animations
+    setTimeout(() => {
+        document.querySelector('.hero').classList.add('stats-animated');
+    }, 7500);
 });
 
 // Load gods data from gods.json file
@@ -1313,6 +1321,127 @@ function loadFallbackData() {
     renderPantheonCards();
     renderTemples();
     renderPantheonAccordion();
+}
+
+// Add this function to animate hero stats
+function animateHeroStats() {
+    const stats = [
+        { element: document.querySelector('.stat-value:nth-child(1)'), target: 7 },
+        { element: document.querySelector('.stat-value:nth-child(2)'), target: 35 },
+        { element: document.querySelector('.stat-value:nth-child(3)'), target: 70 },
+        { element: document.querySelector('.stat-value:nth-child(4)'), target: 0, infinity: true } // Infinity symbol
+    ];
+
+    stats.forEach((stat, index) => {
+        if (!stat.element) return;
+
+        if (stat.infinity) {
+            // For infinity symbol
+            setTimeout(() => {
+                stat.element.textContent = '∞';
+                stat.element.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    stat.element.style.transform = 'scale(1)';
+                }, 300);
+            }, index * 500 + 1000);
+        } else {
+            // Animate number counting
+            const duration = 2000;
+            const startTime = Date.now();
+            const startValue = 0;
+
+            const animate = () => {
+                const currentTime = Date.now();
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.floor(easeOutQuart * stat.target);
+
+                stat.element.textContent = currentValue;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    // Add subtle bounce effect at the end
+                    stat.element.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        stat.element.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            };
+
+            setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, index * 300); // Stagger the animations
+        }
+    });
+}
+
+// Improved animation function
+function animateCounter(element, start, end, duration) {
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smooth animation
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(easeOut * (end - start) + start);
+
+        element.textContent = currentValue;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            // Animation complete - add visual feedback
+            element.classList.add('pulse');
+            setTimeout(() => {
+                element.classList.remove('pulse');
+            }, 300);
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+// Initialize hero animation
+function initHeroAnimation() {
+    // Wait for page to load and ensure elements exist
+    setTimeout(() => {
+        const counters = document.querySelectorAll('.count-animate');
+        const infinityElement = document.querySelector('.infinity-animate');
+
+        // Animate each counter with stagger
+        counters.forEach((counter, index) => {
+            const target = parseInt(counter.getAttribute('data-target'));
+
+            // Stagger the animations
+            setTimeout(() => {
+                animateCounter(counter, 0, target, 2000);
+            }, index * 400); // 400ms delay between each
+        });
+
+        // Animate infinity symbol
+        if (infinityElement) {
+            setTimeout(() => {
+                infinityElement.style.opacity = '0';
+                infinityElement.style.transform = 'scale(0.5)';
+
+                requestAnimationFrame(() => {
+                    infinityElement.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                    infinityElement.style.opacity = '1';
+                    infinityElement.style.transform = 'scale(1.2)';
+
+                    setTimeout(() => {
+                        infinityElement.style.transform = 'scale(1)';
+                    }, 800);
+                });
+            }, counters.length * 400);
+        }
+    }, 500); // Wait 0.5 second before starting animation
 }
 
 // Load saved theme when page loads
