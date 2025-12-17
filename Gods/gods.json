@@ -283,46 +283,757 @@
                 ],
                 "demi_gods": [
                     {
-                        "name": "Ley-Line Spirits",
-                        "count": "Hundreds",
-                        "god_of": "Minor deities born from ley line convergences, each governing small territories",
-                        "examples": [
-                            "Glimmerwood Nymphs",
-                            "Stoneheart Guardians",
-                            "Luminar Light-Weavers"
-                        ]
+                        "name": "Arjuna-Divakar",
+                        "title": "The Sun-King Ascended",
+                        "full_title": "He Who Touched The Sun And Was Not Consumed",
+                        "domain": [
+                            "Solar Might",
+                            "Righteous Rule",
+                            "Sacrificial Fire",
+                            "Kingly Dharma"
+                        ],
+                        "stars": 7,
+                        "mortal_origin": "King of the Sunstone Kingdom for 127 years",
+                        "ascension_story": "After a century of perfect dharmic rule, Arjuna-Divakar performed the ultimate Ashvamedha Yagna (horse sacrifice), but instead of sacrificing a horse, he offered his own life essence to purify his kingdom of a celestial corruption. As his soul departed, Mahasvaran caught it mid-ascension, declared 'This king has ruled as I would rule,' and reforged his essence with solar filaments.",
+                        "divine_parentage": {
+                            "patron": "Mahasvaran",
+                            "relationship": "Chosen Son (non-biological)",
+                            "blessing_type": "Direct essence infusion"
+                        },
+                        "appearance": "Radiant human male with skin like polished copper, hair of liquid gold, eyes that contain miniature suns. Wears armor made of solidified sunlight and carries the Surya-Kavacha (sun-shield). Stands 8 feet tall with permanent solar corona.",
+                        "unique_abilities": [
+                            {
+                                "name": "Surya Kavacha",
+                                "effect": "Manifests a shield of pure sunlight that burns evil on contact and can temporarily blind those with impure intentions",
+                                "limitations": "Cannot be used at night or in places sunlight cannot reach"
+                            },
+                            {
+                                "name": "Dharma-Sight",
+                                "effect": "Can instantly perceive whether any action aligns with cosmic law (dharma)",
+                                "limitations": "Reveals truth but not solutions"
+                            }
+                        ],
+                        "current_role": "Guardian of the Temple of First Dawn in Lumenspire",
+                        "duties": [
+                            "Judges disputes between solar-aligned creatures",
+                            "Maintains the Solar Calendar of Eldoria",
+                            "Tests would-be rulers for dharmic fitness",
+                            "Mentors paladins of solar deities"
+                        ],
+                        "followers": [
+                            "Sun-priests",
+                            "Righteous kings",
+                            "Solar paladins",
+                            "Dawn-worshipers"
+                        ],
+                        "sacred_items": [
+                            "The Sunstone Scepter (can control light intensity within 1 mile)",
+                            "Dawnbreaker Armor (immune to fire, glows in presence of deception)"
+                        ],
+                        "temples": [
+                            "Temple of the Ascended King in former Sunstone capital"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "Agneyastra (respects his sacrifice)",
+                                "Jyotisha (shares solar duties)"
+                            ],
+                            "rivals": [
+                                "No major rivals, but debates philosophy with moon-aligned deities"
+                            ],
+                            "mentor_to": [
+                                "Several mortal princes training in dharmic rule"
+                            ]
+                        },
+                        "weaknesses": [
+                            "Power wanes during lunar eclipses",
+                            "Cannot act against a truly dharmic ruler, even if enemy",
+                            "Bound by truth - cannot lie or even omit truth when asked directly"
+                        ],
+                        "image": "eldoria/arjuna_divakar_demigod.png",
+                        "symbol": "Crown with rising sun motif"
                     },
                     {
-                        "name": "Ancestor Heroes",
-                        "count": "Variable",
-                        "god_of": "Mortal heroes who ascended to minor godhood through great deeds",
-                        "examples": [
-                            "First High Elf Mage",
-                            "Dwarven Forge-Father",
-                            "Beastkin Unifier"
-                        ]
+                        "name": "Mira-Bhakti",
+                        "title": "The Dancing Devotee",
+                        "full_title": "Songstress Whose Melody Healed a Goddess",
+                        "domain": [
+                            "Devotional Music",
+                            "Ecstatic Dance",
+                            "Healing Through Art",
+                            "Divine Love"
+                        ],
+                        "stars": 6,
+                        "mortal_origin": "Orphan street-singer from Riverhaven",
+                        "ascension_story": "During the River Wars, Varunima was wounded by a spear of forgotten promises. As the goddess wept corrupted tears, Mira (then mortal) sang at the riverbank for 40 days without ceasing. Her bhajans were so pure they formed a bridge of liquid music to the goddess's heart. Varunima, healed, pulled Mira into the river and replaced her vocal cords with silver threads from her own essence.",
+                        "divine_parentage": {
+                            "patron": "Varunima",
+                            "relationship": "Adopted Daughter",
+                            "blessing_type": "Physical transformation and domain sharing"
+                        },
+                        "appearance": "Young woman with skin like moonlit water, hair that flows like liquid silver, feet that never touch ground (dances on water or air). Voice causes visible ripples in reality. Dresses in flowing silks that change color with her emotions.",
+                        "unique_abilities": [
+                            {
+                                "name": "Rasa Sthayi",
+                                "effect": "Her songs can induce specific emotional/physiological states in listeners (joy for healing, courage for battle, calm for meditation)",
+                                "limitations": "Requires uninterrupted singing; affects friend and foe alike"
+                            },
+                            {
+                                "name": "Tala-Synchrony",
+                                "effect": "Can sync her heartbeat to any rhythm and thus influence timing-based phenomena (heartbeats, tides, mechanical cycles)",
+                                "limitations": "Cannot create rhythms, only sync with existing ones"
+                            }
+                        ],
+                        "current_role": "Wandering bard who heals through devotional music",
+                        "duties": [
+                            "Heals emotional wounds of those touched by war",
+                            "Teaches proper devotional forms to aspiring bhakti",
+                            "Carries messages between water temples",
+                            "Purifies corrupted memories through song"
+                        ],
+                        "followers": [
+                            "Bards",
+                            "Healers",
+                            "Devotees of Varunima",
+                            "Those seeking emotional healing"
+                        ],
+                        "sacred_items": [
+                            "The Silver-Tongue (her actual vocal cords, which can be loaned temporarily to worthy devotees)",
+                            "River-Silk Sari (never stains, cleanses whoever wears it)"
+                        ],
+                        "temples": [
+                            "No fixed temple; shrines appear wherever she last performed"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "Soma (shares musical domain)",
+                                "Apsara (dance collaborations)"
+                            ],
+                            "rivals": [
+                                "Vidyut (whose chaotic music disrupts her harmonies)"
+                            ],
+                            "protects": [
+                                "Orphan musicians, heartbroken lovers"
+                            ]
+                        },
+                        "weaknesses": [
+                            "Cannot sing lies (voice fails)",
+                            "Powerless against the completely tone-deaf",
+                            "Must answer any sincere request for a song"
+                        ],
+                        "image": "eldoria/mira_bhakti_demigod.png",
+                        "symbol": "Silver crescent with musical notes as stars"
                     },
                     {
-                        "name": "Elemental Avatars",
-                        "count": "Dozens",
-                        "god_of": "Manifestations of pure elemental forces given semi-divine consciousness",
-                        "examples": [
-                            "Mountain Heart",
-                            "River Mother",
-                            "Storm Father"
-                        ]
+                        "name": "Vajra-Mitra",
+                        "title": "The Lightning-Touched",
+                        "full_title": "Smith Who Married Thunder to Steel",
+                        "domain": [
+                            "Divine Smithing",
+                            "Contained Lightning",
+                            "Artifact Creation",
+                            "Controlled Chaos"
+                        ],
+                        "stars": 6,
+                        "mortal_origin": "Dwarven master-smith from the Thunderpeak Forges",
+                        "ascension_story": "Struck by Vidyut's lightning seven times (each time while forging during storms). After the seventh strike, he didn't die but instead forged the lightning into a living weapon while still conducting it. Agneyastra witnessed this, declared him 'touched enough to join us,' and together with Vidyut, transformed his right arm into living crystallized lightning and his heart into a forge that burns without fuel.",
+                        "divine_parentage": {
+                            "patrons": [
+                                "Agneyastra",
+                                "Vidyut"
+                            ],
+                            "relationship": "Joint Creation",
+                            "blessing_type": "Dual-aspect transformation"
+                        },
+                        "appearance": "Burly dwarf with one normal arm and one arm of crackling blue lightning contained in crystal lattice. Beard has sparks that dance through it. One eye normal, one eye shows miniature lightning storms. Skin bears lightning-scar patterns that glow when he works.",
+                        "unique_abilities": [
+                            {
+                                "name": "Indra-Astra Forging",
+                                "effect": "Can imbue weapons with one-time use divine lightning strikes (weapon shatters after use)",
+                                "limitations": "Only one such weapon per season, requires storm to forge"
+                            },
+                            {
+                                "name": "Grounding-Touch",
+                                "effect": "Can safely channel any electrical energy (including magical) into the ground",
+                                "limitations": "Must be touching both energy source and ground"
+                            }
+                        ],
+                        "current_role": "Master smith at the Sanctum of Eternal Weaving",
+                        "duties": [
+                            "Forges weapons for god-touched heroes",
+                            "Repairs divine artifacts damaged in conflicts",
+                            "Trains smiths in safe lightning-forging techniques",
+                            "Maintains the Storm-Anvil (where lightning is harvested)"
+                        ],
+                        "followers": [
+                            "Lightning-smiths",
+                            "Storm-shamans",
+                            "Artificers",
+                            "Those who work during thunderstorms"
+                        ],
+                        "sacred_items": [
+                            "The Seventh Hammer (forged during his seventh strike, can shape lightning)",
+                            "Storm-Goggles (allow viewing of electrical currents in all things)"
+                        ],
+                        "temples": [
+                            "Forge-Shrine at Thunderpeak",
+                            "Workshop in Agneyastra's main temple"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "Ghantakarna (forges his warning bells)",
+                                "All forge-related deities"
+                            ],
+                            "rivals": [
+                                "Prithivali (disapproves of his 'unnatural' metal-creation)"
+                            ],
+                            "apprentices": [
+                                "Three dwarf-smiths undergoing lightning trials"
+                            ]
+                        },
+                        "weaknesses": [
+                            "Cannot work in complete silence (needs storm-sounds)",
+                            "Right arm becomes unstable during total solar eclipses",
+                            "Bound to complete any forging commission if paid in lightning-struck metal"
+                        ],
+                        "image": "eldoria/vajra_mitra_demigod.png",
+                        "symbol": "Hammer with lightning bolt handle"
                     },
                     {
-                        "name": "Concept Embodiments",
-                        "count": "Scores",
-                        "god_of": "Minor deities representing abstract concepts within Eldoria's stable system",
-                        "examples": [
-                            "Justice's Scale",
-                            "Honor's Blade",
-                            "Tradition's Chain"
+                        "name": "Kali-Matra",
+                        "title": "The Night's Midwife",
+                        "full_title": "She Who Guides Souls Through The Dark Hour",
+                        "domain": [
+                            "Transitional Death",
+                            "Birth at Night",
+                            "Shadow-Comfort",
+                            "Necessary Endings"
+                        ],
+                        "stars": 7,
+                        "mortal_origin": "Midwife and death-doula from the Shadowed Valley",
+                        "ascension_story": "Attended 10,000 births and 10,000 deaths, never losing a mother or soul to fear. During the Eclipse of Sorrows, she simultaneously delivered a celestial child and eased a dying star-god's passing. Kalaratri witnessed this perfect balance and split a portion of her own essence, giving Kali-Matra dominion over transitions that occur in darkness.",
+                        "divine_parentage": {
+                            "patron": "Kalaratri",
+                            "relationship": "Mirror-Self (light to her dark)",
+                            "blessing_type": "Essence fragment with specialized domain"
+                        },
+                        "appearance": "Matronly woman with one half in light, one in gentle shadow. Hands glow with soft bioluminescence. Eyes show starfields. Wears practical robes that are day-colored on one side, night-colored on the other.",
+                        "unique_abilities": [
+                            {
+                                "name": "Twilight Bridge",
+                                "effect": "Can create temporary pathways between life and death for souls not ready to cross",
+                                "limitations": "Only during dawn/dusk, only for unfinished business"
+                            },
+                            {
+                                "name": "Pain-Thief",
+                                "effect": "Can temporarily take others' transitional pain (birth/death) into herself",
+                                "limitations": "Must release it within 24 hours or suffer permanent damage"
+                            }
+                        ],
+                        "current_role": "Guardian of the Hour Between Hours",
+                        "duties": [
+                            "Attends births that occur at night",
+                            "Comforts those dying after sunset",
+                            "Maintains the Cemetery of Gentle Endings",
+                            "Teaches night-midwives and death-doulas"
+                        ],
+                        "followers": [
+                            "Night-midwives",
+                            "Death-doulas",
+                            "Those afraid of dying alone",
+                            "Parents of night-born children"
+                        ],
+                        "sacred_items": [
+                            "The Candle of Two Flames (burns with birth-fire and death-cold simultaneously)",
+                            "Shadow-Shawl (can wrap a soul to ease transition)"
+                        ],
+                        "temples": [
+                            "Chapel of Gentle Transitions (exists only from midnight to 1 AM)"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "Soma (shares night domain)",
+                                "Ancestor spirits she helped cross"
+                            ],
+                            "rivals": [
+                                "Disease spirits who cause painful deaths"
+                            ],
+                            "protected": [
+                                "All who face birth or death in darkness"
+                            ]
+                        },
+                        "weaknesses": [
+                            "Powerless in full daylight or absolute darkness (needs some of both)",
+                            "Cannot refuse a sincere request for comfort during transition",
+                            "Weakened by unnecessary suffering she cannot alleviate"
+                        ],
+                        "image": "eldoria/kali_matra_demigod.png",
+                        "symbol": "Candle with two flames (one up, one down)"
+                    },
+                    {
+                        "name": "Bodhi-Vriksha",
+                        "title": "The Awakened Tree",
+                        "full_title": "Sage Who Achieved Enlightenment While Rooted",
+                        "domain": [
+                            "Stationary Wisdom",
+                            "Root-Knowledge",
+                            "Patience",
+                            "Ecological Memory"
+                        ],
+                        "stars": 5,
+                        "mortal_origin": "Hermit sage who meditated under one tree for 300 years",
+                        "ascension_story": "Began as mortal hermit, vowed not to move from his meditation spot until he understood the tree's consciousness. After centuries, his mind and the tree's merged. When loggers came, he couldn't move to stop them, but his anguish was so pure it reached Vanadevi. She transformed both sage and tree into a single being - a walking, talking tree with human consciousness and vice versa.",
+                        "divine_parentage": {
+                            "patron": "Vanadevi",
+                            "relationship": "Kindred Spirit",
+                            "blessing_type": "Symbiotic fusion with ancient tree"
+                        },
+                        "appearance": "Ancient banyan tree that walks on root-feet, with face in bark, eyes of amber sap, voice like wind through leaves. Flowers bloom when he speaks truth, leaves fall when he encounters falsehood.",
+                        "unique_abilities": [
+                            {
+                                "name": "Root-Sight",
+                                "effect": "Can see through the root-network of any connected plant",
+                                "limitations": "Only where plants grow; deserts and oceans are blind spots"
+                            },
+                            {
+                                "name": "Century-Patience",
+                                "effect": "Can grant others temporary understanding of long-term thinking",
+                                "limitations": "Recipients become literally slower (metabolism, speech, thought)"
+                            }
+                        ],
+                        "current_role": "Wandering library (carries knowledge in his leaves)",
+                        "duties": [
+                            "Records history in annual rings",
+                            "Settles disputes by showing long-term consequences",
+                            "Teaches trees to communicate with sensitive mortals",
+                            "Maps underground water sources and ley lines"
+                        ],
+                        "followers": [
+                            "Druids",
+                            "Historians",
+                            "Elderly seeking perspective",
+                            "Those who move too quickly"
+                        ],
+                        "sacred_items": [
+                            "Sap of Understanding (when consumed, allows temporary plant communication)",
+                            "Leaf-Scrolls (his fallen leaves contain written knowledge)"
+                        ],
+                        "temples": [
+                            "None - he is his own temple"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "All plant spirits",
+                                "Rishiraj (shares wisdom domain)"
+                            ],
+                            "rivals": [
+                                "Deforesters",
+                                "Those who value speed over depth"
+                            ],
+                            "students": [
+                                "Young trees learning to think"
+                            ]
+                        },
+                        "weaknesses": [
+                            "Cannot cross large bodies of water",
+                            "Vulnerable to axe and fire like any tree",
+                            "One season each year must remain completely still (hibernation)"
+                        ],
+                        "image": "eldoria/bodhi_vriksha_demigod.png",
+                        "symbol": "Tree with human face in trunk"
+                    },
+                    {
+                        "name": "Nadi-Jnana",
+                        "title": "The River's Memory-Keeper",
+                        "full_title": "Librarian of Liquid History",
+                        "domain": [
+                            "River Memories",
+                            "Drowned Knowledge",
+                            "Current-Prediction",
+                            "Flood Wisdom"
+                        ],
+                        "stars": 6,
+                        "mortal_origin": "Historian who drowned while protecting scrolls from a flood",
+                        "ascension_story": "When the Great Library of Riverhaven flooded, historian Nadi sacrificed herself to save the oldest scrolls. Instead of dying, the river absorbed her and the knowledge she protected. Varunima, impressed by this devotion to preservation, reconstituted her as a being of water and information, with the saved scrolls becoming part of her essence.",
+                        "divine_parentage": {
+                            "patron": "Varunima",
+                            "relationship": "Willing Sacrifice",
+                            "blessing_type": "Transmutation into information-fluid being"
+                        },
+                        "appearance": "Female form of clear water with scroll-text flowing just under surface. Hair is flowing script. Eyes show historical scenes. Can solidify into any form water can take (ice, mist, etc.).",
+                        "unique_abilities": [
+                            {
+                                "name": "Current-Reading",
+                                "effect": "Can predict future by reading patterns in water currents",
+                                "limitations": "Only predicts water-related events with high accuracy"
+                            },
+                            {
+                                "name": "Drowned Memory Recall",
+                                "effect": "Can retrieve any knowledge ever lost to water (sunken libraries, washed away writing, unspoken words carried by rain)",
+                                "limitations": "Must physically touch the water that witnessed the loss"
+                            }
+                        ],
+                        "current_role": "Keeper of the Sunken Archives",
+                        "duties": [
+                            "Maintains records of everything rivers have witnessed",
+                            "Advises on flood management",
+                            "Teaches water-based divination",
+                            "Recovers lost knowledge from sunken places"
+                        ],
+                        "followers": [
+                            "River historians",
+                            "Flood-plain farmers",
+                            "Marine archaeologists",
+                            "Those seeking lost knowledge"
+                        ],
+                        "sacred_items": [
+                            "The Inkwell of Recall (filled with water that remembers everything it touches)",
+                            "Current-Compass (points to nearest significant historical water event)"
+                        ],
+                        "temples": [
+                            "Submerged library beneath Riverhaven",
+                            "Shrines at river confluences"
+                        ],
+                        "relationships": {
+                            "allies": [
+                                "Thoth-No-Chishiki (fellow knowledge-keeper)",
+                                "River spirits"
+                            ],
+                            "rivals": [
+                                "Those who dam rivers (stops memory flow)",
+                                "Fire-document destroyers"
+                            ],
+                            "serves": "All seekers of water-carried truth"
+                        },
+                        "weaknesses": [
+                            "Cannot enter completely stagnant water",
+                            "Diluted by heavy rains (temporarily loses coherence)",
+                            "Bound to answer any question about water-history if asked at a riverbank"
+                        ],
+                        "image": "eldoria/nadi_jnana_demigod.png",
+                        "symbol": "Scroll partially unrolled in water"
+                    }
+                ],
+                "divine_servants": {
+                    "ley_line_spirits": {
+                        "category_name": "The Luminous Concordance",
+                        "description": "Minor deities born from ley line convergences, each governing small territories and maintaining the cosmic weave in localized zones.",
+                        "hierarchy": [
+                            {
+                                "rank": "Primordial Conduits (7)",
+                                "role": "Govern the seven major ley nexus points",
+                                "examples": [
+                                    {
+                                        "name": "Luminar Prime",
+                                        "title": "First Weaver of Lumenspire",
+                                        "domain": [
+                                            "Light",
+                                            "Order",
+                                            "Celestial Alignment"
+                                        ],
+                                        "appearance": "Androgynous being of pure crystalline light, constantly shifting between solid and spectral forms",
+                                        "duties": [
+                                            "Maintains the Great Sundial of Lumenspire",
+                                            "Directs seasonal energy flows across northern Eldoria",
+                                            "Teaches star-navigation to mortal astronomers"
+                                        ],
+                                        "unique_power": "Can temporarily 'stutter' time within a 100-foot radius to correct celestial misalignments"
+                                    },
+                                    {
+                                        "name": "Geode-Heart",
+                                        "title": "Mountain's Memory",
+                                        "domain": [
+                                            "Stone",
+                                            "Memory",
+                                            "Stability"
+                                        ],
+                                        "appearance": "Massive humanoid of layered sedimentary rock with glowing amethyst veins",
+                                        "duties": [
+                                            "Records all earthquakes and geological shifts",
+                                            "Guards ancient knowledge stored in mountain libraries",
+                                            "Stabilizes tectonic plates during divine conflicts"
+                                        ],
+                                        "unique_power": "Can cause any stone to speak its entire geological history"
+                                    }
+                                ]
+                            },
+                            {
+                                "rank": "Secondary Currents (49)",
+                                "role": "Manage intersection points of major ley lines",
+                                "examples": [
+                                    {
+                                        "name": "River-Scribe",
+                                        "title": "Ink-Flow of Truth",
+                                        "domain": [
+                                            "Water",
+                                            "Writing",
+                                            "Contracts"
+                                        ],
+                                        "appearance": "Humanoid of flowing ink and liquid parchment",
+                                        "duties": [
+                                            "Records all oaths sworn over flowing water",
+                                            "Maintains the Archives of Liquid Memory",
+                                            "Punishes those who break river-sworn promises"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Root-Tender",
+                                        "title": "Vein-Keeper of Glimmerwood",
+                                        "domain": [
+                                            "Roots",
+                                            "Connections",
+                                            "Secrets"
+                                        ],
+                                        "appearance": "Semi-corporeal being with hair of mycelium and skin of birch bark",
+                                        "duties": [
+                                            "Directs nutrient flows through the World-Tree's roots",
+                                            "Hears all whispers carried through root networks",
+                                            "Prevents blight from spreading through fungal channels"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "rank": "Tertiary Spirits (Thousands)",
+                                "role": "Local guardians of specific places",
+                                "types": [
+                                    {
+                                        "type": "Glimmerwood Nymphs",
+                                        "appearance": "Humanoid with bark-like skin, leafy hair, and bioluminescent markings",
+                                        "abilities": [
+                                            "Minor glamour",
+                                            "Plant growth acceleration",
+                                            "Path guidance",
+                                            "Memory storage in trees"
+                                        ],
+                                        "typical_domain": "Specific groves, ancient trees, or forest clearings",
+                                        "organization": "Organized in matriarchal groves, led by Elder-Nymphs"
+                                    },
+                                    {
+                                        "type": "Stoneheart Guardians",
+                                        "appearance": "Animated stone constructs with glowing crystal hearts, 8-12 feet tall",
+                                        "abilities": [
+                                            "Earth shaping",
+                                            "Avalanche summoning",
+                                            "Stone camouflage",
+                                            "Seismic sense"
+                                        ],
+                                        "typical_domain": "Mountain passes, canyon entrances, ancient ruins",
+                                        "organization": "Sentry pairs that never sleep, communicate through seismic pulses"
+                                    },
+                                    {
+                                        "type": "Luminar Light-Weavers",
+                                        "appearance": "Translucent beings of condensed starlight, vaguely humanoid",
+                                        "abilities": [
+                                            "Light manipulation",
+                                            "Star chart reading",
+                                            "Sanctum blessing",
+                                            "Truth revelation"
+                                        ],
+                                        "typical_domain": "Observatories, solstice temples, celestial alignment sites",
+                                        "organization": "Choirs of 13 that sing the stars into alignment"
+                                    }
+                                ]
+                            }
+                        ],
+                        "recruitment": "Born spontaneously from powerful ley convergences, or created by higher deities for specific purposes",
+                        "mortality": "Can be dispersed if their ley node is destroyed, but reforms when node is restored",
+                        "worship": "Receive minor offerings (crystals, incense, specific chants) from local populations"
+                    },
+                    "ancestor_heroes": {
+                        "category_name": "The Hallowed Ascended",
+                        "description": "Mortal heroes who achieved minor divinity through extraordinary deeds, now serving as guides and protectors from beyond.",
+                        "hierarchy": [
+                            {
+                                "rank": "Paragon Heroes (Legendary)",
+                                "role": "Serve as personal assistants to high gods",
+                                "examples": [
+                                    {
+                                        "name": "The First High Elf Mage",
+                                        "ascended_name": "Elariel Star-Weaver",
+                                        "mortal_achievement": "First mortal to weave magic without self-annihilation, creating the Nine Safe Spells",
+                                        "current_form": "Living spell matrix in ethereal form, appears as constellations of light in elf-form",
+                                        "domain": [
+                                            "Safe Magic",
+                                            "Teaching",
+                                            "Elven Heritage"
+                                        ],
+                                        "serves": "Jyotisha as celestial cartographer assistant",
+                                        "unique_power": "Can temporarily 'unweave' dangerous magic without harming the caster"
+                                    },
+                                    {
+                                        "name": "Dwarven Forge-Father",
+                                        "ascended_name": "Durgan True-Anvil",
+                                        "mortal_achievement": "Crafted the first divine artifact (Gandiva Bow) while still mortal",
+                                        "current_form": "Semi-corporeal spirit within the Eternal Forge, appears as molten metal taking dwarf-shape",
+                                        "domain": [
+                                            "Artifact Creation",
+                                            "Dwarven Tradition",
+                                            "Meteoric Metals"
+                                        ],
+                                        "serves": "Agneyastra as master of the basic flames",
+                                        "unique_power": "Can identify any metal's origin and potential just by its ring"
+                                    }
+                                ]
+                            },
+                            {
+                                "rank": "Beastkin Unifiers",
+                                "role": "Maintain harmony between beastkin tribes and other races",
+                                "examples": [
+                                    {
+                                        "name": "Panthera Concord",
+                                        "ascended_name": "Shere Khan-Unyielding",
+                                        "mortal_achievement": "Unified 47 warring beastkin tribes under the Pact of Claw and Mind",
+                                        "current_form": "Majestic panther-human hybrid with star-pelt fur",
+                                        "domain": [
+                                            "Beastkin Unity",
+                                            "Primal Wisdom",
+                                            "Territorial Law"
+                                        ],
+                                        "serves": "Vanadevi as forest diplomat",
+                                        "unique_power": "Can understand and speak all animal languages simultaneously"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ascension_process": "Must complete a 'Divine Trial' witnessed by at least one high god, die heroically, and have their name chanted by 10,000 grateful souls",
+                        "limitations": "Cannot directly intervene in mortal affairs without permission from their patron god",
+                        "shrines": "Personal shrines at locations of their mortal achievements"
+                    },
+                    "elemental_avatars": {
+                        "category_name": "The Primal Manifestations",
+                        "description": "Semi-divine consciousnesses of pure elemental forces given limited autonomy to manage their respective domains.",
+                        "types": [
+                            {
+                                "element": "Earth",
+                                "example": "Mountain Heart",
+                                "appearance": "Colossal humanoid of shifting stone and crystal, with rivers for veins",
+                                "intelligence": "Slow but profound (thinks in geological time)",
+                                "duties": [
+                                    "Regulates continental drift in assigned region",
+                                    "Absorbs excess magical energy from earthquakes",
+                                    "Teaches patience to stone-mages"
+                                ],
+                                "communication": "Through tremors, crystal harmonics, and dreams given to sleeping geologists"
+                            },
+                            {
+                                "element": "Water",
+                                "example": "River Mother",
+                                "appearance": "Fluid female form that contains entire ecosystems within her being",
+                                "intelligence": "Flow-based consciousness (understands cycles and currents)",
+                                "duties": [
+                                    "Maintains hydrological balance in watershed",
+                                    "Purifies magical pollution from water sources",
+                                    "Guides salmon migrations and other cyclical journeys"
+                                ],
+                                "communication": "Through river-song, rain patterns, and visions to those who drink from her source"
+                            },
+                            {
+                                "element": "Air",
+                                "example": "Storm Father",
+                                "appearance": "Giant of cloud and lightning with multiple faces showing different weather patterns",
+                                "intelligence": "Distributed consciousness (present wherever wind blows)",
+                                "duties": [
+                                    "Distributes seeds and spores across continents",
+                                    "Cleanses atmospheric magical residue",
+                                    "Carries prayers between distant temples"
+                                ],
+                                "communication": "Through wind-whispers, cloud formations, and static electricity sensations"
+                            },
+                            {
+                                "element": "Fire",
+                                "example": "Forge-Wraith",
+                                "appearance": "Dancing flames in humanoid shape with coal-heart and smoke-limbs",
+                                "intelligence": "Consuming consciousness (understands transformation)",
+                                "duties": [
+                                    "Maintains volcanic activity at safe levels",
+                                    "Teaches controlled combustion to alchemists",
+                                    "Punishes those who use fire for unnecessary destruction"
+                                ],
+                                "communication": "Through candle-flame messages, forge-dreams, and warmth sensations"
+                            }
+                        ],
+                        "creation": "Born when a elemental confluence achieves self-awareness through prolonged exposure to ley energy",
+                        "lifespan": "Effectively immortal unless their elemental source is completely destroyed",
+                        "worship": "Elementalists make offerings of pure elements (unworked stone, clean water, etc.)"
+                    },
+                    "concept_embodiments": {
+                        "category_name": "The Abstract Incarnate",
+                        "description": "Minor deities representing specific abstract concepts within Eldoria's stable system, born from collective belief and cosmic necessity.",
+                        "notable_embodiments": [
+                            {
+                                "concept": "Justice's Scale",
+                                "name": "Danda-Dhari",
+                                "appearance": "Blindfolded figure of burnished bronze holding impossibly precise scales",
+                                "domain": [
+                                    "Impartial Justice",
+                                    "Fair Measurement",
+                                    "Legal Precedent"
+                                ],
+                                "manifestation_conditions": "Appears when two parties seek truly impartial judgment",
+                                "power": "Can weigh actions rather than evidence, revealing true guilt/innocence",
+                                "limitation": "Cannot initiate judgment, only respond to sincere requests"
+                            },
+                            {
+                                "concept": "Honor's Blade",
+                                "name": "Satya-Khadga",
+                                "appearance": "Living sword that walks on legs of light, speaks through harmonic vibration",
+                                "domain": [
+                                    "Personal Honor",
+                                    "Truth in Combat",
+                                    "Oath-Keeping"
+                                ],
+                                "manifestation_conditions": "Appears when a warrior faces impossible odds with pure intentions",
+                                "power": "Cannot be wielded by the dishonorable; cuts through deception literally",
+                                "limitation": "Only manifests for one battle, then returns to celestial armory"
+                            },
+                            {
+                                "concept": "Tradition's Chain",
+                                "name": "Parampara-Sutra",
+                                "appearance": "Elderly figure whose body is made of interlinking cultural artifacts",
+                                "domain": [
+                                    "Cultural Continuity",
+                                    "Ritual Preservation",
+                                    "Ancestral Wisdom"
+                                ],
+                                "manifestation_conditions": "Appears when a tradition is about to be lost forever",
+                                "power": "Can temporarily restore lost knowledge or skills from cultural memory",
+                                "limitation": "Cannot create new traditions, only preserve existing ones"
+                            }
+                        ],
+                        "birth_process": "Form when a concept is believed in by at least 100,000 mortals for 100 years",
+                        "power_source": "Draw strength from continued belief and practice of their concept",
+                        "vulnerability": "Fade if belief in their concept drops below critical threshold"
+                    },
+                    "celestial_functionaries": {
+                        "category_name": "Heavenly Administrators",
+                        "description": "Divine bureaucrats who manage the day-to-day functioning of cosmic laws and divine agreements.",
+                        "departments": [
+                            {
+                                "department": "Karma Ledger-Keepers",
+                                "head": "Chitra-Gupta, Recorder of Deeds",
+                                "staff": "10,000 scribe-spirits",
+                                "duties": [
+                                    "Record every mortal action with karmic weight",
+                                    "Calculate rebirth conditions",
+                                    "Maintain balance sheets for each soul"
+                                ],
+                                "office_location": "Hall of Infinite Scrolls, floating dimension adjacent to Brahmaloka"
+                            },
+                            {
+                                "department": "Cosmic Timekeepers",
+                                "head": "Kala-Chakra, Wheel of Time",
+                                "staff": "60 gong-strikers (one for each minute), 24 bell-ringers (hours), etc.",
+                                "duties": [
+                                    "Ensure temporal continuity across realms",
+                                    "Schedule divine interventions and prophecies",
+                                    "Maintain synchronization of multiple time streams"
+                                ],
+                                "office_location": "Tower of the Eternal Moment, exists in all times simultaneously"
+                            }
                         ]
                     }
-                ]
+                }
             },
             "Mechanis": {
                 "pantheon_name": "Kami-Teku Synod",

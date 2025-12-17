@@ -920,7 +920,7 @@ input:checked+.toggle-slider:before {
 }
 
 .accordion-icon {
-    transition: var(--transition);
+    transition: transform 0.3s ease;
 }
 
 .accordion-item.active .accordion-icon {
@@ -931,12 +931,12 @@ input:checked+.toggle-slider:before {
     padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: max-height 0.3s ease;
 }
 
 .accordion-item.active .accordion-content {
-    padding: 25px;
     max-height: 5000px;
+    padding: 25px;
 }
 
 .god-list {
@@ -967,25 +967,7 @@ input:checked+.toggle-slider:before {
 }
 
 .god-list-item {
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-}
-
-.light-mode .god-list-item {
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-.dark-mode .god-list-item {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.god-list-item strong {
-    color: var(--light-accent);
-}
-
-.dark-mode .god-list-item strong {
-    color: var(--dark-primary);
+    margin-bottom: 8px;
 }
 
 /* Footer */
@@ -1282,6 +1264,135 @@ footer {
     margin-bottom: 20px;
 }
 
+/* ===== GOD MINI CARDS STYLES ===== */
+.god-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: var(--transition);
+    width: 100%;
+    cursor: pointer;
+}
+
+.light-mode .god-mini-card:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateX(5px);
+}
+
+.dark-mode .god-mini-card:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+/* Mini image for all god types */
+.god-mini-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid;
+    transition: var(--transition);
+}
+
+/* Different border colors for each god type */
+.supreme-god-item .god-mini-img {
+    border-color: #FFD700;
+}
+
+.high-god-item .god-mini-img {
+    border-color: #3498db;
+}
+
+.low-god-item .god-mini-img {
+    border-color: #9b59b6;
+}
+
+.demi-god-item .god-mini-img {
+    border-color: #2ecc71;
+}
+
+.divine-servant-item .god-mini-img {
+    border-color: #e74c3c;
+}
+
+/* Hover effects on images */
+.god-mini-card:hover .god-mini-img {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mini info container */
+.god-mini-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.god-mini-info strong {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dark-mode .god-mini-info strong {
+    color: var(--dark-text);
+}
+
+.god-mini-title {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.god-mini-stars {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* Placeholder mini images */
+.placeholder-img-mini {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Different background colors for placeholder by god type */
+.supreme-god-item .placeholder-img-mini {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.high-god-item .placeholder-img-mini {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.low-god-item .placeholder-img-mini {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.demi-god-item .placeholder-img-mini {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.divine-servant-item .placeholder-img-mini {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero h2 {
@@ -1338,6 +1449,30 @@ footer {
     .hierarchy-level {
         padding: 20px;
     }
+    
+    .god-mini-card {
+        padding: 6px;
+        gap: 10px;
+    }
+    
+    .god-mini-img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .placeholder-img-mini {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .god-mini-info strong {
+        font-size: 0.85rem;
+    }
+    
+    .god-mini-title {
+        font-size: 0.75rem;
+    }
 }
 
 @media (min-width: 769px) {
@@ -1371,5 +1506,158 @@ footer {
 
     .pantheon-cards {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Fixed Theme Toggle - Vertical on side of screen */
+.fixed-theme-toggle {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.theme-toggle-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* padding: 20px 10px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); */
+}
+
+/* .light-mode .theme-toggle-vertical {
+    background-color: rgba(255, 255, 255, 0.9);
+} */
+
+/* .dark-mode .theme-toggle-vertical {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+} */
+
+.theme-toggle-vertical .theme-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: block;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    color: var(--light-text);
+}
+
+.dark-mode .theme-toggle-vertical .theme-label {
+    color: var(--dark-text);
+}
+
+.theme-toggle-vertical .toggle-switch {
+    transform: rotate(90deg);
+}
+
+.theme-toggle-vertical .toggle-slider {
+    width: 50px;
+    height: 25px;
+}
+
+.theme-toggle-vertical .toggle-slider:before {
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3.5px;
+}
+
+.theme-toggle-vertical input:checked+.toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* Hide the original theme toggle in header if it's still there */
+.theme-toggle {
+    display: none;
+}
+
+/* Optional: Add a subtle hover effect */
+.fixed-theme-toggle:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Optional: Add a tooltip on hover */
+.fixed-theme-toggle::before {
+    content: 'Theme';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.fixed-theme-toggle:hover::before {
+    opacity: 1;
+}
+
+/* For mobile devices, move it to bottom or hide */
+@media (max-width: 768px) {
+    .fixed-theme-toggle {
+        position: fixed;
+        bottom: 20px;
+        top: auto;
+        right: 20px;
+        transform: none;
+        z-index: 1000;
+    }
+    
+    .theme-toggle-vertical {
+        flex-direction: row;
+        padding: 10px 15px;
+        border-radius: 25px;
+        gap: 10px;
+    }
+    
+    .theme-toggle-vertical .theme-label {
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+    
+    .theme-toggle-vertical .toggle-switch {
+        transform: none;
+    }
+    
+    .fixed-theme-toggle::before {
+        display: none;
+    }
+    
+    /* Show theme toggle in header for mobile only if needed */
+    .theme-toggle {
+        display: none; /* Keep hidden on mobile too if using fixed toggle */
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .fixed-theme-toggle {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .theme-toggle-vertical {
+        padding: 8px 12px;
+    }
+    
+    .theme-toggle-vertical .theme-label {
+        font-size: 0.7rem;
     }
 }
