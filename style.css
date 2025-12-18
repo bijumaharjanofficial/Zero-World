@@ -2147,6 +2147,10 @@ footer {
         background-color: rgba(0, 0, 0, 0.15);
     }
 
+    .modal-header h2 {
+        font-size: 0.8rem;
+    }
+
     .fixed-theme-toggle .theme-label {
         writing-mode: horizontal-tb;
         margin-left: 8px;
