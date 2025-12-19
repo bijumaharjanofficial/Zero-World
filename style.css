@@ -2019,7 +2019,7 @@ footer {
 
 .modal-image {
     width: 100%;
-    max-height: 400px;
+    /* max-height: 400px; */
     /* Maximum height, adjust as needed */
     display: flex;
     align-items: center;
@@ -2031,13 +2031,13 @@ footer {
 }
 
 .modal-image img {
-    width: auto;
+    width: 100%;
     /* Let the width adjust to maintain aspect ratio */
-    max-width: 100%;
+    /* max-width: 100%; */
     /* Don't exceed container width */
-    height: auto;
+    height: 100%;
     /* Let height adjust to maintain aspect ratio */
-    max-height: 400px;
+    /* max-height: 400px; */
     /* Match the container's max-height */
     object-fit: contain;
     /* Show entire image without cropping */
