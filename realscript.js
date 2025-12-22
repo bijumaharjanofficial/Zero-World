@@ -859,7 +859,7 @@ function renderHeroes() {
                     ${hero.level || 'Hero'}
                 </div>
                 ${hero.image ?
-                `<img src="${getImageUrl(hero.image)}" alt="${hero.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder.png';">` :
+                `<img src="${getImageUrl(hero.logo)}" alt="${hero.name}" onerror="this.onerror=null; this.src='${IMAGE_BASE_PATH}placeholder.png';">` :
                 `<div class="placeholder-img">
                         <i class="fas fa-shield-alt"></i>
                     </div>`

@@ -582,27 +582,29 @@
                                     "description": "Profound lore significance hinting at true origin of World Tree"
                                 }
                             ],
-                            "potential_gacha_roll": [{
-                                "name": "Forced 1 Draw at 10-Star Pool Odds",
-                                "possible_skills": [
-                                    {
-                                        "name": "System Command: Compile",
-                                        "stars": 10,
-                                        "effect": "Once per day, summon Data-Form copy of any previously defeated monster to fight for you for 5 minutes (50% of original stats)",
-                                        "description": "Ultimate summoner skill mirroring Aion's power"
-                                    },
-                                    {
-                                        "name": "Reality Edit",
-                                        "stars": 9,
-                                        "effect": "Once per week, alter small localized environmental rule (SA) for 1 hour",
-                                        "examples": [
-                                            "Gravity halved in this clearing",
-                                            "Fire magic impossible here"
-                                        ],
-                                        "description": "Localized reality manipulation"
-                                    }
-                                ]
-                            }]
+                            "potential_gacha_roll": [
+                                {
+                                    "name": "Forced 1 Draw at 10-Star Pool Odds",
+                                    "possible_skills": [
+                                        {
+                                            "name": "System Command: Compile",
+                                            "stars": 10,
+                                            "effect": "Once per day, summon Data-Form copy of any previously defeated monster to fight for you for 5 minutes (50% of original stats)",
+                                            "description": "Ultimate summoner skill mirroring Aion's power"
+                                        },
+                                        {
+                                            "name": "Reality Edit",
+                                            "stars": 9,
+                                            "effect": "Once per week, alter small localized environmental rule (SA) for 1 hour",
+                                            "examples": [
+                                                "Gravity halved in this clearing",
+                                                "Fire magic impossible here"
+                                            ],
+                                            "description": "Localized reality manipulation"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         "aftermath": {
                             "system_alert": "Debugging failed alert reaches highest System layers",
@@ -1922,7 +1924,9 @@
                         "name": "Rust-Stalkers",
                         "type": "Hero-Survivors",
                         "description": "Individuals who venture into deepest SA 6 zones to retrieve lost knowledge or quiet Reality Storms.",
-                        "deeds": "Survival, not glory"
+                        "deeds": "Survival, not glory",
+                        "image": "mechanis/rust__walker.jpeg",
+                        "logo": "mechanis/rust__walker.jpeg"
                     },
                     "notable_features": [
                         {
@@ -3389,7 +3393,7 @@
                             "effect": "Terrain immunity, stealth vs aligned beings"
                         },
                         "description": "Elf altered by war's touch, form flickering at perception edges. Pale skin, one ear crystallized with amber light, mismatched green and silver eyes. Wears soundless phase-spider silk cloak.",
-                        "image": "spiritus/aria_ghostwalker.jpeg",
+                        "image": "spiritus/aria_ghostwalkerv2.jpeg",
                         "logo": "spiritus/aria_ghostwalker.jpeg"
                     },
                     "notable_features": [
