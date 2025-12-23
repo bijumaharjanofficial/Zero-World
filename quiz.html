@@ -1,0 +1,556 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero World Continent Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Fixed Navigation Bar -->
+    <header class="fixed-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1><i class="fas fa-globe"></i> ZERO</h1>
+                <p class="subtitle">Creation Engine Explorer</p>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle">
+                            World Type <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="realworld.html" class="nav-link">Real</a></li>
+                            <li><a href="index.html" class="nav-link">Animated</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle">
+                            Gods <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Gods/gods.html" class="nav-link">Animated</a></li>
+                            <li><a href="RealGods/gods.html" class="nav-link">Real</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading Zero World data from JSON files...</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">Fetching continent, nation, monster, and god
+            information</p>
+    </div>
+
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <div class="header-content">
+                <h1><i class="fas fa-globe-americas"></i> Zero World Knowledge Challenge</h1>
+                <p class="subtitle">Test your knowledge of the continents, nations, rulers, heroes, gods, and monsters
+                    of the Zero World</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-box">
+                    <span class="stat-label">Continents</span>
+                    <span class="stat-value" id="continent-count">3</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Questions</span>
+                    <span class="stat-value" id="question-count">15</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Difficulty</span>
+                    <span class="stat-value">Dynamic</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <!-- Start Screen -->
+            <div id="start-screen" class="screen active">
+                <div class="start-content">
+                    <div class="world-logo">
+                        <i class="fas fa-dragon"></i>
+                        <i class="fas fa-mountain"></i>
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h2>Welcome to the Zero World Quiz</h2>
+                    <p class="start-description">
+                        Journey through the continents of Zero, from the stable magic of Eldoria to the eternal war of
+                        Spiritus.
+                        Test your knowledge of nations, rulers, heroes, gods, monsters, and the intricate System that
+                        governs all reality.
+                        All questions are dynamically generated from the actual world data.
+                    </p>
+
+                    <div class="quiz-config">
+                        <div class="config-section">
+                            <h3><i class="fas fa-cog"></i> Quiz Configuration</h3>
+
+                            <div class="config-option">
+                                <label for="question-count-select">Number of Questions:</label>
+                                <select id="question-count-select">
+                                    <option value="10">10 Questions</option>
+                                    <option value="15" selected>15 Questions</option>
+                                    <option value="20">20 Questions</option>
+                                    <option value="25">25 Questions</option>
+                                </select>
+                            </div>
+
+                            <div class="config-option">
+                                <label for="difficulty-select">Difficulty:</label>
+                                <select id="difficulty-select">
+                                    <option value="mixed" selected>Mixed Difficulty</option>
+                                    <option value="easy">Easy (Continents & Nations)</option>
+                                    <option value="medium">Medium (Rulers & Heroes)</option>
+                                    <option value="hard">Hard (Gods & Monsters)</option>
+                                </select>
+                            </div>
+
+                            <div class="config-option">
+                                <label>Question Categories:</label>
+                                <div class="category-checkboxes">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-continents" checked>
+                                        <span class="checkmark"></span>
+                                        Continents
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-nations" checked>
+                                        <span class="checkmark"></span>
+                                        Nations
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-rulers" checked>
+                                        <span class="checkmark"></span>
+                                        Rulers
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-heroes" checked>
+                                        <span class="checkmark"></span>
+                                        Heroes
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-gods" checked>
+                                        <span class="checkmark"></span>
+                                        Gods
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-monsters" checked>
+                                        <span class="checkmark"></span>
+                                        Monsters
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-system" checked>
+                                        <span class="checkmark"></span>
+                                        System
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-dungeons">
+                                        <span class="checkmark"></span>
+                                        Dungeons
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="cat-races">
+                                        <span class="checkmark"></span>
+                                        Races
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3><i class="fas fa-trophy"></i> Scoring</h3>
+                            <ul class="scoring-info">
+                                <li>Easy questions: <span class="score-easy">+10 points</span></li>
+                                <li>Medium questions: <span class="score-medium">+25 points</span></li>
+                                <li>Hard questions: <span class="score-hard">+50 points</span></li>
+                                <li>Perfect quiz bonus: <span class="score-bonus">+100 points</span></li>
+                                <li>Time bonus: <span class="score-time">+1 point per second remaining</span></li>
+                            </ul>
+                            <div class="data-source-info">
+                                <h4><i class="fas fa-database"></i> Data Sources</h4>
+                                <p>Questions are generated from:</p>
+                                <ul>
+                                    <li><strong>data.json</strong>: World, continents, nations, monsters</li>
+                                    <li><strong>Gods/gods.json</strong>: Pantheons and deities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="start-btn" class="btn-primary">
+                        <i class="fas fa-play"></i> Begin Quiz
+                    </button>
+
+                    <div class="data-status" id="data-status">
+                        <i class="fas fa-sync fa-spin"></i>
+                        <span>Loading world data...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="question-screen" class="screen">
+                <div class="question-header">
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-text">
+                            Question <span id="current-question">1</span> of <span id="total-questions">15</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="timer">
+                            <i class="fas fa-clock"></i>
+                            <span id="timer">60</span>s
+                        </div>
+                        <div class="score">
+                            <i class="fas fa-star"></i>
+                            Score: <span id="current-score">0</span>
+                        </div>
+                        <div class="difficulty-badge" id="difficulty-badge">
+                            Easy
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-content">
+                    <div class="question-category" id="question-category">
+                        Continent: Eldoria
+                    </div>
+
+                    <h2 class="question-text" id="question-text">
+                        What is the theme of Eldoria?
+                    </h2>
+
+                    <div class="question-image" id="question-image-container">
+                        <!-- Image will be loaded here if available -->
+                    </div>
+
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be generated here -->
+                    </div>
+
+                    <div class="question-footer">
+                        <div class="hint-container" id="hint-container">
+                            <button id="hint-btn" class="btn-hint">
+                                <i class="fas fa-lightbulb"></i> Show Hint
+                            </button>
+                            <div class="hint-text" id="hint-text"></div>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button id="skip-btn" class="btn-secondary">
+                                <i class="fas fa-forward"></i> Skip Question
+                            </button>
+                            <button id="submit-btn" class="btn-primary" disabled>
+                                <i class="fas fa-paper-plane"></i> Submit Answer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Screen (After each question) -->
+            <div id="feedback-screen" class="screen">
+                <div class="feedback-content">
+                    <div class="feedback-icon" id="feedback-icon">
+                        <!-- Correct/Incorrect icon will be added here -->
+                    </div>
+
+                    <h2 class="feedback-title" id="feedback-title">
+                        Correct!
+                    </h2>
+
+                    <div class="feedback-message" id="feedback-message">
+                        You answered correctly and earned <span class="points-earned">+25</span> points!
+                    </div>
+
+                    <div class="answer-explanation" id="answer-explanation">
+                        <!-- Explanation will be added here -->
+                    </div>
+
+                    <div class="next-question-container">
+                        <button id="next-btn" class="btn-primary">
+                            <i class="fas fa-arrow-right"></i> Next Question
+                        </button>
+
+                        <div class="time-bonus" id="time-bonus">
+                            Time Bonus: <span class="bonus-points">+12</span> points
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-content">
+                    <div class="results-header">
+                        <div class="results-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h2>Quiz Complete!</h2>
+                        <p class="results-subtitle">Your Zero World knowledge has been tested</p>
+                    </div>
+
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <div class="stat-icon correct">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="correct-answers">0</div>
+                                <div class="stat-label">Correct Answers</div>
+                            </div>
+                        </div>
+
+                        <div class="result-stat">
+                            <div class="stat-icon score">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="final-score">0</div>
+                                <div class="stat-label">Total Score</div>
+                            </div>
+                        </div>
+
+                        <div class="result-stat">
+                            <div class="stat-icon time">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="final-time">0</div>
+                                <div class="stat-label">Seconds Remaining</div>
+                            </div>
+                        </div>
+
+                        <div class="result-stat">
+                            <div class="stat-icon rank">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="rank-title">Novice</div>
+                                <div class="stat-label">Knowledge Rank</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-breakdown">
+                        <h3><i class="fas fa-chart-bar"></i> Performance Breakdown</h3>
+                        <div class="breakdown-chart">
+                            <canvas id="results-chart"></canvas>
+                        </div>
+                        <div class="breakdown-stats" id="breakdown-stats">
+                            <!-- Breakdown will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button id="restart-btn" class="btn-secondary">
+                            <i class="fas fa-redo"></i> Take Another Quiz
+                        </button>
+                        <button id="review-btn" class="btn-primary">
+                            <i class="fas fa-list"></i> Review Questions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Screen -->
+            <div id="review-screen" class="screen">
+                <div class="review-header">
+                    <h2><i class="fas fa-list-ol"></i> Question Review</h2>
+                    <button id="back-to-results" class="btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Results
+                    </button>
+                </div>
+
+                <div class="review-container" id="review-container">
+                    <!-- Review items will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="quiz-footer">
+            <div class="footer-info">
+                <p>Zero World Continent Quiz | Data from JSON files: data.json and Gods/gods.json</p>
+                <p class="footer-note">This quiz dynamically loads data from JSON files containing world, continent,
+                    nation, monster, and god information</p>
+            </div>
+            <div class="footer-links">
+                <button id="toggle-sound" class="btn-icon" title="Toggle Sound">
+                    <i class="fas fa-volume-up" id="sound-icon"></i>
+                </button>
+                <button id="toggle-hints" class="btn-icon" title="Toggle Hints">
+                    <i class="fas fa-lightbulb" id="hints-icon"></i>
+                </button>
+                <button id="help-btn" class="btn-icon" title="Help">
+                    <i class="fas fa-question-circle"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Quiz Help & Information</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4>About This Quiz</h4>
+                    <p>This quiz tests your knowledge of the Zero World, a complex fantasy universe with multiple unique
+                        continents, each with its own nations, rulers, heroes, gods, and monsters.</p>
+                    <p>The quiz dynamically generates questions from JSON data files containing:</p>
+                    <ul>
+                        <li><strong>data.json:</strong> Information about the world, System, continents, nations,
+                            rulers, heroes, monsters, and dungeons</li>
+                        <li><strong>Gods/gods.json:</strong> Information about pantheons, deities, and divine servants
+                        </li>
+                    </ul>
+                    <p>All questions are generated in real-time based on the actual data, ensuring a unique quiz
+                        experience each time.</p>
+                </div>
+
+                <div class="help-section">
+                    <h4>Question Categories</h4>
+                    <div class="question-type-examples">
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-globe-americas"></i></div>
+                            <div class="type-info">
+                                <strong>Continent Questions</strong>
+                                <p>Test knowledge about continent themes, SA levels, core mechanics, descriptions</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="type-info">
+                                <strong>Nation Questions</strong>
+                                <p>Capital cities, primary races, SA levels, national characteristics</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-crown"></i></div>
+                            <div class="type-info">
+                                <strong>Ruler Questions</strong>
+                                <p>Ruler names, unique skills, skill star ratings, leadership styles</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="type-info">
+                                <strong>Hero Questions</strong>
+                                <p>Hero names, titles, famed deeds, levels, races</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-pray"></i></div>
+                            <div class="type-info">
+                                <strong>God Questions</strong>
+                                <p>Pantheon names, supreme gods, high gods, domains, inspirations</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-dragon"></i></div>
+                            <div class="type-info">
+                                <strong>Monster Questions</strong>
+                                <p>Monster names, classifications, ranks, threat levels, star ratings</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-cogs"></i></div>
+                            <div class="type-info">
+                                <strong>System Questions</strong>
+                                <p>World name, System mechanics, core stats, gacha system, inviolable rules</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-dungeon"></i></div>
+                            <div class="type-info">
+                                <strong>Dungeon Questions</strong>
+                                <p>Dungeon names, locations, themes, bosses, recommended levels</p>
+                            </div>
+                        </div>
+                        <div class="type-example">
+                            <div class="type-icon"><i class="fas fa-users"></i></div>
+                            <div class="type-info">
+                                <strong>Race Questions</strong>
+                                <p>Racial traits, homelands, characteristics, continental distribution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h4>Scoring System</h4>
+                    <p>Your score is calculated based on:</p>
+                    <ul>
+                        <li><strong>Base Points:</strong> Easy (10), Medium (25), Hard (50)</li>
+                        <li><strong>Time Bonus:</strong> +1 point for each second remaining on the timer</li>
+                        <li><strong>Perfect Quiz Bonus:</strong> +100 points for 100% accuracy</li>
+                        <li><strong>Difficulty Recognition:</strong> Harder questions give more points</li>
+                    </ul>
+                </div>
+
+                <div class="help-section">
+                    <h4>Tips for Success</h4>
+                    <ul>
+                        <li>Read questions carefully - some may have multiple correct-sounding answers</li>
+                        <li>Use hints strategically when you're unsure (can be toggled in footer)</li>
+                        <li>Pay attention to question categories for context clues</li>
+                        <li>Manage your time - you have 60 seconds per question</li>
+                        <li>Review your answers at the end to learn from mistakes</li>
+                        <li>Enable sound for auditory feedback on correct/incorrect answers</li>
+                    </ul>
+                </div>
+
+                <div class="help-section">
+                    <h4>Data Sources</h4>
+                    <p>This quiz uses real data from the Zero World universe:</p>
+                    <ul>
+                        <li><strong>Continents:</strong> Eldoria, Mechanis, Spiritus (from data.json)</li>
+                        <li><strong>Nations:</strong> Multiple nations per continent with detailed information</li>
+                        <li><strong>Monsters:</strong> Extensive bestiary with classification system</li>
+                        <li><strong>System:</strong> Detailed mechanics of the world's governing system</li>
+                        <li><strong>Gods:</strong> Pantheons and deities for each continent</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound effects (hidden audio elements) -->
+    <audio id="correct-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"
+        preload="auto"></audio>
+    <audio id="incorrect-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"
+        preload="auto"></audio>
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"
+        preload="auto"></audio>
+    <audio id="complete-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3"
+        preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="quiz.js"></script>
+</body>
+
+</html>
